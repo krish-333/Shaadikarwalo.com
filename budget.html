@@ -1,1 +1,172 @@
-<!DOCTYPE html><html><head><title>budget.html</title></head><body><h1>budget.html</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Budget Package - ShaadiKarwalo</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background-color: #fff4f4; margin: 0; color: #333; }
+    header { background-color: #fb6162; color: white; padding: 2rem 1rem; text-align: center; position: relative; }
+    header img { width: 120px; border-radius: 10px; border: 3px solid white; }
+    nav { background: white; padding: 10px 0; text-align: center; }
+    nav a { color: #fb6162; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    h2, h3 { color: #fb6162; }
+    .container { padding: 2rem; max-width: 1000px; margin: auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+
+    .section { margin-bottom: 2rem; }
+    ul { padding-left: 20px; }
+    ul li { margin-bottom: 8px; }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .gallery img {
+      width: 32%;
+      border-radius: 8px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .cart-icon {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      background: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      color: #fb6162;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button {
+      background: #fb6162;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #cartItemsList {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      background: #fff;
+      color: #333;
+      width: 250px;
+      max-height: 400px;
+      overflow-y: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      padding: 1rem;
+      z-index: 1000;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
+    <h1>ShaadiKarwalo</h1>
+    <div class="cart-icon" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="venues.html">Venues</a>
+    <a href="catering.html">Catering</a>
+    <a href="decor.html">Decor</a>
+    <a href="makeup.html">Makeup</a>
+    <a href="addons.html">Add-Ons</a>
+  </nav>
+
+  <div class="container">
+    <div class="section">
+      <h2>Budget Wedding Package</h2>
+      <p><strong>Price:</strong> ₹7,99,999</p>
+      <p>This affordable package includes all essentials for a beautiful, intimate wedding experience for up to 200 guests.</p>
+    </div>
+
+    <div class="section">
+      <h3>What's Included:</h3>
+      <ul>
+        <li><strong>Venue:</strong> Budget banquet hall in city of choice</li>
+        <li><strong>Catering:</strong> Veg buffet with 3-course meal (North & South Indian)</li>
+        <li><strong>Decor:</strong> Traditional floral setup with mandap</li>
+        <li><strong>Makeup:</strong> Basic bridal makeup + 2 family members</li>
+        <li><strong>Photography:</strong> Candid + Traditional (1 day)</li>
+        <li><strong>Music:</strong> DJ setup for reception night</li>
+        <li><strong>Logistics:</strong> Basic transportation and guest support</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Gallery:</h3>
+      <div class="gallery">
+        <img src="assets/budget1.jpg" alt="Budget Wedding 1" />
+        <img src="assets/budget2.jpg" alt="Budget Wedding 2" />
+        <img src="assets/budget3.jpg" alt="Budget Wedding 3" />
+      </div>
+    </div>
+
+    <div class="section" style="text-align:center;">
+      <button onclick="addToCart()">Add This Package to Cart</button>
+    </div>
+  </div>
+
+  <div id="cartItemsList" style="display: none;">
+    <h3>Your Cart</h3>
+    <ul id="cartItems"></ul>
+    <p><strong>Total: ₹<span id="cartTotal">0</span></strong></p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 ShaadiKarwalo.com - All Rights Reserved</p>
+  </footer>
+
+  <script>
+    let cart = [];
+
+    function addToCart() {
+      cart.push({ name: "Budget Wedding Package", price: 799999 });
+      renderCart();
+    }
+
+    function toggleCart() {
+      const cartBox = document.getElementById("cartItemsList");
+      cartBox.style.display = cartBox.style.display === "none" ? "block" : "none";
+    }
+
+    function renderCart() {
+      const cartList = document.getElementById("cartItems");
+      const cartTotal = document.getElementById("cartTotal");
+      const cartCount = document.getElementById("cartCount");
+
+      cartList.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = `${item.name} - ₹${item.price.toLocaleString()}`;
+        cartList.appendChild(li);
+        total += item.price;
+      });
+
+      cartTotal.textContent = total.toLocaleString();
+      cartCount.textContent = cart.length;
+    }
+  </script>
+</body>
+</html>
