@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,39 +8,44 @@
     body { font-family: 'Segoe UI', sans-serif; background-color: #fb6162; margin: 0; color: rgb(248, 248, 248); }
     header { background-color: #ff5f5f; text-align: center; padding: 2rem 1rem; position: relative; }
     header img { width: 120px; border: 3px solid white; border-radius: 10px; }
-    nav { background: white; padding: 10px 0; text-align: center; position: sticky; top: 0; z-index: 1000; }
+    nav { background: white; padding: 10px 0; text-align: center; }
     nav a { color: #fb6162; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    .cart-icon { position: absolute; top: 20px; right: 20px; background: white; color: #fb6162; padding: 8px 12px; border-radius: 8px; font-weight: bold; cursor: pointer; }
     h2 { color: #ffffff; margin-top: 2rem; text-align: center; }
     .packages { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 1rem; }
-    .card { background: white; color: #333; border-radius: 10px; padding: 1rem; width: 280px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    .card { background: white; color: #333; border-radius: 10px; padding: 1rem; width: 280px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: relative; }
     .card h3 { color: #fb6162; }
     .card p { font-size: 0.95rem; margin: 10px 0; }
-    .card button { background: #fb6162; border: none; padding: 10px 20px; color: white; border-radius: 5px; cursor: pointer; }
-    .cart-section { padding: 2rem; background: #f96161; color: #f9f7f7; }
+    .wishlist-btn { background: none; border: none; position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; color: #ccc; }
+    .wishlist-btn.liked { color: red; }
+    .wishlist-section { padding: 2rem; background: #f96161; color: #f9f7f7; }
+    .wishlist-section ul { list-style: none; padding: 0; }
+    .wishlist-section li { margin: 0.5rem 0; }
     form { max-width: 600px; margin: 0 auto; background: white; padding: 1rem; border-radius: 8px; color: #333; }
     form input, form textarea { width: 99%; padding: 0.5rem; margin: 0.5rem 0; border-radius: 5px; border: 1px solid #ccc; }
     form button { background: #fb6162; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
     footer { background: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+    #loginLink { position: absolute; top: 10px; right: 20px; color: white; text-decoration: underline; font-size: 0.9rem; }
   </style>
 </head>
 <body>
   <header>
     <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
-    <div class="cart-icon" onclick="scrollToCart()">🛒 Cart</div>
     <h1>ShaadiKarwalo</h1>
-    <p>ShaadiKarwalo.com is your one-stop destination for stress-free wedding planning. Choose from ready-made packages and book everything in a click!</p>
+    <p>One-stop destination for stress-free wedding planning</p>
+    <a href="login.html" id="loginLink">Login</a>
   </header>
 
   <nav>
-    <a href="index.html">Home</a>
-    <a href="venues.html">Venues</a>
-    <a href="catering.html">Catering</a>
-    <a href="decor.html">Decor</a>
-    <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add-Ons</a>
+    <a href="#about">About</a>
+    <a href="#packages">Packages</a>
+    <a href="#wishlist">Wishlist</a>
     <a href="#contact">Contact</a>
   </nav>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p style="text-align:center; padding: 0 1rem;">Choose from curated packages and book everything in a click!</p>
+  </section>
 
   <section id="packages">
     <h2>Our Packages</h2>
@@ -49,30 +53,29 @@
       <div class="card">
         <h3>💐 Budget Wedding - ₹8L</h3>
         <p>Basic venue, vegetarian menu, classic décor, candid photography</p>
-        <a href="budget.html"><button>View Details</button></a>
+        <button class="wishlist-btn" onclick="toggleWishlist(this, 'Budget Wedding - ₹8L')">♡</button>
       </div>
       <div class="card">
         <h3>🌸 Classic Wedding - ₹16L</h3>
-        <p>Premium hall/lawn, designer mandap, DJ, entry team, makeup</p>
-        <a href="classic.html"><button>View Details</button></a>
+        <p>Premium venue, designer mandap, DJ, bridal makeup</p>
+        <button class="wishlist-btn" onclick="toggleWishlist(this, 'Classic Wedding - ₹16L')">♡</button>
       </div>
       <div class="card">
         <h3>🏰 Luxury Wedding - ₹25L</h3>
-        <p>5-star hotel, theme décor, bridal team, cinematic video, drone</p>
-        <a href="luxury.html"><button>View Details</button></a>
+        <p>5-star hotel, cinematic video, theme décor, drone coverage</p>
+        <button class="wishlist-btn" onclick="toggleWishlist(this, 'Luxury Wedding - ₹25L')">♡</button>
       </div>
       <div class="card">
         <h3>💎 Premium Wedding - ₹50L</h3>
-        <p>Destination wedding, helicopter entry, celebrity chefs</p>
-        <a href="premium.html"><button>View Details</button></a>
+        <p>Destination wedding, helicopter entry, celebrity chef</p>
+        <button class="wishlist-btn" onclick="toggleWishlist(this, 'Premium Wedding - ₹50L')">♡</button>
       </div>
     </div>
   </section>
 
-  <section id="cart" class="cart-section">
-    <h2>🛒 Your Cart</h2>
-    <ul id="cartItems"></ul>
-    <p><strong>Total: ₹<span id="cartTotal">0</span></strong></p>
+  <section id="wishlist" class="wishlist-section">
+    <h2>💖 Your Wishlist</h2>
+    <ul id="wishlistItems"></ul>
   </section>
 
   <section id="contact">
@@ -91,37 +94,31 @@
   </footer>
 
   <script>
-    let cart = [];
+    const wishlist = [];
 
-    function scrollToCart() {
-      document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
+    function toggleWishlist(button, itemName) {
+      const index = wishlist.indexOf(itemName);
+      if (index === -1) {
+        wishlist.push(itemName);
+        button.classList.add("liked");
+      } else {
+        wishlist.splice(index, 1);
+        button.classList.remove("liked");
+      }
+      renderWishlist();
     }
 
-    function addToCart(name, price) {
-      cart.push({ name, price });
-      renderCart();
-    }
-
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      renderCart();
-    }
-
-    function renderCart() {
-      const cartList = document.getElementById('cartItems');
-      const totalSpan = document.getElementById('cartTotal');
-      cartList.innerHTML = '';
-      let total = 0;
-      cart.forEach((item, index) => {
-        const li = document.createElement('li');
-        li.innerHTML = `${item.name} - ₹${item.price.toLocaleString()} 
-          <button onclick="removeFromCart(${index})" style="margin-left:10px; background:#ff4d4d; color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">Remove</button>`;
-        cartList.appendChild(li);
-        total += item.price;
+    function renderWishlist() {
+      const wishlistList = document.getElementById("wishlistItems");
+      wishlistList.innerHTML = "";
+      wishlist.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        wishlistList.appendChild(li);
       });
-      totalSpan.textContent = total.toLocaleString();
     }
 
+    // Handle form
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const formData = new FormData(this);
@@ -130,18 +127,19 @@
         email: formData.get("email"),
         message: formData.get("message")
       };
+
       fetch("https://script.google.com/macros/s/AKfycbxwa3-XxuZqStQduFrzjTlLx1aDUYEvlNnGdti_VHpXfqCRsz82bkDot4LsCMNViGa-/exec", {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
         body: new URLSearchParams(data)
       });
+
       document.getElementById('responseMsg').textContent = "Message sent!";
       this.reset();
     });
   </script>
-  <script src="cart.js"></script>
-<script>renderCart();</script>
-
 </body>
 </html>
