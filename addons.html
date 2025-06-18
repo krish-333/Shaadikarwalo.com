@@ -2,190 +2,148 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ShaadiKarwalo - Add-Ons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add-Ons – ShaadiKarwalo</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; background-color: #fb6162; margin: 0; color: #fff; }
-    header { background-color: #ff5f5f; text-align: center; padding: 2rem 1rem; position: relative; }
-    header img { width: 120px; border: 3px solid white; border-radius: 10px; }
-    nav { background: white; padding: 10px 0; text-align: center; }
-    nav a { color: #fb6162; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    h2 { color: white; margin-top: 2rem; text-align: center; }
-
-    .addons-container {
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fffdf6;
+      color: #333;
+    }
+    header {
+      background: #fb6162;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      position: relative;
+    }
+    header img {
+      width: 100px;
+      border-radius: 10px;
+      border: 3px solid white;
+    }
+    nav {
+      background: white;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fb6162;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    .wishlist-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      background: white;
+      color: #fb6162;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .cards {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      padding: 2rem;
+      padding: 1.5rem;
     }
-
     .card {
       background: white;
-      color: #333;
       border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       padding: 1rem;
-      width: 280px;
+      width: 300px;
       text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
-
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
     }
-
     .card h3 {
       color: #fb6162;
-      margin: 10px 0 5px;
     }
-
+    .card p {
+      margin: 0.5rem 0;
+    }
     .card button {
+      margin-top: 6px;
       background: #fb6162;
-      border: none;
-      padding: 8px 15px;
       color: white;
+      border: none;
+      padding: 8px 14px;
       border-radius: 5px;
       cursor: pointer;
-      margin-top: 10px;
-    }
-
-    .cart-icon {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      background: white;
-      padding: 5px 10px;
-      border-radius: 20px;
-      color: #fb6162;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    #cartItemsList {
-      position: fixed;
-      top: 60px;
-      right: 20px;
-      background: #fff;
-      color: #333;
-      width: 250px;
-      max-height: 400px;
-      overflow-y: auto;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      padding: 1rem;
-      z-index: 1000;
-    }
-
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
-    <h1>ShaadiKarwalo</h1>
-    <div class="cart-icon" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
-  </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="venues.html">Venues</a>
-    <a href="catering.html">Catering</a>
-    <a href="decor.html">Decor</a>
-    <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add-Ons</a>
-  </nav>
+<header>
+  <img src="assets/logo.png" alt="ShaadiKarwalo Logo">
+  <div class="wishlist-icon" onclick="window.location.href='index.html#wishlist'">❤️</div>
+  <h1>Wedding Add‑Ons</h1>
+  <p>Enhance your experience with extra services</p>
+</header>
 
-  <h2>Optional Add-Ons</h2>
-  <div class="addons-container">
-    <div class="card">
-      <img src="assets/addon1.jpg" alt="Live Band" />
-      <h3>Live Band</h3>
-      <p>Professional music performance during events</p>
-      <button onclick="addToCart('Live Band', 25000)">Add ₹25,000</button>
-    </div>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="venues.html">Venues</a>
+  <a href="catering.html">Catering</a>
+  <a href="decor.html">Decor</a>
+  <a href="makeup.html">Makeup</a>
+</nav>
 
-    <div class="card">
-      <img src="assets/addon2.jpg" alt="Fireworks Show" />
-      <h3>Fireworks Show</h3>
-      <p>10-minute grand display to celebrate the big day</p>
-      <button onclick="addToCart('Fireworks Show', 18000)">Add ₹18,000</button>
-    </div>
+<h2>Optional Add‑Ons</h2>
+<div class="cards">
 
-    <div class="card">
-      <img src="assets/addon3.jpg" alt="Photo Booth" />
-      <h3>Photo Booth</h3>
-      <p>Fun corner with props and instant photos</p>
-      <button onclick="addToCart('Photo Booth', 12000)">Add ₹12,000</button>
-    </div>
-
-    <div class="card">
-      <img src="assets/addon4.jpg" alt="Mehendi Artists" />
-      <h3>Mehendi Artists</h3>
-      <p>Skilled artists for traditional and modern designs</p>
-      <button onclick="addToCart('Mehendi Artists', 15000)">Add ₹15,000</button>
-    </div>
-
-    <div class="card">
-      <img src="assets/addon5.jpg" alt="DJ and Lighting" />
-      <h3>DJ and Lighting</h3>
-      <p>High-energy music and colorful lights for parties</p>
-      <button onclick="addToCart('DJ and Lighting', 22000)">Add ₹22,000</button>
-    </div>
+  <div class="card">
+    <img src="assets/addon1.jpg" alt="DJ Setup">
+    <h3>DJ + Dance Floor</h3>
+    <p>Cost: ₹35,000</p>
+    <button onclick="addAddOnToWishlist('DJ + Dance Floor', 35000)">❤️ Add to Wishlist</button>
   </div>
 
-  <div id="cartItemsList" style="display: none;">
-    <h3>Your Cart</h3>
-    <ul id="cartItems"></ul>
-    <p><strong>Total: ₹<span id="cartTotal">0</span></strong></p>
+  <div class="card">
+    <img src="assets/addon2.jpg" alt="Photobooth">
+    <h3>Photobooth Station</h3>
+    <p>Cost: ₹18,000</p>
+    <button onclick="addAddOnToWishlist('Photobooth Station', 18000)">❤️ Add to Wishlist</button>
   </div>
 
-  <footer>
-    <p>&copy; 2025 ShaadiKarwalo.com - All Rights Reserved</p>
-  </footer>
+  <div class="card">
+    <img src="assets/addon3.jpg" alt="Fireworks">
+    <h3>Fireworks Entry</h3>
+    <p>Cost: ₹25,000</p>
+    <button onclick="addAddOnToWishlist('Fireworks Entry', 25000)">❤️ Add to Wishlist</button>
+  </div>
 
-  <script>
-    let cart = [];
+</div>
 
-    function addToCart(name, price) {
-      cart.push({ name, price });
-      renderCart();
-    }
-
-    function toggleCart() {
-      const cartBox = document.getElementById("cartItemsList");
-      cartBox.style.display = cartBox.style.display === "none" ? "block" : "none";
-    }
-
-    function renderCart() {
-      const cartList = document.getElementById("cartItems");
-      const cartTotal = document.getElementById("cartTotal");
-      const cartCount = document.getElementById("cartCount");
-
-      cartList.innerHTML = "";
-      let total = 0;
-
-      cart.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.name} - ₹${item.price.toLocaleString()}`;
-        cartList.appendChild(li);
-        total += item.price;
-      });
-
-      cartTotal.textContent = total.toLocaleString();
-      cartCount.textContent = cart.length;
-    }
-  </script>
-  <script src="cart.js"></script>
-<script>renderCart();</script>
+<script>
+  function addAddOnToWishlist(name, price) {
+    const item = `${name} – ₹${price}`;
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    wishlist.push(item);
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    alert("Added to wishlist!");
+  }
+</script>
 
 </body>
 </html>
