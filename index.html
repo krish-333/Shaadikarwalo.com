@@ -173,6 +173,37 @@
       wishlist = wishlist.filter(item => item !== itemName);
       renderWishlist();
     }
+    let wishlist = [];
+
+function toggleWishlist(button, itemName) {
+  const index = wishlist.indexOf(itemName);
+  if (index === -1) {
+    wishlist.push(itemName);
+    button.textContent = '❤️';
+  } else {
+    wishlist.splice(index, 1);
+    button.textContent = '🤍';
+  }
+  renderWishlist();
+}
+
+function renderWishlist() {
+  const list = document.getElementById('wishlistItems');
+  list.innerHTML = '';
+  wishlist.forEach(item => {
+    const li = document.createElement('li');
+    li.innerHTML = `${item} <button onclick="removeFromWishlist('${item}')">❌</button>`;
+    li.style.fontWeight = 'bold';
+    li.style.fontSize = '18px';
+    list.appendChild(li);
+  });
+}
+
+function removeFromWishlist(itemName) {
+  wishlist = wishlist.filter(item => item !== itemName);
+  renderWishlist();
+}
+
   </script>
 </body>
 </html>
