@@ -2,45 +2,175 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ShaadiKarwalo - Wedding Planner</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ShaadiKarwalo – Wedding Planner</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; background-color: #fb6162; margin: 0; color: rgb(248, 248, 248); }
-    header { background-color: #ff5f5f; text-align: center; padding: 2rem 1rem; }
-    header img { width: 120px; }
-    nav { background: white; padding: 10px 0; text-align: center; }
-    nav a { color: #fb6162; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    h2 { color: #ffffff; margin-top: 2rem; text-align: center; }
-    .packages { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 1rem; }
-    .card { background: white; color: #333; border-radius: 10px; padding: 1rem; width: 280px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-    .card h3 { color: #fb6162; }
-    .card p { font-size: 0.95rem; margin: 10px 0; }
-    .card button { background: #fb6162; border: none; padding: 10px 20px; color: white; border-radius: 5px; cursor: pointer; }
-    .cart-section { padding: 2rem; background: #f96161; color: #f9f7f7; }
-    form { max-width: 500px; margin: 0 auto; background: white; padding: 1rem; border-radius: 8px; color: #333; }
-    form input, form textarea { width: 100%; padding: 0.5rem; margin: 0.5rem 0; border-radius: 5px; border: 1px solid #ccc; }
-    form button { background: #fb6162; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
-    footer { background: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fb6162;
+      color: #fff;
+    }
+    header {
+      background: #ff5f5f;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+    header img {
+      width: 120px;
+      border: 3px solid white;
+      border-radius: 10px;
+    }
+    .wishlist-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      background: rgb(254, 254, 254);
+      color: #fb6162;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+    }
+    nav {
+      background: white;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fb6162;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    nav a.login {
+      background: white;
+      color: #fb6162;
+      font-weight: bold;
+      border: 1px solid #fb6162;
+    }
+    h2 {
+      color: #fff;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .packages {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 1rem;
+    }
+    .card {
+      background: white;
+      color: #333;
+      border-radius: 10px;
+      padding: 1.2rem;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+    .card h3 {
+      color: #fb6162;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      margin-bottom: 1.1rem;
+    }
+    .card button {
+      background: #f46a6a;
+      color: rgb(255, 106, 106);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 0.2rem;
+    }
+    .card .view-btn {
+      background: #ff6666;
+      color: #f5f3f3;
+      font-weight: bold;
+    }
+    .like-toggle {
+      background: none;
+      font-size: 1rem;
+    }
+    .wishlist-section {
+      padding: 2rem;
+      background: #f96161;
+    }
+    .wishlist-section h2 {
+      margin-bottom: 0.8rem;
+    }
+    .wishlist-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .wishlist-section li {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0.6rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    form {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: white;
+      padding: 1.2rem;
+      border-radius: 8px;
+      color: #333;
+    }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background: #fb6162;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
   <header>
-<img src="assets/logo.png" alt="ShaadiKarwalo Logo" style="border: 3px solid white; border-radius: 12px;" />
+    <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
+    <div class="wishlist-icon" onclick="scrollToWishlist()">❤️</div>
     <h1>ShaadiKarwalo</h1>
-    <p>Aap bas jodi banao, Shaadi hum karwa denge!</p>
+    <p>Your one-stop destination for stress-free wedding planning.</p>
   </header>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#packages">Packages</a>
-    <a href="#cart">Cart</a>
-    <a href="#contact">Contact</a>
+    <a href="venues.html">Venues</a>
+    <a href="catering.html">Catering</a>
+    <a href="decor.html">Decor</a>
+    <a href="makeup.html">Makeup</a>
+    <a href="addons.html">Add‑Ons</a>
+    <a href="login.html" class="login">Login</a>
   </nav>
-
-  <section id="about">
-    <h2>About Us</h2>
-    <p style="text-align:center; padding: 0 1rem;">ShaadiKarwalo.com is your one-stop destination for stress-free wedding planning. Choose from ready-made packages and book everything in a click!</p>
-  </section>
 
   <section id="packages">
     <h2>Our Packages</h2>
@@ -48,30 +178,33 @@
       <div class="card">
         <h3>💐 Budget Wedding - ₹8L</h3>
         <p>Basic venue, vegetarian menu, classic décor, candid photography</p>
-        <button onclick="addToCart('Budget Wedding', 800000)">Add to Cart</button>
+        <button class="view-btn" onclick="location.href='budget.html'">View Package</button>
+        <button class="like-toggle" onclick="toggleWishlist(this, 'Budget Wedding - ₹8L')">🤍</button>
       </div>
       <div class="card">
         <h3>🌸 Classic Wedding - ₹16L</h3>
         <p>Premium hall/lawn, designer mandap, DJ, entry team, makeup</p>
-        <button onclick="addToCart('Classic Wedding', 1600000)">Add to Cart</button>
+        <button class="view-btn" onclick="location.href='classic.html'">View Package</button>
+        <button class="like-toggle" onclick="toggleWishlist(this, 'Classic Wedding - ₹16L')">🤍</button>
       </div>
       <div class="card">
         <h3>🏰 Luxury Wedding - ₹25L</h3>
         <p>5-star hotel, theme décor, bridal team, cinematic video, drone</p>
-        <button onclick="addToCart('Luxury Wedding', 2500000)">Add to Cart</button>
+        <button class="view-btn" onclick="location.href='luxury.html'">View Package</button>
+        <button class="like-toggle" onclick="toggleWishlist(this, 'Luxury Wedding - ₹25L')">🤍</button>
       </div>
       <div class="card">
         <h3>💎 Premium Wedding - ₹50L</h3>
         <p>Destination wedding, helicopter entry, celebrity chefs</p>
-        <button onclick="addToCart('Premium Wedding', 5000000)">Add to Cart</button>
+        <button class="view-btn" onclick="location.href='premium.html'">View Package</button>
+        <button class="like-toggle" onclick="toggleWishlist(this, 'Premium Wedding - ₹50L')">🤍</button>
       </div>
     </div>
   </section>
 
-  <section id="cart" class="cart-section">
-    <h2>🛒 Your Cart</h2>
-    <ul id="cartItems"></ul>
-    <p><strong>Total: ₹<span id="cartTotal">0</span></strong></p>
+  <section id="wishlist" class="wishlist-section">
+    <h2>❤️ Your Wishlist</h2>
+    <ul id="wishlistItems"></ul>
   </section>
 
   <section id="contact">
@@ -86,63 +219,68 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 ShaadiKarwalo.com - All Rights Reserved</p>
+    <p>&copy; 2025 ShaadiKarwalo.com – All Rights Reserved</p>
   </footer>
 
   <script>
-    let cart = [];
+    let wishlist = [];
 
-    function addToCart(packageName, price) {
-      cart.push({ name: packageName, price });
-      renderCart();
+    function toggleWishlist(button, itemName) {
+      const index = wishlist.indexOf(itemName);
+      if (index === -1) {
+        wishlist.push(itemName);
+        button.textContent = '❤️ Liked';
+      } else {
+        wishlist.splice(index, 1);
+        button.textContent = '🤍 Like';
+      }
+      renderWishlist();
     }
 
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      renderCart();
-    }
-
-    function renderCart() {
-      const cartList = document.getElementById('cartItems');
-      const totalSpan = document.getElementById('cartTotal');
-      cartList.innerHTML = '';
-      let total = 0;
-
-      cart.forEach((item, index) => {
+    function renderWishlist() {
+      const list = document.getElementById('wishlistItems');
+      list.innerHTML = '';
+      wishlist.forEach((item, i) => {
         const li = document.createElement('li');
-        li.innerHTML = `${item.name} - ₹${item.price.toLocaleString()} 
-          <button onclick="removeFromCart(${index})" style="margin-left:10px; background:#ff4d4d; color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">Remove</button>`;
-        cartList.appendChild(li);
-        total += item.price;
+        li.innerHTML = `<span>${item}</span> 
+          <button onclick="removeFromWishlist(${i})" style="margin-left:10px;background:#fff;color:#fb6162;border:none;border-radius:4px;padding:4px 8px;cursor:pointer;">Remove</button>`;
+        list.appendChild(li);
       });
 
-      totalSpan.textContent = total.toLocaleString();
+      // Sync buttons
+      document.querySelectorAll('.like-toggle').forEach(btn => {
+        const text = btn.getAttribute('onclick');
+        if (wishlist.some(item => text.includes(item))) {
+          btn.textContent = '❤️';
+        } else {
+          btn.textContent = '🤍';
+        }
+      });
     }
 
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    function removeFromWishlist(i) {
+      const item = wishlist[i];
+      wishlist.splice(i, 1);
+      renderWishlist();
+    }
+
+    function scrollToWishlist() {
+      document.getElementById('wishlist').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Contact form submission to Google Sheets
+    document.getElementById('contactForm').addEventListener('submit', e => {
       e.preventDefault();
-      const formData = {
-        name: this.name.value,
-        email: this.email.value,
-        message: this.message.value
-      };
-
-fetch("https://script.google.com/macros/s/AKfycbxwa3-XxuZqStQduFrzjTlLx1aDUYEvlNnGdti_VHpXfqCRsz82bkDot4LsCMNViGa-/exec", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(formData)
-})
-.then(() => {
-  document.getElementById('responseMsg').textContent = "Message sent!";
-  document.getElementById('contactForm').reset();
-})
-.catch(() => {
-  document.getElementById('responseMsg').textContent = "Something went wrong.";
-});
-
+      const fd = new FormData(e.target);
+      fetch("https://script.google.com/macros/s/YOUR-GOOGLE-SHEETS-ENDPOINT/exec", {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(Object.fromEntries(fd))
+      });
+      document.getElementById('responseMsg').textContent = 'Message sent!';
+      e.target.reset();
+    });
   </script>
 </body>
 </html>
-    
