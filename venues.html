@@ -4,78 +4,161 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Venues – ShaadiKarwalo</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fb6162; color: #fff; }
-    header { background: #ff5f5f; text-align: center; padding: 2rem 1rem; position: relative; }
-    header img { width: 120px; border: 3px solid white; border-radius: 10px; }
-    .wishlist-icon { position: absolute; top: 20px; right: 20px; font-size: 24px; background: white; color: #fb6162; border-radius: 50%; padding: 10px; cursor: pointer; }
-    nav { background: white; padding: 0.8rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-    nav a { color: #fb6162; font-weight: bold; text-decoration: none; padding: 0.2rem 0.6rem; border-radius: 4px; }
-    nav a.login { background: white; color: #fb6162; border: 1px solid #fb6162; }
-    .packages { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 1rem; }
-    .card { background: white; color: #333; border-radius: 10px; padding: 1.2rem; width: 300px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-    .card h3 { color: #fb6162; }
-    .card p { font-size: 0.95rem; }
-    .like-toggle { background: none; border: none; font-size: 1.2rem; cursor: pointer; margin-top: 0.5rem; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fff3f3;
+      color: #333;
+    }
+    header {
+      background: #ff5f5f;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      position: relative;
+    }
+    header img {
+      width: 100px;
+      border-radius: 10px;
+      border: 3px solid white;
+    }
+    nav {
+      background: white;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fb6162;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    .wishlist-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      background: white;
+      color: #fb6162;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 1.5rem;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 1rem;
+      width: 300px;
+      text-align: center;
+      position: relative;
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+    }
+    .card h3 {
+      color: #fb6162;
+    }
+    .card p {
+      margin: 0.5rem 0;
+    }
+    .card input {
+      width: 80%;
+      padding: 6px;
+      margin: 6px 0;
+    }
+    .card button {
+      margin-top: 6px;
+      background: #fb6162;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
-    <div class="wishlist-icon" onclick="location.href='index.html#wishlist'">❤️</div>
-    <h1>Venues</h1>
-    <p>Explore beautiful wedding venues.</p>
-  </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="catering.html">Catering</a>
-    <a href="decor.html">Decor</a>
-    <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add‑Ons</a>
-    <a href="login.html" class="login">Login</a>
-  </nav>
+<header>
+  <img src="assets/logo.png" alt="ShaadiKarwalo Logo">
+  <div class="wishlist-icon" onclick="window.location.href='index.html#wishlist'">❤️</div>
+  <h1>Wedding Venues</h1>
+  <p>Select a dream venue & add to your wishlist</p>
+</header>
 
-  <section class="packages">
-    <div class="card">
-      <h3>Banquet Hall - Mumbai</h3>
-      <p>Air-conditioned indoor venue for 500 guests.</p>
-      <button class="like-toggle" onclick="toggleWishlist(this, 'Banquet Hall - Mumbai')">🤍</button>
-    </div>
-    <div class="card">
-      <h3>Beachside Resort - Goa</h3>
-      <p>Oceanfront location perfect for destination weddings.</p>
-      <button class="like-toggle" onclick="toggleWishlist(this, 'Beachside Resort - Goa')">🤍</button>
-    </div>
-    <div class="card">
-      <h3>Heritage Palace - Jaipur</h3>
-      <p>Royal palace with regal architecture for grand weddings.</p>
-      <button class="like-toggle" onclick="toggleWishlist(this, 'Heritage Palace - Jaipur')">🤍</button>
-    </div>
-  </section>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="catering.html">Catering</a>
+  <a href="decor.html">Decor</a>
+  <a href="makeup.html">Makeup</a>
+  <a href="addons.html">Add‑Ons</a>
+</nav>
 
-  <script>
-    function toggleWishlist(button, itemName) {
-      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-      const index = wishlist.indexOf(itemName);
-      if (index === -1) {
-        wishlist.push(itemName);
-        button.textContent = '❤️ Liked';
-      } else {
-        wishlist.splice(index, 1);
-        button.textContent = '🤍';
-      }
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+<h2>Top Wedding Venues</h2>
+<div class="cards">
+
+  <div class="card">
+    <img src="assets/venue1.jpg" alt="Venue 1">
+    <h3>Royal Palace Banquet</h3>
+    <p>Per Guest: ₹1200</p>
+    <input type="number" placeholder="Number of Guests" id="guests1">
+    <button onclick="addVenueToWishlist('Royal Palace Banquet', 1200, 'guests1')">❤️ Add to Wishlist</button>
+  </div>
+
+  <div class="card">
+    <img src="assets/venue2.jpg" alt="Venue 2">
+    <h3>Lawn by the Lake</h3>
+    <p>Per Guest: ₹1000</p>
+    <input type="number" placeholder="Number of Guests" id="guests2">
+    <button onclick="addVenueToWishlist('Lawn by the Lake', 1000, 'guests2')">❤️ Add to Wishlist</button>
+  </div>
+
+  <div class="card">
+    <img src="assets/venue3.jpg" alt="Venue 3">
+    <h3>Skyline Rooftop</h3>
+    <p>Per Guest: ₹1500</p>
+    <input type="number" placeholder="Number of Guests" id="guests3">
+    <button onclick="addVenueToWishlist('Skyline Rooftop', 1500, 'guests3')">❤️ Add to Wishlist</button>
+  </div>
+
+</div>
+
+<script>
+  function addVenueToWishlist(name, rate, guestInputId) {
+    const guests = document.getElementById(guestInputId).value;
+    if (!guests || guests <= 0) {
+      alert("Please enter valid number of guests.");
+      return;
     }
+    const cost = guests * rate;
+    const item = `${name} – ₹${rate} x ${guests} = ₹${cost}`;
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    wishlist.push(item);
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    alert("Added to wishlist!");
+  }
+</script>
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-      document.querySelectorAll(".like-toggle").forEach(btn => {
-        const item = btn.getAttribute("onclick").match(/'([^']+)'/)[1];
-        btn.textContent = wishlist.includes(item) ? '❤️ Liked' : '🤍';
-      });
-    });
-  </script>
 </body>
 </html>
