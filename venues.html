@@ -2,42 +2,119 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Venues - ShaadiKarwalo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ShaadiKarwalo – Venues</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; background-color: #fb6162; margin: 0; color: rgb(248, 248, 248); }
-    header { background-color: #ff5f5f; text-align: center; padding: 2rem 1rem; position: relative; }
-    header img { width: 120px; border: 3px solid white; border-radius: 10px; }
-    #cartIcon {
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fb6162;
+      color: #fff;
+    }
+    header {
+      background: #ff5f5f;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+    header img {
+      width: 120px;
+      border: 3px solid white;
+      border-radius: 10px;
+    }
+    .wishlist-icon {
       position: absolute;
       top: 20px;
       right: 20px;
-      font-size: 1.5rem;
+      font-size: 24px;
+      background: rgb(254, 254, 254);
+      color: #fb6162;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+    }
+    nav {
+      background: white;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fb6162;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    nav a.login {
       background: white;
       color: #fb6162;
-      padding: 10px 15px;
-      border-radius: 50px;
-      cursor: pointer;
-      text-decoration: none;
+      font-weight: bold;
+      border: 1px solid #fb6162;
     }
-    nav { background: white; padding: 10px 0; text-align: center; }
-    nav a { color: #fb6162; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    h2 { color: #ffffff; margin-top: 2rem; text-align: center; }
-    .venues { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 1rem; }
-    .card { background: white; color: #333; border-radius: 10px; padding: 1rem; width: 280px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-    .card h3 { color: #fb6162; }
-    .card p { font-size: 0.95rem; margin: 10px 0; }
-    .card img { width: 100%; border-radius: 8px; margin-bottom: 10px; height: 150px; object-fit: cover; }
-    .card button { background: #fb6162; border: none; padding: 10px 20px; color: white; border-radius: 5px; cursor: pointer; }
-    footer { background: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+    h2 {
+      text-align: center;
+      margin-top: 2rem;
+      color: #fff;
+    }
+    .venues {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 1rem;
+    }
+    .card {
+      background: white;
+      color: #333;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .card-body {
+      padding: 1rem;
+    }
+    .card h3 {
+      color: #fb6162;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+    .card button {
+      background: #fb6162;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 8px;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
   <header>
     <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
-    <a href="cart.html" id="cartIcon">🛒</a>
-    <h1>Our Wedding Venues</h1>
-    <p>Select from our handpicked venues for your special day.</p>
+    <div class="wishlist-icon" onclick="scrollToWishlist()">❤️</div>
+    <h1>ShaadiKarwalo</h1>
+    <p>Your one-stop destination for stress-free wedding planning.</p>
   </header>
 
   <nav>
@@ -46,62 +123,74 @@
     <a href="catering.html">Catering</a>
     <a href="decor.html">Decor</a>
     <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add-Ons</a>
-    <a href="cart.html">Cart</a>
+    <a href="addons.html">Add‑Ons</a>
+    <a href="login.html" class="login">Login</a>
   </nav>
 
-  <section class="venues">
+  <h2>Explore Wedding Venues</h2>
+  <div class="venues">
     <div class="card">
       <img src="assets/venue1.jpg" alt="Venue 1">
-      <h3>Royal Palace Hall</h3>
-      <p>Navi Mumbai | Capacity: 400 | Indoor</p>
-      <p>₹2,50,000</p>
-      <button onclick="addToCart('Royal Palace Hall', 250000)">Add to Cart</button>
+      <div class="card-body">
+        <h3>Royal Garden, Mumbai</h3>
+        <p>Open-air lawn with capacity of 500+, ideal for grand weddings.</p>
+        <button onclick="addToWishlist('Royal Garden, Mumbai')">🤍 Like</button>
+      </div>
     </div>
     <div class="card">
       <img src="assets/venue2.jpg" alt="Venue 2">
-      <h3>Green Valley Resort</h3>
-      <p>Thane | Capacity: 600 | Outdoor</p>
-      <p>₹3,20,000</p>
-      <button onclick="addToCart('Green Valley Resort', 320000)">Add to Cart</button>
+      <div class="card-body">
+        <h3>Lakeview Resort, Udaipur</h3>
+        <p>Stunning lakeside venue for premium destination weddings.</p>
+        <button onclick="addToWishlist('Lakeview Resort, Udaipur')">🤍 Like</button>
+      </div>
     </div>
     <div class="card">
       <img src="assets/venue3.jpg" alt="Venue 3">
-      <h3>The Grand Pavilion</h3>
-      <p>Mumbai | Capacity: 800 | Luxury</p>
-      <p>₹5,00,000</p>
-      <button onclick="addToCart('The Grand Pavilion', 500000)">Add to Cart</button>
+      <div class="card-body">
+        <h3>The Palace Grounds, Jaipur</h3>
+        <p>Heritage venue with royal architecture and large banquet hall.</p>
+        <button onclick="addToWishlist('The Palace Grounds, Jaipur')">🤍 Like</button>
+      </div>
     </div>
     <div class="card">
       <img src="assets/venue4.jpg" alt="Venue 4">
-      <h3>Sunset Lawn</h3>
-      <p>Vasai | Capacity: 300 | Lawn Setup</p>
-      <p>₹1,80,000</p>
-      <button onclick="addToCart('Sunset Lawn', 180000)">Add to Cart</button>
+      <div class="card-body">
+        <h3>Banquet Bliss, Delhi NCR</h3>
+        <p>Modern AC banquet with in-house catering and decor options.</p>
+        <button onclick="addToWishlist('Banquet Bliss, Delhi NCR')">🤍 Like</button>
+      </div>
     </div>
     <div class="card">
       <img src="assets/venue5.jpg" alt="Venue 5">
-      <h3>Beachside Paradise</h3>
-      <p>Alibaug | Capacity: 200 | Beachfront</p>
-      <p>₹3,50,000</p>
-      <button onclick="addToCart('Beachside Paradise', 350000)">Add to Cart</button>
+      <div class="card-body">
+        <h3>Beachside Paradise, Goa</h3>
+        <p>Romantic beachfront location perfect for sunset weddings.</p>
+        <button onclick="addToWishlist('Beachside Paradise, Goa')">🤍 Like</button>
+      </div>
     </div>
-  </section>
+  </div>
 
   <footer>
-    <p>&copy; 2025 ShaadiKarwalo.com - All Rights Reserved</p>
+    <p>&copy; 2025 ShaadiKarwalo.com – All Rights Reserved</p>
   </footer>
 
   <script>
-    function addToCart(itemName, itemPrice) {
-      let cart = JSON.parse(localStorage.getItem("shaadiCart")) || [];
-      cart.push({ name: itemName, price: itemPrice });
-      localStorage.setItem("shaadiCart", JSON.stringify(cart));
-      alert(`${itemName} added to cart!`);
+    let venueWishlist = [];
+
+    function addToWishlist(itemName) {
+      if (!venueWishlist.includes(itemName)) {
+        venueWishlist.push(itemName);
+        alert(itemName + " added to your wishlist!");
+      } else {
+        alert(itemName + " is already in your wishlist.");
+      }
+    }
+
+    function scrollToWishlist() {
+      alert("Go to homepage to view your wishlist.");
     }
   </script>
-  <script src="cart.js"></script>
-<script>renderCart();</script>
-
 </body>
 </html>
+
