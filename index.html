@@ -2,74 +2,149 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ShaadiKarwalo - Wedding Planner</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ShaadiKarwalo – Wedding Planner</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; background-color: #fb6162; margin: 0; color: #fff; }
-    header { background-color: #ff5f5f; text-align: center; padding: 2rem 1rem; position: relative; }
-    header img { width: 120px; border: 3px solid white; border-radius: 10px; }
-    nav {
-      background: white; padding: 10px 0; text-align: center; display: flex; justify-content: space-between; align-items: center;
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fb6162;
+      color: #fff;
     }
-    .nav-links {
-      flex: 1;
+    header {
+      background: #ff5f5f;
       text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
     }
-    nav a {
-      color: #fb6162; margin: 0 10px; text-decoration: none; font-weight: bold;
+    header img {
+      width: 120px;
+      border: 3px solid white;
+      border-radius: 10px;
     }
-    .login-btn {
+    .wishlist-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
       background: white;
       color: #fb6162;
-      border: 2px solid #fb6162;
-      padding: 6px 12px;
-      border-radius: 5px;
-      margin-right: 10px;
-      font-weight: bold;
+      border-radius: 50%;
+      padding: 10px;
       cursor: pointer;
     }
-    h2 { color: #ffffff; margin-top: 2rem; text-align: center; }
-    .packages { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 1rem; }
+    nav {
+      background: white;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fb6162;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    nav a.login {
+      background: white;
+      color: #fb6162;
+      font-weight: bold;
+      border: 1px solid #fb6162;
+    }
+    h2 {
+      color: #fff;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .packages {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 1rem;
+    }
     .card {
       background: white;
       color: #333;
       border-radius: 10px;
-      padding: 1rem;
-      width: 280px;
+      padding: 1.2rem;
+      width: 300px;
       text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       position: relative;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
-    .card h3 { color: #fb6162; }
-    .card p { font-size: 0.95rem; margin: 10px 0; }
+    .card h3 {
+      color: #fb6162;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      margin-bottom: 1.1rem;
+    }
     .card button {
       background: #fb6162;
-      border: none;
-      padding: 10px 20px;
       color: white;
-      border-radius: 5px;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
       cursor: pointer;
-      margin: 5px;
+      margin: 0.2rem;
     }
-.like-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-}
-
+    .card .view-btn {
+      background: #fff;
+      color: #fb6162;
+      font-weight: bold;
+    }
+    .like-toggle {
+      background: #fb6162;
+      font-size: 1rem;
+    }
     .wishlist-section {
       padding: 2rem;
       background: #f96161;
-      color: #f9f7f7;
     }
-    #wishlistItems li {
+    .wishlist-section h2 {
+      margin-bottom: 0.8rem;
+    }
+    .wishlist-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .wishlist-section li {
+      font-size: 1.1rem;
       font-weight: bold;
-      font-size: 18px;
-      margin: 6px 0;
+      margin: 0.6rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    form {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: white;
+      padding: 1.2rem;
+      border-radius: 8px;
+      color: #333;
+    }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background: #fb6162;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
     }
     footer {
       background: #333;
@@ -83,78 +158,81 @@
 <body>
   <header>
     <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
+    <div class="wishlist-icon" onclick="scrollToWishlist()">❤️</div>
     <h1>ShaadiKarwalo</h1>
-    <p>ShaadiKarwalo.com is your one-stop destination for stress-free wedding planning. Choose from ready-made packages and book everything in a click!</p>
+    <p>Your one-stop destination for stress-free wedding planning.</p>
   </header>
 
   <nav>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#packages">Packages</a>
-      <a href="venues.html">Venues</a>
-      <a href="catering.html">Catering</a>
-      <a href="decor.html">Decor</a>
-      <a href="makeup.html">Makeup</a>
-      <a href="addons.html">Add-Ons</a>
-    </div>
-    <a href="login.html"><button class="login-btn">Login</button></a>
+    <a href="venues.html">Venues</a>
+    <a href="catering.html">Catering</a>
+    <a href="decor.html">Decor</a>
+    <a href="makeup.html">Makeup</a>
+    <a href="addons.html">Add‑Ons</a>
+    <a href="login.html" class="login">Login</a>
   </nav>
-
-  <section id="about">
-    <h2>About Us</h2>
-    <p style="text-align:center; padding: 0 1rem;">ShaadiKarwalo.com is your one-stop destination for stress-free wedding planning. Choose from ready-made packages and book everything in a click!</p>
-  </section>
 
   <section id="packages">
     <h2>Our Packages</h2>
     <div class="packages">
       <div class="card">
-        <button class="like-btn" onclick="toggleWishlist(this, '💐 Budget Wedding - ₹8L')">🤍</button>
         <h3>💐 Budget Wedding - ₹8L</h3>
         <p>Basic venue, vegetarian menu, classic décor, candid photography</p>
-        <button onclick="window.location.href='budget.html'">View Package</button>
+        <button class="view-btn" onclick="location.href='budget.html'">View Package</button>
+        <button class="like-toggle" onclick="toggleWishlist(this, 'Budget Wedding - ₹8L')">🤍 Like</button>
       </div>
       <div class="card">
-        <button class="like-btn" onclick="toggleWishlist(this, '🌸 Classic Wedding - ₹16L')">🤍</button>
         <h3>🌸 Classic Wedding - ₹16L</h3>
         <p>Premium hall/lawn, designer mandap, DJ, entry team, makeup</p>
-        <button onclick="window.location.href='classic.html'">View Package</button>
+        <button class="view-btn" onclick="location.href='classic.html'">View Package</button>
+        <button class="like-toggle" onclick="toggleWishlist(this, 'Classic Wedding - ₹16L')">🤍 Like</button>
       </div>
       <div class="card">
-        <button class="like-btn" onclick="toggleWishlist(this, '🏰 Luxury Wedding - ₹25L')">🤍</button>
         <h3>🏰 Luxury Wedding - ₹25L</h3>
         <p>5-star hotel, theme décor, bridal team, cinematic video, drone</p>
-        <button onclick="window.location.href='luxury.html'">View Package</button>
+        <button class="view-btn" onclick="location.href='luxury.html'">View Package</button>
+        <button class="like-toggle" onclick="toggleWishlist(this, 'Luxury Wedding - ₹25L')">🤍 Like</button>
       </div>
       <div class="card">
-        <button class="like-btn" onclick="toggleWishlist(this, '💎 Premium Wedding - ₹50L')">🤍</button>
         <h3>💎 Premium Wedding - ₹50L</h3>
         <p>Destination wedding, helicopter entry, celebrity chefs</p>
-        <button onclick="window.location.href='premium.html'">View Package</button>
+        <button class="view-btn" onclick="location.href='premium.html'">View Package</button>
+        <button class="like-toggle" onclick="toggleWishlist(this, 'Premium Wedding - ₹50L')">🤍 Like</button>
       </div>
     </div>
   </section>
 
-  <section class="wishlist-section">
-    <h2>💖 Your Wishlist</h2>
+  <section id="wishlist" class="wishlist-section">
+    <h2>❤️ Your Wishlist</h2>
     <ul id="wishlistItems"></ul>
   </section>
 
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send</button>
+      <p id="responseMsg" style="color: green;"></p>
+    </form>
+  </section>
+
   <footer>
-    <p>&copy; 2025 ShaadiKarwalo.com - All Rights Reserved</p>
+    <p>&copy; 2025 ShaadiKarwalo.com – All Rights Reserved</p>
   </footer>
 
   <script>
     let wishlist = [];
 
-    function toggleWishlist(btn, itemName) {
+    function toggleWishlist(button, itemName) {
       const index = wishlist.indexOf(itemName);
       if (index === -1) {
         wishlist.push(itemName);
-        btn.textContent = '❤️';
+        button.textContent = '❤️ Liked';
       } else {
         wishlist.splice(index, 1);
-        btn.textContent = '🤍';
+        button.textContent = '🤍 Like';
       }
       renderWishlist();
     }
@@ -162,48 +240,47 @@
     function renderWishlist() {
       const list = document.getElementById('wishlistItems');
       list.innerHTML = '';
-      wishlist.forEach(item => {
+      wishlist.forEach((item, i) => {
         const li = document.createElement('li');
-        li.innerHTML = `${item} <button onclick="removeFromWishlist('${item}')">❌</button>`;
+        li.innerHTML = `<span>${item}</span> 
+          <button onclick="removeFromWishlist(${i})" style="margin-left:10px;background:#fff;color:#fb6162;border:none;border-radius:4px;padding:4px 8px;cursor:pointer;">Remove</button>`;
         list.appendChild(li);
+      });
+
+      // Sync buttons
+      document.querySelectorAll('.like-toggle').forEach(btn => {
+        const text = btn.getAttribute('onclick');
+        if (wishlist.some(item => text.includes(item))) {
+          btn.textContent = '❤️ Liked';
+        } else {
+          btn.textContent = '🤍 Like';
+        }
       });
     }
 
-    function removeFromWishlist(itemName) {
-      wishlist = wishlist.filter(item => item !== itemName);
+    function removeFromWishlist(i) {
+      const item = wishlist[i];
+      wishlist.splice(i, 1);
       renderWishlist();
     }
-    let wishlist = [];
 
-function toggleWishlist(button, itemName) {
-  const index = wishlist.indexOf(itemName);
-  if (index === -1) {
-    wishlist.push(itemName);
-    button.textContent = '❤️';
-  } else {
-    wishlist.splice(index, 1);
-    button.textContent = '🤍';
-  }
-  renderWishlist();
-}
+    function scrollToWishlist() {
+      document.getElementById('wishlist').scrollIntoView({ behavior: 'smooth' });
+    }
 
-function renderWishlist() {
-  const list = document.getElementById('wishlistItems');
-  list.innerHTML = '';
-  wishlist.forEach(item => {
-    const li = document.createElement('li');
-    li.innerHTML = `${item} <button onclick="removeFromWishlist('${item}')">❌</button>`;
-    li.style.fontWeight = 'bold';
-    li.style.fontSize = '18px';
-    list.appendChild(li);
-  });
-}
-
-function removeFromWishlist(itemName) {
-  wishlist = wishlist.filter(item => item !== itemName);
-  renderWishlist();
-}
-
+    // Contact form submission to Google Sheets
+    document.getElementById('contactForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      fetch("https://script.google.com/macros/s/YOUR-GOOGLE-SHEETS-ENDPOINT/exec", {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(Object.fromEntries(fd))
+      });
+      document.getElementById('responseMsg').textContent = 'Message sent!';
+      e.target.reset();
+    });
   </script>
 </body>
 </html>
