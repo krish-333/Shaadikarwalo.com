@@ -5,63 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ShaadiKarwalo - Wedding Planner</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fb6162;
-      margin: 0;
-      color: rgb(248, 248, 248);
-    }
-
-    header {
-      background-color: #ff5f5f;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-
-    header img {
-      width: 120px;
-      border: 3px solid white;
-      border-radius: 10px;
-    }
-
+    body { font-family: 'Segoe UI', sans-serif; background-color: #fb6162; margin: 0; color: #fff; }
+    header { background-color: #ff5f5f; text-align: center; padding: 2rem 1rem; position: relative; }
+    header img { width: 120px; border: 3px solid white; border-radius: 10px; }
     nav {
-      background: white;
-      padding: 10px 0;
+      background: white; padding: 10px 0; text-align: center; display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-links {
+      flex: 1;
       text-align: center;
     }
-
     nav a {
-      color: #fb6162;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
+      color: #fb6162; margin: 0 10px; text-decoration: none; font-weight: bold;
     }
-
     .login-btn {
-      background-color: white;
-      border: 2px solid #fb6162;
+      background: white;
       color: #fb6162;
+      border: 2px solid #fb6162;
       padding: 6px 12px;
       border-radius: 5px;
+      margin-right: 10px;
       font-weight: bold;
-      float: right;
-      margin: -40px 20px 0 0;
+      cursor: pointer;
     }
-
-    h2 {
-      color: #ffffff;
-      margin-top: 2rem;
-      text-align: center;
-    }
-
-    .packages {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 1rem;
-    }
-
+    h2 { color: #ffffff; margin-top: 2rem; text-align: center; }
+    .packages { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 1rem; }
     .card {
       background: white;
       color: #333;
@@ -69,20 +37,20 @@
       padding: 1rem;
       width: 280px;
       text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
       position: relative;
-      padding-top: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
-
-    .card h3 {
-      color: #fb6162;
+    .card h3 { color: #fb6162; }
+    .card p { font-size: 0.95rem; margin: 10px 0; }
+    .card button {
+      background: #fb6162;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
     }
-
-    .card p {
-      font-size: 0.95rem;
-      margin: 10px 0;
-    }
-
     .like-btn {
       position: absolute;
       top: 10px;
@@ -91,59 +59,17 @@
       border: none;
       font-size: 20px;
       cursor: pointer;
-      color: #fb6162;
     }
-
-    .view-btn {
-      background: #ffffff;
-      color: #fb6162;
-      font-weight: bold;
-      background: none;
-      border: 2px solid #fb6162;
-      padding: 6px 12px;
-      border-radius: 5px;
-      margin-top: 12px;
-      cursor: pointer;
-    }
-
-    .cart-section {
+    .wishlist-section {
       padding: 2rem;
       background: #f96161;
       color: #f9f7f7;
     }
-
     #wishlistItems li {
       font-weight: bold;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+      font-size: 18px;
+      margin: 6px 0;
     }
-
-    form {
-      max-width: 600px;
-      margin: 0 auto;
-      background: white;
-      padding: 1rem;
-      border-radius: 8px;
-      color: #333;
-    }
-
-    form input, form textarea {
-      width: 99%;
-      padding: 0.5rem;
-      margin: 0.5rem 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    form button {
-      background: #fb6162;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
     footer {
       background: #333;
       color: white;
@@ -156,21 +82,21 @@
 <body>
   <header>
     <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
-    <a href="login.html" class="login-btn">Login</a>
     <h1>ShaadiKarwalo</h1>
     <p>ShaadiKarwalo.com is your one-stop destination for stress-free wedding planning. Choose from ready-made packages and book everything in a click!</p>
   </header>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#packages">Packages</a>
-    <a href="#wishlist">Wishlist</a>
-    <a href="venues.html">Venues</a>
-    <a href="catering.html">Catering</a>
-    <a href="decor.html">Decor</a>
-    <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add-Ons</a>
-    <a href="#contact">Contact</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#packages">Packages</a>
+      <a href="venues.html">Venues</a>
+      <a href="catering.html">Catering</a>
+      <a href="decor.html">Decor</a>
+      <a href="makeup.html">Makeup</a>
+      <a href="addons.html">Add-Ons</a>
+    </div>
+    <a href="login.html"><button class="login-btn">Login</button></a>
   </nav>
 
   <section id="about">
@@ -181,52 +107,36 @@
   <section id="packages">
     <h2>Our Packages</h2>
     <div class="packages">
-
       <div class="card">
-        <button class="like-btn" onclick="addToWishlist('💐 Budget Wedding - ₹8L')">❤️</button>
+        <button class="like-btn" onclick="toggleWishlist(this, '💐 Budget Wedding - ₹8L')">🤍</button>
         <h3>💐 Budget Wedding - ₹8L</h3>
         <p>Basic venue, vegetarian menu, classic décor, candid photography</p>
-        <button class="view-btn" onclick="location.href='budget.html'">View Package</button>
+        <button onclick="window.location.href='budget.html'">View Package</button>
       </div>
-
       <div class="card">
-        <button class="like-btn" onclick="addToWishlist('🌸 Classic Wedding - ₹16L')">❤️</button>
+        <button class="like-btn" onclick="toggleWishlist(this, '🌸 Classic Wedding - ₹16L')">🤍</button>
         <h3>🌸 Classic Wedding - ₹16L</h3>
         <p>Premium hall/lawn, designer mandap, DJ, entry team, makeup</p>
-        <button class="view-btn" onclick="location.href='classic.html'">View Package</button>
+        <button onclick="window.location.href='classic.html'">View Package</button>
       </div>
-
       <div class="card">
-        <button class="like-btn" onclick="addToWishlist('🏰 Luxury Wedding - ₹25L')">❤️</button>
+        <button class="like-btn" onclick="toggleWishlist(this, '🏰 Luxury Wedding - ₹25L')">🤍</button>
         <h3>🏰 Luxury Wedding - ₹25L</h3>
         <p>5-star hotel, theme décor, bridal team, cinematic video, drone</p>
-        <button class="view-btn" onclick="location.href='luxury.html'">View Package</button>
+        <button onclick="window.location.href='luxury.html'">View Package</button>
       </div>
-
       <div class="card">
-        <button class="like-btn" onclick="addToWishlist('💎 Premium Wedding - ₹50L')">❤️</button>
+        <button class="like-btn" onclick="toggleWishlist(this, '💎 Premium Wedding - ₹50L')">🤍</button>
         <h3>💎 Premium Wedding - ₹50L</h3>
         <p>Destination wedding, helicopter entry, celebrity chefs</p>
-        <button class="view-btn" onclick="location.href='premium.html'">View Package</button>
+        <button onclick="window.location.href='premium.html'">View Package</button>
       </div>
-
     </div>
   </section>
 
-  <section id="wishlist" class="cart-section">
+  <section class="wishlist-section">
     <h2>💖 Your Wishlist</h2>
     <ul id="wishlistItems"></ul>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <form id="contactForm">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-      <button type="submit">Send</button>
-      <p id="responseMsg" style="color: green;"></p>
-    </form>
   </section>
 
   <footer>
@@ -236,8 +146,15 @@
   <script>
     let wishlist = [];
 
-    function addToWishlist(itemName) {
-      wishlist.push(itemName);
+    function toggleWishlist(btn, itemName) {
+      const index = wishlist.indexOf(itemName);
+      if (index === -1) {
+        wishlist.push(itemName);
+        btn.textContent = '❤️';
+      } else {
+        wishlist.splice(index, 1);
+        btn.textContent = '🤍';
+      }
       renderWishlist();
     }
 
@@ -246,32 +163,15 @@
       list.innerHTML = '';
       wishlist.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = item;
+        li.innerHTML = `${item} <button onclick="removeFromWishlist('${item}')">❌</button>`;
         list.appendChild(li);
       });
     }
 
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-      const data = {
-        name: formData.get("name"),
-        email: formData.get("email"),
-        message: formData.get("message")
-      };
-
-      fetch("https://script.google.com/macros/s/YOUR-SCRIPT-ID-HERE/exec", {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: new URLSearchParams(data)
-      });
-
-      document.getElementById('responseMsg').textContent = "Message sent!";
-      this.reset();
-    });
+    function removeFromWishlist(itemName) {
+      wishlist = wishlist.filter(item => item !== itemName);
+      renderWishlist();
+    }
   </script>
 </body>
 </html>
