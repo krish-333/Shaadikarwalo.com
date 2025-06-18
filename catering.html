@@ -1,18 +1,31 @@
-<!-- catering.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Catering – ShaadiKarwalo</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fb6162; color: #fff; }
+    header { background: #ff5f5f; text-align: center; padding: 2rem 1rem; position: relative; }
+    header img { width: 120px; border: 3px solid white; border-radius: 10px; }
+    .wishlist-icon { position: absolute; top: 20px; right: 20px; font-size: 24px; background: white; color: #fb6162; border-radius: 50%; padding: 10px; cursor: pointer; }
+    nav { background: white; padding: 0.8rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    nav a { color: #fb6162; font-weight: bold; text-decoration: none; padding: 0.2rem 0.6rem; border-radius: 4px; }
+    nav a.login { background: white; color: #fb6162; border: 1px solid #fb6162; }
+    .packages { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 1rem; }
+    .card { background: white; color: #333; border-radius: 10px; padding: 1.2rem; width: 300px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    .card h3 { color: #fb6162; }
+    .card p { font-size: 0.95rem; }
+    .like-toggle { background: none; border: none; font-size: 1.2rem; cursor: pointer; margin-top: 0.5rem; }
+  </style>
 </head>
 <body>
   <header>
     <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
     <div class="wishlist-icon" onclick="location.href='index.html#wishlist'">❤️</div>
     <h1>Catering</h1>
-    <p>Delicious menus to impress your guests.</p>
+    <p>Delicious wedding menus for every taste.</p>
   </header>
 
   <nav>
@@ -27,17 +40,17 @@
   <section class="packages">
     <div class="card">
       <h3>Veg Buffet - ₹500/head</h3>
-      <p>Multi-cuisine, starters, desserts, beverages</p>
+      <p>Multi-cuisine buffet with desserts and drinks.</p>
       <button class="like-toggle" onclick="toggleWishlist(this, 'Veg Buffet - ₹500/head')">🤍</button>
     </div>
     <div class="card">
       <h3>Royal Thali - ₹800/head</h3>
-      <p>Traditional thali, rich sweets, silver service</p>
+      <p>Traditional feast with authentic Indian flavors.</p>
       <button class="like-toggle" onclick="toggleWishlist(this, 'Royal Thali - ₹800/head')">🤍</button>
     </div>
     <div class="card">
       <h3>Live Counters - ₹1000/head</h3>
-      <p>Pizza, chaat, pasta, dosa, mocktails live stations</p>
+      <p>Pizza, chaat, dosa, pasta, and more – live!</p>
       <button class="like-toggle" onclick="toggleWishlist(this, 'Live Counters - ₹1000/head')">🤍</button>
     </div>
   </section>
@@ -51,7 +64,7 @@
         button.textContent = '❤️ Liked';
       } else {
         wishlist.splice(index, 1);
-        button.textContent = '🤍 Like';
+        button.textContent = '🤍';
       }
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
     }
@@ -59,10 +72,8 @@
     document.addEventListener("DOMContentLoaded", () => {
       const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
       document.querySelectorAll(".like-toggle").forEach(btn => {
-        const itemText = btn.getAttribute("onclick");
-        wishlist.some(item => itemText.includes(item))
-          ? btn.textContent = "❤️ Liked"
-          : btn.textContent = "🤍";
+        const item = btn.getAttribute("onclick").match(/'([^']+)'/)[1];
+        btn.textContent = wishlist.includes(item) ? '❤️ Liked' : '🤍';
       });
     });
   </script>
