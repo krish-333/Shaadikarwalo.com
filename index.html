@@ -197,7 +197,7 @@
         <h3>💎 Premium Wedding - ₹50L</h3>
         <p>Destination wedding, helicopter entry, celebrity chefs</p>
         <button class="view-btn" onclick="location.href='premium.html'">View Package</button>
-        <button class="like-toggle" onclick="toggleWishlist(this, 'Premium Wedding - ₹50L')">🤍 Like</button>
+        <button class="like-toggle" onclick="toggleWishlist(this, 'Premium Wedding - ₹50L')">🤍</button>
       </div>
     </div>
   </section>
@@ -251,9 +251,9 @@
       document.querySelectorAll('.like-toggle').forEach(btn => {
         const text = btn.getAttribute('onclick');
         if (wishlist.some(item => text.includes(item))) {
-          btn.textContent = '❤️ Liked';
+          btn.textContent = '❤️';
         } else {
-          btn.textContent = '🤍 Like';
+          btn.textContent = '🤍';
         }
       });
     }
