@@ -1,125 +1,22 @@
+<!-- venues.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ShaadiKarwalo – Venues</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: #fb6162;
-      color: #fff;
-    }
-    header {
-      background: #ff5f5f;
-      text-align: center;
-      padding: 2rem 1rem;
-      position: relative;
-    }
-    header img {
-      width: 120px;
-      border: 3px solid white;
-      border-radius: 10px;
-    }
-    .wishlist-icon {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 24px;
-      background: rgb(254, 254, 254);
-      color: #fb6162;
-      border-radius: 50%;
-      padding: 10px;
-      cursor: pointer;
-    }
-    nav {
-      background: white;
-      padding: 0.8rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: #fb6162;
-      font-weight: bold;
-      text-decoration: none;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-    }
-    nav a.login {
-      background: white;
-      color: #fb6162;
-      font-weight: bold;
-      border: 1px solid #fb6162;
-    }
-    h2 {
-      text-align: center;
-      margin-top: 2rem;
-      color: #fff;
-    }
-    .venues {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 1rem;
-    }
-    .card {
-      background: white;
-      color: #333;
-      border-radius: 10px;
-      width: 300px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-    }
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .card-body {
-      padding: 1rem;
-    }
-    .card h3 {
-      color: #fb6162;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-    .card p {
-      font-size: 0.9rem;
-      margin-bottom: 0.8rem;
-    }
-    .card button {
-      background: #fb6162;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-right: 8px;
-    }
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Venues – ShaadiKarwalo</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
-    <div class="wishlist-icon" onclick="scrollToWishlist()">❤️</div>
-    <h1>ShaadiKarwalo</h1>
-    <p>Your one-stop destination for stress-free wedding planning.</p>
+    <div class="wishlist-icon" onclick="location.href='index.html#wishlist'">❤️</div>
+    <h1>Venues</h1>
+    <p>Select from stunning wedding venues.</p>
   </header>
 
   <nav>
     <a href="index.html">Home</a>
-    <a href="venues.html">Venues</a>
     <a href="catering.html">Catering</a>
     <a href="decor.html">Decor</a>
     <a href="makeup.html">Makeup</a>
@@ -127,70 +24,48 @@
     <a href="login.html" class="login">Login</a>
   </nav>
 
-  <h2>Explore Wedding Venues</h2>
-  <div class="venues">
+  <section class="packages">
     <div class="card">
-      <img src="assets/venue1.jpg" alt="Venue 1">
-      <div class="card-body">
-        <h3>Royal Garden, Mumbai</h3>
-        <p>Open-air lawn with capacity of 500+, ideal for grand weddings.</p>
-        <button onclick="addToWishlist('Royal Garden, Mumbai')">🤍 Like</button>
-      </div>
+      <h3>Banquet Hall - Mumbai</h3>
+      <p>Spacious AC hall, 500 capacity, central location</p>
+      <button class="like-toggle" onclick="toggleWishlist(this, 'Banquet Hall - Mumbai')">🤍</button>
     </div>
     <div class="card">
-      <img src="assets/venue2.jpg" alt="Venue 2">
-      <div class="card-body">
-        <h3>Lakeview Resort, Udaipur</h3>
-        <p>Stunning lakeside venue for premium destination weddings.</p>
-        <button onclick="addToWishlist('Lakeview Resort, Udaipur')">🤍 Like</button>
-      </div>
+      <h3>Beachside Resort - Goa</h3>
+      <p>Stunning ocean view, open lawn, romantic setup</p>
+      <button class="like-toggle" onclick="toggleWishlist(this, 'Beachside Resort - Goa')">🤍</button>
     </div>
     <div class="card">
-      <img src="assets/venue3.jpg" alt="Venue 3">
-      <div class="card-body">
-        <h3>The Palace Grounds, Jaipur</h3>
-        <p>Heritage venue with royal architecture and large banquet hall.</p>
-        <button onclick="addToWishlist('The Palace Grounds, Jaipur')">🤍 Like</button>
-      </div>
+      <h3>Heritage Palace - Jaipur</h3>
+      <p>Royal heritage palace, destination wedding vibe</p>
+      <button class="like-toggle" onclick="toggleWishlist(this, 'Heritage Palace - Jaipur')">🤍</button>
     </div>
-    <div class="card">
-      <img src="assets/venue4.jpg" alt="Venue 4">
-      <div class="card-body">
-        <h3>Banquet Bliss, Delhi NCR</h3>
-        <p>Modern AC banquet with in-house catering and decor options.</p>
-        <button onclick="addToWishlist('Banquet Bliss, Delhi NCR')">🤍 Like</button>
-      </div>
-    </div>
-    <div class="card">
-      <img src="assets/venue5.jpg" alt="Venue 5">
-      <div class="card-body">
-        <h3>Beachside Paradise, Goa</h3>
-        <p>Romantic beachfront location perfect for sunset weddings.</p>
-        <button onclick="addToWishlist('Beachside Paradise, Goa')">🤍 Like</button>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <p>&copy; 2025 ShaadiKarwalo.com – All Rights Reserved</p>
-  </footer>
+  </section>
 
   <script>
-    let venueWishlist = [];
-
-    function addToWishlist(itemName) {
-      if (!venueWishlist.includes(itemName)) {
-        venueWishlist.push(itemName);
-        alert(itemName + " added to your wishlist!");
+    function toggleWishlist(button, itemName) {
+      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      const index = wishlist.indexOf(itemName);
+      if (index === -1) {
+        wishlist.push(itemName);
+        button.textContent = '❤️ Liked';
       } else {
-        alert(itemName + " is already in your wishlist.");
+        wishlist.splice(index, 1);
+        button.textContent = '🤍 Like';
       }
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
     }
 
-    function scrollToWishlist() {
-      alert("Go to homepage to view your wishlist.");
-    }
+    // Sync button UI
+    document.addEventListener("DOMContentLoaded", () => {
+      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      document.querySelectorAll(".like-toggle").forEach(btn => {
+        const itemText = btn.getAttribute("onclick");
+        wishlist.some(item => itemText.includes(item))
+          ? btn.textContent = "❤️ Liked"
+          : btn.textContent = "🤍";
+      });
+    });
   </script>
 </body>
 </html>
-
