@@ -6,59 +6,58 @@
   <title>ShaadiKarwalo – Wedding Planner</title>
   <style>
     body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fb6162; color: #fff; }
-    header { background: #ff5f5f; padding: 1rem; }
+    header { background: #ff5f5f; padding: 1rem; position: relative; }
     .header-container { display: flex; align-items: center; justify-content: space-between; }
-    .logo-container { display: flex; align-items: center; text-decoration: none; color: inherit; }
+    .logo-container { display: flex; align-items: center; }
     .logo-container img { width: 70px; border: 3px solid white; border-radius: 10px; margin-right: 10px; }
-    .logo-container h1 { margin: 0; font-size: 1.8rem; }
-    .logo-container p { margin: 2px 0; font-style: italic; font-size: 0.9rem; color: white; }
+    .logo-container h1, .logo-container p { margin: 0; }
+    .logo-container h1 { font-size: 1.8rem; color: white !important; }
+    .logo-container p { font-style: italic; font-size: 0.9rem; color: white !important; }
 
-    .wishlist-icon { font-size: 24px; background: #fff; color: #fb6162; border-radius: 50%; padding: 10px; cursor: pointer; }
+    .wishlist-icon { font-size: 24px; background: #fff; color: #fb6162; border-radius: 50%; padding: 10px; cursor: pointer; margin-right: 15px; }
+
     nav { background: white; padding: 0.8rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
     nav a { color: #fb6162; font-weight: bold; text-decoration: none; padding: 0.2rem 0.6rem; border-radius: 4px; }
     nav a.login { background: white; color: #fb6162; font-weight: bold; border: 1px solid #fb6162; }
 
     .account-dropdown { position: relative; display: inline-block; }
-    .dropdown-content { display: none; position: absolute; background-color: #fff; color: #fb6162; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); padding: 0.5rem; z-index: 1; right: 0; }
-    .dropdown-content button { background: none; border: none; color: #fb6162; font-weight: bold; display: block; padding: 0.4rem; cursor: pointer; text-align: left; width: 100%; }
+    .dropdown-content {
+      display: none; position: absolute; background-color: #fff; color: #fb6162;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2); padding: 0.5rem; z-index: 1; right: 0;
+    }
+    .dropdown-content button {
+      background: none; border: none; color: #fb6162; font-weight: bold;
+      display: block; padding: 0.4rem; cursor: pointer; text-align: left; width: 100%;
+    }
     .dropdown-content button:hover { background-color: #ffe5e5; }
     .account-dropdown:hover .dropdown-content { display: block; }
 
-    section { padding: 2rem; }
-
-    .packages { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 2rem 1rem; }
+    .packages { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 2rem; }
     .card {
-      background: white; color: #333; border-radius: 10px;
-      padding: 1.2rem; width: 280px; text-align: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      position: relative;
+      background: white; color: #333; border-radius: 10px; padding: 1.2rem; width: 280px;
+      text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
-    .card h3 { color: #fb6162; font-size: 1.2rem; margin-bottom: 0.6rem; }
-    .card p { font-size: 0.95rem; margin-bottom: 1.1rem; }
+    .card h3 { color: #fb6162; margin-bottom: 10px; }
+    .card p { font-size: 0.95rem; margin-bottom: 1rem; }
     .card button {
-      background: #fb6162;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      margin: 0.2rem;
+      background: #f46a6a; color: white; border: none; padding: 8px 14px;
+      border-radius: 5px; margin: 5px; cursor: pointer;
     }
-    .card .view-btn { background: #ff6666; font-weight: bold; }
 
     #changePasswordSection {
-      display: none; background: white; color: #333;
+      display: none; padding: 2rem; background: white; color: #333;
       max-width: 400px; margin: auto; border-radius: 10px;
     }
     #changePasswordSection input {
-      width: 100%; margin-bottom: 10px; padding: 10px;
-      border-radius: 5px; border: 1px solid #ccc;
+      width: 100%; margin-bottom: 10px; padding: 8px;
     }
-    #changePasswordSection button {
-      padding: 10px 20px; background: #fb6162; color: white;
-      border: none; border-radius: 5px; cursor: pointer;
+
+    footer {
+      background: #333; color: white; text-align: center;
+      padding: 1rem; margin-top: 3rem;
     }
-    #changeMsg { margin-top: 10px; font-weight: bold; }
+
+    .logo-link { text-decoration: none; color: white !important; }
   </style>
 </head>
 <body>
@@ -83,6 +82,7 @@
             <button onclick="logout()">Logout</button>
           </div>
         </span>
+        <a href="login.html" class="login" id="loginBtn">Login</a>
       </div>
     </div>
   </header>
@@ -93,46 +93,41 @@
     <a href="decor.html">Decor</a>
     <a href="makeup.html">Makeup</a>
     <a href="addons.html">Add‑Ons</a>
-    <a href="login.html" class="login" id="loginBtn">Login</a>
   </nav>
 
-  <section style="text-align: center;">
+  <section style="padding: 2rem; text-align: center;">
     <h2>Welcome to ShaadiKarwalo</h2>
     <p>Plan your wedding without stress.</p>
   </section>
 
-  <!-- ✅ PACKAGES SECTION -->
-  <section id="packages">
-    <h2 style="text-align: center;">Our Packages</h2>
+  <!-- Packages Section -->
+  <section>
+    <h2 style="text-align:center;">Our Packages</h2>
     <div class="packages">
       <div class="card">
-        <h3>💐 Budget Wedding – ₹8L</h3>
+        <h3>💐 Budget Wedding - ₹8L</h3>
         <p>Basic venue, vegetarian menu, classic décor, candid photography</p>
-        <button class="view-btn" onclick="location.href='budget.html'">View Package</button>
-        <button onclick="addToWishlist('Budget Wedding – ₹8L')">🤍</button>
+        <button onclick="location.href='budget.html'">View Package</button>
       </div>
       <div class="card">
-        <h3>🌸 Classic Wedding – ₹16L</h3>
+        <h3>🌸 Classic Wedding - ₹16L</h3>
         <p>Premium hall/lawn, designer mandap, DJ, entry team, makeup</p>
-        <button class="view-btn" onclick="location.href='classic.html'">View Package</button>
-        <button onclick="addToWishlist('Classic Wedding – ₹16L')">🤍</button>
+        <button onclick="location.href='classic.html'">View Package</button>
       </div>
       <div class="card">
-        <h3>🏰 Luxury Wedding – ₹25L</h3>
+        <h3>🏰 Luxury Wedding - ₹25L</h3>
         <p>5-star hotel, theme décor, bridal team, cinematic video, drone</p>
-        <button class="view-btn" onclick="location.href='luxury.html'">View Package</button>
-        <button onclick="addToWishlist('Luxury Wedding – ₹25L')">🤍</button>
+        <button onclick="location.href='luxury.html'">View Package</button>
       </div>
       <div class="card">
-        <h3>💎 Premium Wedding – ₹50L</h3>
+        <h3>💎 Premium Wedding - ₹50L</h3>
         <p>Destination wedding, helicopter entry, celebrity chefs</p>
-        <button class="view-btn" onclick="location.href='premium.html'">View Package</button>
-        <button onclick="addToWishlist('Premium Wedding – ₹50L')">🤍</button>
+        <button onclick="location.href='premium.html'">View Package</button>
       </div>
     </div>
   </section>
 
-  <!-- ✅ CHANGE PASSWORD SECTION -->
+  <!-- Change Password Section -->
   <section id="changePasswordSection">
     <h3>Change Password</h3>
     <input type="password" id="oldPassword" placeholder="Old Password" />
@@ -141,11 +136,14 @@
     <p id="changeMsg"></p>
   </section>
 
+  <footer>
+    <p>&copy; 2025 ShaadiKarwalo.com – All Rights Reserved</p>
+  </footer>
+
   <script>
     const loginBtn = document.getElementById("loginBtn");
     const accountSetup = document.getElementById("accountSetup");
     const currentUser = localStorage.getItem("shaadiUser");
-
     if (currentUser) {
       loginBtn.style.display = "none";
       accountSetup.style.display = "inline-block";
@@ -182,18 +180,7 @@
     }
 
     function scrollToWishlist() {
-      location.href = "wishlist.html"; // You can redirect or scroll
-    }
-
-    function addToWishlist(itemName) {
-      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-      if (!wishlist.includes(itemName)) {
-        wishlist.push(itemName);
-        localStorage.setItem("wishlist", JSON.stringify(wishlist));
-        alert(`${itemName} added to your wishlist.`);
-      } else {
-        alert("Already in wishlist!");
-      }
+      window.location.href = "wishlist.html";
     }
   </script>
 </body>
