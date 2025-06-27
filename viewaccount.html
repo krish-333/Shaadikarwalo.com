@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>View Account - ShaadiKarwalo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fb6162;
+      color: white;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .form-container {
+      background: white;
+      color: #333;
+      max-width: 600px;
+      margin: auto;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
+    h2 {
+      color: #fb6162;
+      text-align: center;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #fb6162;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .success {
+      color: green;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Your Account Details</h2>
+    <form id="accountForm">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <input type="date" name="weddingDate" placeholder="Wedding Date" required />
+      <input type="text" name="city" placeholder="City" required />
+      <select name="budget" required>
+        <option value="">Select Budget</option>
+        <option value="Under ₹8L">Under ₹8L</option>
+        <option value="₹8L – ₹16L">₹8L – ₹16L</option>
+        <option value="₹16L – ₹25L">₹16L – ₹25L</option>
+        <option value="₹25L+">₹25L+</option>
+      </select>
+      <textarea name="message" placeholder="Any other details..." rows="4"></textarea>
+      <button type="submit">Submit</button>
+      <p id="responseMsg" class="success"></p>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("accountForm");
+    const responseMsg = document.getElementById("responseMsg");
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      fetch("https://script.google.com/macros/s/AKfycbzIT56V7mG0JkThw8NuZccFWeicX44p2W-0iey1FWCRnQqBLTxpHYeodjCFMFAGxm73hg/exec", {
+        method: "POST",
+        body: new URLSearchParams(formData),
+      })
+      .then(() => {
+        responseMsg.textContent = "Your details were submitted successfully!";
+        form.reset();
+      })
+      .catch(() => {
+        responseMsg.textContent = "There was an error submitting your details.";
+        responseMsg.style.color = "red";
+      });
+    });
+  </script>
+</body>
+</html>
