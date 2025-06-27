@@ -4,6 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ShaadiKarwalo – Wedding Planner</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      databaseURL: "YOUR_DATABASE_URL",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+    const userId = "demo-user"; // Replace with actual user identifier after login
+  </script>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -13,21 +29,36 @@
     }
     header {
       background: #ff5f5f;
-      text-align: center;
-      padding: 2rem 1rem;
+      padding: 1rem;
       position: relative;
     }
-    header img {
-      width: 120px;
+    header .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    .logo-container img {
+      width: 70px;
       border: 3px solid white;
       border-radius: 10px;
+      margin-right: 10px;
+    }
+    .logo-container h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    .logo-container p {
+      margin: 2px 0;
+      font-style: italic;
+      font-size: 0.9rem;
     }
     .wishlist-icon {
-      position: absolute;
-      top: 20px;
-      right: 20px;
       font-size: 24px;
-      background: rgb(254, 254, 254);
+      background: #fff;
       color: #fb6162;
       border-radius: 50%;
       padding: 10px;
@@ -87,7 +118,7 @@
     }
     .card button {
       background: #f46a6a;
-      color: rgb(255, 106, 106);
+      color: white;
       border: none;
       padding: 8px 16px;
       border-radius: 4px;
@@ -96,7 +127,6 @@
     }
     .card .view-btn {
       background: #ff6666;
-      color: #f5f3f3;
       font-weight: bold;
     }
     .like-toggle {
@@ -157,10 +187,16 @@
 </head>
 <body>
   <header>
-    <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
-    <div class="wishlist-icon" onclick="scrollToWishlist()">❤️</div>
-    <h1>ShaadiKarwalo</h1>
-    <p>Your one-stop destination for stress-free wedding planning.</p>
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
+        <div>
+          <h1>ShaadiKarwalo</h1>
+          <p>Aap bas jodi banao, shaadi hum karwa denge</p>
+        </div>
+      </div>
+      <div class="wishlist-icon" onclick="scrollToWishlist()">❤️</div>
+    </div>
   </header>
 
   <nav>
@@ -229,6 +265,7 @@
 
     function saveWishlist(wishlist) {
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      firebase.database().ref("wishlists/" + userId).set(wishlist);
     }
 
     function toggleWishlist(button, itemName) {
@@ -279,11 +316,11 @@
 
     window.onload = renderWishlist;
 
-    // Contact form submission to Google Sheets
+    // Google Sheets contact submission
     document.getElementById('contactForm').addEventListener('submit', e => {
       e.preventDefault();
       const fd = new FormData(e.target);
-      fetch("https://script.google.com/macros/s/YOUR-GOOGLE-SHEETS-ENDPOINT/exec", {
+      fetch("https://script.google.com/macros/s/YOUR-SHEET-SCRIPT-ID/exec", {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
