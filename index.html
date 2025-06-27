@@ -4,191 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ShaadiKarwalo – Wedding Planner</title>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      databaseURL: "YOUR_DATABASE_URL",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-    const userId = "demo-user"; // Replace with actual user identifier after login
-  </script>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: #fb6162;
-      color: #fff;
-    }
-    header {
-      background: #ff5f5f;
-      padding: 1rem;
-      position: relative;
-    }
-    header .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo-container {
-      display: flex;
-      align-items: center;
-    }
-    .logo-container img {
-      width: 70px;
-      border: 3px solid white;
-      border-radius: 10px;
-      margin-right: 10px;
-    }
-    .logo-container h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-    .logo-container p {
-      margin: 2px 0;
-      font-style: italic;
-      font-size: 0.9rem;
-    }
-    .wishlist-icon {
-      font-size: 24px;
-      background: #fff;
-      color: #fb6162;
-      border-radius: 50%;
-      padding: 10px;
-      cursor: pointer;
-    }
-    nav {
-      background: white;
-      padding: 0.8rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: #fb6162;
-      font-weight: bold;
-      text-decoration: none;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-    }
-    nav a.login {
-      background: white;
-      color: #fb6162;
-      font-weight: bold;
-      border: 1px solid #fb6162;
-    }
-    h2 {
-      color: #fff;
-      margin-top: 2rem;
-      text-align: center;
-    }
-    .packages {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 1rem;
-    }
-    .card {
-      background: white;
-      color: #333;
-      border-radius: 10px;
-      padding: 1.2rem;
-      width: 300px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      position: relative;
-    }
-    .card h3 {
-      color: #fb6162;
-      font-size: 1.2rem;
-      margin-bottom: 0.6rem;
-    }
-    .card p {
-      font-size: 0.95rem;
-      margin-bottom: 1.1rem;
-    }
-    .card button {
-      background: #f46a6a;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      margin: 0.2rem;
-    }
-    .card .view-btn {
-      background: #ff6666;
-      font-weight: bold;
-    }
-    .like-toggle {
-      background: none;
-      font-size: 1rem;
-    }
-    .wishlist-section {
-      padding: 2rem;
-      background: #f96161;
-    }
-    .wishlist-section h2 {
-      margin-bottom: 0.8rem;
-    }
-    .wishlist-section ul {
-      list-style: none;
-      padding: 0;
-    }
-    .wishlist-section li {
-      font-size: 1.1rem;
-      font-weight: bold;
-      margin: 0.6rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    form {
-      max-width: 600px;
-      margin: 2rem auto;
-      background: white;
-      padding: 1.2rem;
-      border-radius: 8px;
-      color: #333;
-    }
-    form input,
-    form textarea {
-      width: 100%;
-      padding: 0.6rem;
-      margin: 0.5rem 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    form button {
-      background: #fb6162;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-    .logo-link {
-  text-decoration: none;
-  color: inherit;
-  display: inline-block;
-}
-
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fb6162; color: #fff; }
+    header { background: #ff5f5f; padding: 1rem; position: relative; }
+    .header-container { display: flex; align-items: center; justify-content: space-between; }
+    .logo-container { display: flex; align-items: center; text-decoration: none; color: inherit; }
+    .logo-container img { width: 70px; border: 3px solid white; border-radius: 10px; margin-right: 10px; }
+    .logo-container h1 { margin: 0; font-size: 1.8rem; }
+    .logo-container p { margin: 2px 0; font-style: italic; font-size: 0.9rem; }
+    .wishlist-icon { font-size: 24px; background: #fff; color: #fb6162; border-radius: 50%; padding: 10px; cursor: pointer; }
+    nav { background: white; padding: 0.8rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    nav a { color: #fb6162; font-weight: bold; text-decoration: none; padding: 0.2rem 0.6rem; border-radius: 4px; }
+    nav a.login { background: white; color: #fb6162; font-weight: bold; border: 1px solid #fb6162; }
+    .account-dropdown { position: relative; display: inline-block; }
+    .dropdown-content { display: none; position: absolute; background-color: #fff; color: #fb6162; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); padding: 0.5rem; z-index: 1; right: 0; }
+    .dropdown-content button { background: none; border: none; color: #fb6162; font-weight: bold; display: block; padding: 0.4rem; cursor: pointer; text-align: left; width: 100%; }
+    .dropdown-content button:hover { background-color: #ffe5e5; }
+    .account-dropdown:hover .dropdown-content { display: block; }
   </style>
 </head>
 <body>
@@ -203,8 +35,17 @@
           </div>
         </div>
       </a>
-    <div class="wishlist-icon" onclick="location.href='wishlist.html'">❤️</div>
-
+      <div>
+        <span class="wishlist-icon" onclick="scrollToWishlist()">❤️</span>
+        <span id="accountSetup" class="account-dropdown" style="display: none;">
+          <span style="cursor: pointer;">👤 Account</span>
+          <div class="dropdown-content">
+            <button onclick="viewAccount()">View Account</button>
+            <button onclick="showChangePassword()">Change Password</button>
+            <button onclick="logout()">Logout</button>
+          </div>
+        </span>
+      </div>
     </div>
   </header>
 
@@ -214,132 +55,65 @@
     <a href="decor.html">Decor</a>
     <a href="makeup.html">Makeup</a>
     <a href="addons.html">Add‑Ons</a>
-    <a href="login.html" class="login">Login</a>
+    <a href="login.html" class="login" id="loginBtn">Login</a>
   </nav>
 
-  <section id="packages">
-    <h2>Our Packages</h2>
-    <div class="packages">
-      <div class="card">
-        <h3>💐 Budget Wedding - ₹8L</h3>
-        <p>Basic venue, vegetarian menu, classic décor, candid photography</p>
-        <button class="view-btn" onclick="location.href='budget.html'">View Package</button>
-        <button class="like-toggle" onclick="toggleWishlist(this, 'Budget Wedding - ₹8L')">🤍</button>
-      </div>
-      <div class="card">
-        <h3>🌸 Classic Wedding - ₹16L</h3>
-        <p>Premium hall/lawn, designer mandap, DJ, entry team, makeup</p>
-        <button class="view-btn" onclick="location.href='classic.html'">View Package</button>
-        <button class="like-toggle" onclick="toggleWishlist(this, 'Classic Wedding - ₹16L')">🤍</button>
-      </div>
-      <div class="card">
-        <h3>🏰 Luxury Wedding - ₹25L</h3>
-        <p>5-star hotel, theme décor, bridal team, cinematic video, drone</p>
-        <button class="view-btn" onclick="location.href='luxury.html'">View Package</button>
-        <button class="like-toggle" onclick="toggleWishlist(this, 'Luxury Wedding - ₹25L')">🤍</button>
-      </div>
-      <div class="card">
-        <h3>💎 Premium Wedding - ₹50L</h3>
-        <p>Destination wedding, helicopter entry, celebrity chefs</p>
-        <button class="view-btn" onclick="location.href='premium.html'">View Package</button>
-        <button class="like-toggle" onclick="toggleWishlist(this, 'Premium Wedding - ₹50L')">🤍</button>
-      </div>
-    </div>
+  <section style="padding: 2rem;">
+    <h2>Welcome to ShaadiKarwalo</h2>
+    <p style="text-align:center;">Plan your wedding without stress.</p>
   </section>
 
-  <section id="wishlist" class="wishlist-section">
-    <h2>❤️ Your Wishlist</h2>
-    <ul id="wishlistItems"></ul>
+  <!-- Change Password Form -->
+  <section id="changePasswordSection" style="display:none; padding: 2rem; background: white; color: #333; max-width: 400px; margin: auto; border-radius: 10px;">
+    <h3>Change Password</h3>
+    <input type="password" id="oldPassword" placeholder="Old Password" style="width:100%; margin-bottom:10px;" />
+    <input type="password" id="newPassword" placeholder="New Password" style="width:100%; margin-bottom:10px;" />
+    <button onclick="changePassword()" style="padding: 10px 20px; background: #fb6162; color: white; border: none; border-radius: 5px;">Update</button>
+    <p id="changeMsg" style="margin-top: 10px;"></p>
   </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <form id="contactForm">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-      <button type="submit">Send</button>
-      <p id="responseMsg" style="color: green;"></p>
-
-      <a href="wishlist.html" class="wishlist-icon">❤️</a>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 ShaadiKarwalo.com – All Rights Reserved</p>
-  </footer>
 
   <script>
-    function getWishlist() {
-      return JSON.parse(localStorage.getItem("wishlist")) || [];
+    const loginBtn = document.getElementById("loginBtn");
+    const accountSetup = document.getElementById("accountSetup");
+    const currentUser = localStorage.getItem("shaadiUser");
+    if (currentUser) {
+      loginBtn.style.display = "none";
+      accountSetup.style.display = "inline-block";
     }
 
-    function saveWishlist(wishlist) {
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
-      firebase.database().ref("wishlists/" + userId).set(wishlist);
+    function logout() {
+      localStorage.removeItem("shaadiUser");
+      location.reload();
     }
 
-    function toggleWishlist(button, itemName) {
-      let wishlist = getWishlist();
-      const index = wishlist.indexOf(itemName);
-      if (index === -1) {
-        wishlist.push(itemName);
-        button.textContent = '❤️';
+    function viewAccount() {
+      alert("Logged in as: " + currentUser);
+    }
+
+    function showChangePassword() {
+      document.getElementById("changePasswordSection").style.display = "block";
+    }
+
+    function changePassword() {
+      const oldPass = document.getElementById("oldPassword").value;
+      const newPass = document.getElementById("newPassword").value;
+      const msg = document.getElementById("changeMsg");
+
+      const users = JSON.parse(localStorage.getItem("shaadiUsers")) || {};
+      if (users[currentUser] === oldPass) {
+        users[currentUser] = newPass;
+        localStorage.setItem("shaadiUsers", JSON.stringify(users));
+        msg.style.color = "green";
+        msg.textContent = "Password changed successfully.";
       } else {
-        wishlist.splice(index, 1);
-        button.textContent = '🤍';
+        msg.style.color = "red";
+        msg.textContent = "Incorrect old password.";
       }
-      saveWishlist(wishlist);
-      renderWishlist();
-    }
-
-    function renderWishlist() {
-      const wishlist = getWishlist();
-      const list = document.getElementById('wishlistItems');
-      list.innerHTML = '';
-      wishlist.forEach((item, i) => {
-        const li = document.createElement('li');
-        li.innerHTML = `<span>${item}</span> 
-          <button onclick="removeFromWishlist(${i})" style="margin-left:10px;background:#fff;color:#fb6162;border:none;border-radius:4px;padding:4px 8px;cursor:pointer;">Remove</button>`;
-        list.appendChild(li);
-      });
-
-      // Update button states
-      document.querySelectorAll('.like-toggle').forEach(btn => {
-        const text = btn.getAttribute('onclick');
-        const nameMatch = text.match(/'(.+?)'/);
-        if (!nameMatch) return;
-        const itemName = nameMatch[1];
-        btn.textContent = wishlist.includes(itemName) ? '❤️' : '🤍';
-      });
-    }
-
-    function removeFromWishlist(i) {
-      let wishlist = getWishlist();
-      wishlist.splice(i, 1);
-      saveWishlist(wishlist);
-      renderWishlist();
     }
 
     function scrollToWishlist() {
-      document.getElementById('wishlist').scrollIntoView({ behavior: 'smooth' });
+      alert("Wishlist feature here.");
     }
-
-    window.onload = renderWishlist;
-
-    // Google Sheets contact submission
-    document.getElementById('contactForm').addEventListener('submit', e => {
-      e.preventDefault();
-      const fd = new FormData(e.target);
-      fetch("https://script.google.com/macros/s/YOUR-SHEET-SCRIPT-ID/exec", {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(Object.fromEntries(fd))
-      });
-      document.getElementById('responseMsg').textContent = 'Message sent!';
-      e.target.reset();
-    });
   </script>
 </body>
 </html>
