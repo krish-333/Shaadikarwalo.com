@@ -2,182 +2,149 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Venues – ShaadiKarwalo</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fb6162; color: #fff; }
-    header { background: #ff5f5f; padding: 1rem; position: relative; }
-    .header-container { display: flex; align-items: center; justify-content: space-between; }
-    .logo-container { display: flex; align-items: center; text-decoration: none; color: white; }
-    .logo-container img { width: 70px; border: 3px solid white; border-radius: 10px; margin-right: 10px; }
-    .logo-container h1 { margin: 0; font-size: 1.8rem; color: white; }
-    .logo-container p { margin: 2px 0; font-style: italic; font-size: 0.9rem; color: white; }
-    .wishlist-icon { font-size: 24px; background: #fff; color: #fb6162; border-radius: 50%; padding: 10px; cursor: pointer; }
-    nav { background: white; padding: 0.8rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-    nav a { color: #fb6162; font-weight: bold; text-decoration: none; padding: 0.2rem 0.6rem; border-radius: 4px; }
-    nav a.login { border: 1px solid #fb6162; }
-    .account-dropdown { position: relative; display: inline-block; }
-    .dropdown-content { display: none; position: absolute; background-color: #fff; color: #fb6162; box-shadow: 0 8px 16px rgba(0,0,0,0.2); padding: 0.5rem; z-index: 1; right: 0; }
-    .dropdown-content button { background: none; border: none; color: #fb6162; font-weight: bold; display: block; padding: 0.4rem; cursor: pointer; text-align: left; width: 100%; }
-    .dropdown-content button:hover { background-color: #ffe5e5; }
-    .account-dropdown:hover .dropdown-content { display: block; }
-
-    h2 { color: #fff; margin-top: 2rem; text-align: center; }
-    .cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 2rem; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fb6162;
+      color: white;
+    }
+    header {
+      background: #ff5f5f;
+      padding: 1rem;
+    }
+    .logo-link {
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    .logo-container img {
+      width: 60px;
+      border: 2px solid white;
+      border-radius: 8px;
+      margin-right: 10px;
+    }
+    .logo-container h1,
+    .logo-container p {
+      margin: 0;
+      color: white;
+      text-decoration: none;
+    }
+    .logo-container p {
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+    nav {
+      background: white;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    nav a {
+      color: #fb6162;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2rem;
+      gap: 20px;
+    }
     .card {
-      background: white; color: #333; border-radius: 10px; padding: 1rem;
-      width: 300px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); position: relative;
+      background: white;
+      color: #333;
+      border-radius: 8px;
+      width: 250px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     .card img {
-      width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
     }
-    .card h3 { color: #fb6162; margin-bottom: 0.5rem; }
-    .card p { font-size: 0.95rem; }
-    .card input {
-      width: 100%; padding: 6px; margin-top: 8px; margin-bottom: 6px; border-radius: 4px; border: 1px solid #ccc;
+    .card h3 {
+      margin: 0.5rem 0;
+      color: #fb6162;
     }
-    .card button {
-      background: #fb6162; color: white; border: none; padding: 8px 14px; border-radius: 5px; cursor: pointer;
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
     }
-    .card .like-toggle { background: none; color: #fb6162; font-size: 20px; margin-top: 10px; }
+    .like-btn {
+      background: #ffe5ec;
+      border: none;
+      border-radius: 50%;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-top: 8px;
+    }
   </style>
 </head>
 <body>
-
   <header>
-    <div class="header-container">
-      <a href="index.html" class="logo-link">
-        <div class="logo-container">
-          <img src="assets/logo.png" alt="Logo" />
-          <div>
-            <h1>ShaadiKarwalo</h1>
-            <p>Aap bas jodi banao, shaadi hum karwa denge</p>
-          </div>
+    <a href="index.html" class="logo-link">
+      <div class="logo-container">
+        <img src="assets/logo.png" alt="Logo" />
+        <div>
+          <h1>ShaadiKarwalo</h1>
+          <p>Aap bas jodi banao, shaadi hum karwa denge</p>
         </div>
-      </a>
-      <div>
-        <span class="wishlist-icon" onclick="window.location.href='wishlist.html'">❤️</span>
-        <span id="accountSetup" class="account-dropdown" style="display: none;">
-          <span style="cursor: pointer;">👤 Account</span>
-          <div class="dropdown-content">
-            <button onclick="window.location.href='viewaccount.html'">View Account</button>
-            <button onclick="showChangePassword()">Change Password</button>
-            <button onclick="logout()">Logout</button>
-          </div>
-        </span>
       </div>
-    </div>
+    </a>
   </header>
 
   <nav>
+    <a href="index.html">Home</a>
     <a href="venues.html">Venues</a>
     <a href="catering.html">Catering</a>
     <a href="decor.html">Decor</a>
     <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add‑Ons</a>
-    <a href="login.html" class="login" id="loginBtn">Login</a>
+    <a href="addons.html">Add-Ons</a>
   </nav>
 
-  <h2>Top Wedding Venues</h2>
-  <div class="cards" id="venueCards">
-    <!-- Cards will be inserted by JS -->
+  <div class="card-container">
+    <!-- Venue Cards -->
+    <!-- Repeat this card 10 times with dummy content -->
+    ${[...Array(10)].map((_, i) => `
+      <div class="card">
+        <img src="https://source.unsplash.com/300x200/?wedding,venue,${i}" alt="Venue ${i+1}">
+        <h3>Grand Venue ${i+1}</h3>
+        <p>Elegant location for your perfect day.</p>
+        <input type="number" placeholder="Number of guests" oninput="updateCost(this, ${1200 + i * 100})" />
+        <div class="price-row">
+          <span>Total: ₹<span class="total">0</span></span>
+          <button class="like-btn">🤍</button>
+        </div>
+      </div>
+    `).join('')}
   </div>
 
-  <!-- Change Password Form -->
-  <section id="changePasswordSection" style="display:none; padding: 2rem; background: white; color: #333; max-width: 400px; margin: auto; border-radius: 10px;">
-    <h3>Change Password</h3>
-    <input type="password" id="oldPassword" placeholder="Old Password" style="width:100%; margin-bottom:10px;" />
-    <input type="password" id="newPassword" placeholder="New Password" style="width:100%; margin-bottom:10px;" />
-    <button onclick="changePassword()" style="padding: 10px 20px; background: #fb6162; color: white; border: none; border-radius: 5px;">Update</button>
-    <p id="changeMsg" style="margin-top: 10px;"></p>
-  </section>
-
   <script>
-    const loginBtn = document.getElementById("loginBtn");
-    const accountSetup = document.getElementById("accountSetup");
-    const currentUser = localStorage.getItem("shaadiUser");
-    if (currentUser) {
-      loginBtn.style.display = "none";
-      accountSetup.style.display = "inline-block";
-    }
-
-    function logout() {
-      localStorage.removeItem("shaadiUser");
-      location.reload();
-    }
-
-    function showChangePassword() {
-      document.getElementById("changePasswordSection").style.display = "block";
-    }
-
-    function changePassword() {
-      const oldPass = document.getElementById("oldPassword").value;
-      const newPass = document.getElementById("newPassword").value;
-      const msg = document.getElementById("changeMsg");
-      const users = JSON.parse(localStorage.getItem("shaadiUsers")) || {};
-      if (users[currentUser] === oldPass) {
-        users[currentUser] = newPass;
-        localStorage.setItem("shaadiUsers", JSON.stringify(users));
-        msg.style.color = "green";
-        msg.textContent = "Password changed successfully.";
-      } else {
-        msg.style.color = "red";
-        msg.textContent = "Incorrect old password.";
-      }
-    }
-
-    const venueData = [
-      { name: "Royal Palace", price: 1200, img: "assets/venue1.png" },
-      { name: "Sunset Banquets", price: 1000, img: "assets/venue2.jpg" },
-      { name: "Garden Retreat", price: 950, img: "assets/venue3.jpg" },
-      { name: "Lake View Hall", price: 1100, img: "assets/venue4.jpg" },
-      { name: "Moonlight Lawns", price: 850, img: "assets/venue5.jpg" },
-      { name: "Empire Grand", price: 1300, img: "assets/venue6.jpg" },
-      { name: "Cultural Courtyard", price: 1050, img: "assets/venue7.jpg" },
-      { name: "Paradise Palace", price: 1150, img: "assets/venue8.jpg" },
-      { name: "Emerald Hall", price: 990, img: "assets/venue9.jpg" },
-      { name: "Sunrise Resorts", price: 1025, img: "assets/venue10.jpg" }
-    ];
-
-    function renderVenues() {
-      const container = document.getElementById('venueCards');
-      container.innerHTML = '';
-      venueData.forEach((venue, index) => {
-        const id = `venue${index}`;
-        container.innerHTML += `
-          <div class="card">
-            <img src="${venue.img}" alt="${venue.name}" />
-            <h3>${venue.name}</h3>
-            <p>Beautiful venue with premium amenities.</p>
-            <input type="number" placeholder="Guests" oninput="calculateTotal(this, ${venue.price}, '${id}')" />
-            <p id="${id}">Total: ₹0</p>
-            <button class="like-toggle" onclick="addToWishlist(this, '${venue.name}', '${id}')">🤍</button>
-          </div>
-        `;
-      });
-    }
-
-    function calculateTotal(input, perHead, outputId) {
+    function updateCost(input, pricePerHead) {
       const guests = parseInt(input.value) || 0;
-      document.getElementById(outputId).textContent = `Total: ₹${guests * perHead}`;
+      const total = guests * pricePerHead;
+      input.parentElement.querySelector('.total').textContent = total;
     }
-
-    function addToWishlist(button, itemName, priceId) {
-      const totalText = document.getElementById(priceId).textContent;
-      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-      const fullItem = `${itemName} – ${totalText}`;
-      const index = wishlist.indexOf(fullItem);
-      if (index === -1) {
-        wishlist.push(fullItem);
-        button.textContent = "❤️";
-      } else {
-        wishlist.splice(index, 1);
-        button.textContent = "🤍";
-      }
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    }
-
-    window.onload = renderVenues;
   </script>
 </body>
 </html>
