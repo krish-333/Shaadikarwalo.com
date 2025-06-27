@@ -13,13 +13,10 @@
     .logo-container h1, .logo-container p { margin: 0; }
     .logo-container h1 { font-size: 1.8rem; color: white !important; }
     .logo-container p { font-style: italic; font-size: 0.9rem; color: white !important; }
-
     .wishlist-icon { font-size: 24px; background: #fff; color: #fb6162; border-radius: 50%; padding: 10px; cursor: pointer; margin-right: 15px; }
-
     nav { background: white; padding: 0.8rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
     nav a { color: #fb6162; font-weight: bold; text-decoration: none; padding: 0.2rem 0.6rem; border-radius: 4px; }
     nav a.login { background: white; color: #fb6162; font-weight: bold; border: 1px solid #fb6162; }
-
     .account-dropdown { position: relative; display: inline-block; }
     .dropdown-content {
       display: none; position: absolute; background-color: #fff; color: #fb6162;
@@ -31,11 +28,10 @@
     }
     .dropdown-content button:hover { background-color: #ffe5e5; }
     .account-dropdown:hover .dropdown-content { display: block; }
-
     .packages { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 2rem; }
     .card {
       background: white; color: #333; border-radius: 10px; padding: 1.2rem; width: 280px;
-      text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); position: relative;
     }
     .card h3 { color: #fb6162; margin-bottom: 10px; }
     .card p { font-size: 0.95rem; margin-bottom: 1rem; }
@@ -43,7 +39,17 @@
       background: #f46a6a; color: white; border: none; padding: 8px 14px;
       border-radius: 5px; margin: 5px; cursor: pointer;
     }
-
+    .like-btn {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      background: #ffccd5;
+      color: #fb6162;
+      border-radius: 50%;
+      padding: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
     #changePasswordSection {
       display: none; padding: 2rem; background: white; color: #333;
       max-width: 400px; margin: auto; border-radius: 10px;
@@ -51,45 +57,25 @@
     #changePasswordSection input {
       width: 100%; margin-bottom: 10px; padding: 8px;
     }
-
     footer {
       background: #333; color: white; text-align: center;
       padding: 1rem; margin-top: 3rem;
     }
-
     .logo-link { text-decoration: none; color: white !important; }
-
-    #suggestForm {
-      background: white;
-      color: #333;
-      max-width: 600px;
-      margin: 3rem auto;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    form#suggestForm {
+      background: white; color: #333; max-width: 500px;
+      margin: 2rem auto; padding: 2rem; border-radius: 10px;
     }
-
-    #suggestForm input,
-    #suggestForm select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+    form#suggestForm input {
+      width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 6px;
     }
-
-    #suggestForm button {
-      background: #fb6162;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
+    form#suggestForm button {
+      background: #fb6162; color: white; border: none;
+      padding: 10px 20px; border-radius: 6px; cursor: pointer;
     }
-
     #suggestionMsg {
       text-align: center;
-      margin-top: 1rem;
+      margin-top: 10px;
       font-weight: bold;
     }
   </style>
@@ -142,42 +128,44 @@
         <h3>💐 Budget Wedding - ₹8L</h3>
         <p>Basic venue, vegetarian menu, classic décor, candid photography</p>
         <button onclick="location.href='budget.html'">View Package</button>
+        <span class="like-btn" onclick="addToWishlist('Budget Wedding - ₹8L')">❤️</span>
       </div>
       <div class="card">
         <h3>🌸 Classic Wedding - ₹16L</h3>
         <p>Premium hall/lawn, designer mandap, DJ, entry team, makeup</p>
         <button onclick="location.href='classic.html'">View Package</button>
+        <span class="like-btn" onclick="addToWishlist('Classic Wedding - ₹16L')">❤️</span>
       </div>
       <div class="card">
         <h3>🏰 Luxury Wedding - ₹25L</h3>
         <p>5-star hotel, theme décor, bridal team, cinematic video, drone</p>
         <button onclick="location.href='luxury.html'">View Package</button>
+        <span class="like-btn" onclick="addToWishlist('Luxury Wedding - ₹25L')">❤️</span>
       </div>
       <div class="card">
         <h3>💎 Premium Wedding - ₹50L</h3>
         <p>Destination wedding, helicopter entry, celebrity chefs</p>
         <button onclick="location.href='premium.html'">View Package</button>
+        <span class="like-btn" onclick="addToWishlist('Premium Wedding - ₹50L')">❤️</span>
       </div>
     </div>
   </section>
 
-  <!-- Suggestion Form Section -->
-  <section>
-    <form id="suggestForm">
-      <h2 style="text-align:center;color:#fb6162;">Let's Find the Perfect Package for You</h2>
-      <label for="budget">Your Budget (₹):</label>
-      <input type="number" id="budget" required placeholder="Enter your wedding budget" />
+  <!-- Suggestion Form -->
+  <form id="suggestForm">
+    <h2 style="text-align: center; color: #fb6162;">Let's Find the Perfect Package for You</h2>
+    <label>Your Budget (₹):</label>
+    <input type="number" id="budget" required />
 
-      <label for="location">Wedding Location:</label>
-      <input type="text" id="location" required placeholder="Enter preferred location" />
+    <label>Wedding Location:</label>
+    <input type="text" id="location" required />
 
-      <label for="weddingDate">Wedding Date:</label>
-      <input type="date" id="weddingDate" required />
+    <label>Wedding Date:</label>
+    <input type="date" id="weddingDate" required />
 
-      <button type="submit">Submit</button>
-      <p id="suggestionMsg"></p>
-    </form>
-  </section>
+    <button type="submit">Submit</button>
+    <p id="suggestionMsg"></p>
+  </form>
 
   <!-- Change Password Section -->
   <section id="changePasswordSection">
@@ -218,7 +206,6 @@
       const oldPass = document.getElementById("oldPassword").value;
       const newPass = document.getElementById("newPassword").value;
       const msg = document.getElementById("changeMsg");
-
       const users = JSON.parse(localStorage.getItem("shaadiUsers")) || {};
       if (users[currentUser] === oldPass) {
         users[currentUser] = newPass;
@@ -235,7 +222,14 @@
       window.location.href = "wishlist.html";
     }
 
-    // Handle Suggestion Form Submission
+    function addToWishlist(item) {
+      const list = JSON.parse(localStorage.getItem("wishlist")) || [];
+      list.push({ name: item, type: "Package" });
+      localStorage.setItem("wishlist", JSON.stringify(list));
+      alert("Added to wishlist!");
+    }
+
+    // Submit Suggestion Form
     document.getElementById("suggestForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const budget = document.getElementById("budget").value;
@@ -243,33 +237,38 @@
       const date = document.getElementById("weddingDate").value;
       const msg = document.getElementById("suggestionMsg");
 
-      // Date validation: at least 14 days ahead
       const selectedDate = new Date(date);
       const today = new Date();
-      const minDate = new Date(today.setDate(today.getDate() + 14));
+      const minDate = new Date();
+      minDate.setDate(today.getDate() + 14);
       if (selectedDate < minDate) {
         msg.style.color = "red";
         msg.textContent = "Please choose a date at least 14 days from today.";
         return;
       }
 
-      const data = { budget, location, date };
+      const formData = new FormData();
+      formData.append("budget", budget);
+      formData.append("location", location);
+      formData.append("date", date);
 
       fetch("https://script.google.com/macros/s/AKfycbwBZHg9Q5qFehBbXNEQF96tzwOjSaionhaRNtxYn0jPFhtj1VYLkWxR7b4_9NU5z2cv/exec", {
         method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
+        body: formData
       })
-      .then(res => res.json())
-      .then(response => {
-        msg.style.color = "green";
-        msg.textContent = "Thank you! We'll suggest a perfect package soon.";
-        document.getElementById("suggestForm").reset();
-      })
-      .catch(err => {
-        msg.style.color = "red";
-        msg.textContent = "Something went wrong. Try again.";
-      });
+        .then((res) => {
+          if (!res.ok) throw new Error("Network error");
+          return res.text();
+        })
+        .then((text) => {
+          msg.style.color = "green";
+          msg.textContent = "Thank you! We'll suggest a perfect package soon.";
+          document.getElementById("suggestForm").reset();
+        })
+        .catch((err) => {
+          msg.style.color = "red";
+          msg.textContent = "Something went wrong. Try again.";
+        });
     });
   </script>
 </body>
