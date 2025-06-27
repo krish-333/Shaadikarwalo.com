@@ -2,97 +2,250 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>View Account - ShaadiKarwalo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>View Account – ShaadiKarwalo</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
+      margin: 0;
       background: #fb6162;
       color: white;
+    }
+    header {
+      background: #ff5f5f;
+      padding: 1rem;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+    }
+    .logo-container img {
+      width: 60px;
+      margin-right: 10px;
+      border-radius: 8px;
+      border: 2px solid #fff;
+    }
+    .logo-container h1, .logo-container p {
       margin: 0;
-      padding: 2rem;
+    }
+    .logo-container p {
+      font-size: 0.8rem;
+      font-style: italic;
+    }
+
+    nav {
+      background: white;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fb6162;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    nav a.login {
+      border: 1px solid #fb6162;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+    }
+
+    .account-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      color: #fb6162;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      padding: 0.5rem;
+      z-index: 1;
+      right: 0;
+    }
+    .dropdown-content button {
+      background: none;
+      border: none;
+      color: #fb6162;
+      font-weight: bold;
+      display: block;
+      padding: 0.4rem;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+    }
+    .dropdown-content button:hover {
+      background-color: #ffe5e5;
+    }
+    .account-dropdown:hover .dropdown-content {
+      display: block;
     }
 
     .form-container {
+      max-width: 500px;
       background: white;
-      color: #333;
-      max-width: 600px;
-      margin: auto;
+      margin: 2rem auto;
       padding: 2rem;
       border-radius: 10px;
+      color: #333;
     }
-
-    h2 {
-      color: #fb6162;
+    .form-container h2 {
       text-align: center;
+      color: #fb6162;
     }
-
-    input, select, textarea {
+    input, select {
       width: 100%;
-      margin-bottom: 15px;
       padding: 10px;
-      border-radius: 5px;
+      margin: 10px 0;
       border: 1px solid #ccc;
+      border-radius: 4px;
     }
-
     button {
       background: #fb6162;
       color: white;
-      border: none;
       padding: 10px 20px;
-      border-radius: 5px;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
     }
-
-    .success {
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .success-msg {
       color: green;
       text-align: center;
-      margin-top: 10px;
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo-container">
+        <img src="assets/logo.png" alt="Logo" />
+        <div>
+          <h1>ShaadiKarwalo</h1>
+          <p>Aap bas jodi banao, shaadi hum karwa denge</p>
+        </div>
+      </a>
+      <span id="accountSetup" class="account-dropdown" style="display: none;">
+        <span style="cursor: pointer;">👤 Account</span>
+        <div class="dropdown-content">
+          <button onclick="location.href='viewaccount.html'">View Account</button>
+          <button onclick="location.href='changepassword.html'">Change Password</button>
+          <button onclick="localStorage.removeItem('shaadiUser');location.href='index.html';">Logout</button>
+        </div>
+      </span>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="venues.html">Venues</a>
+    <a href="catering.html">Catering</a>
+    <a href="decor.html">Decor</a>
+    <a href="makeup.html">Makeup</a>
+    <a href="addons.html">Add‑Ons</a>
+    <a href="wishlist.html">Wishlist ❤️</a>
+    <a href="login.html" class="login" id="loginBtn">Login</a>
+  </nav>
+
   <div class="form-container">
-    <h2>Your Account Details</h2>
+    <h2>Account Details</h2>
     <form id="accountForm">
-      <input type="text" name="name" placeholder="Full Name" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="tel" name="phone" placeholder="Phone Number" required />
-      <input type="date" name="weddingDate" placeholder="Wedding Date" required />
-      <input type="text" name="city" placeholder="City" required />
-      <select name="budget" required>
-        <option value="">Select Budget</option>
-        <option value="Under ₹8L">Under ₹8L</option>
-        <option value="₹8L – ₹16L">₹8L – ₹16L</option>
-        <option value="₹16L – ₹25L">₹16L – ₹25L</option>
-        <option value="₹25L+">₹25L+</option>
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="date" id="weddingDate" required />
+      <select id="location" required>
+        <option value="">Select Wedding City</option>
+        <option>Mumbai</option>
+        <option>Delhi</option>
+        <option>Bangalore</option>
+        <option>Chennai</option>
+        <option>Kolkata</option>
       </select>
-      <textarea name="message" placeholder="Any other details..." rows="4"></textarea>
-      <button type="submit">Submit</button>
-      <p id="responseMsg" class="success"></p>
+      <button type="submit" id="submitBtn">Save Details</button>
     </form>
+    <button id="changeDetailsBtn" style="display:none;">Change Details</button>
+    <p class="success-msg" id="successMsg"></p>
   </div>
 
   <script>
-    const form = document.getElementById("accountForm");
-    const responseMsg = document.getElementById("responseMsg");
+    const form = document.getElementById('accountForm');
+    const nameField = document.getElementById('name');
+    const emailField = document.getElementById('email');
+    const dateField = document.getElementById('weddingDate');
+    const locationField = document.getElementById('location');
+    const successMsg = document.getElementById('successMsg');
+    const changeBtn = document.getElementById('changeDetailsBtn');
 
-    form.addEventListener("submit", e => {
+    const today = new Date();
+    today.setDate(today.getDate() + 14); // 2 weeks from now
+    dateField.min = today.toISOString().split("T")[0];
+
+    // Load saved data
+    const saved = JSON.parse(localStorage.getItem("userDetails"));
+    if (saved) {
+      nameField.value = saved.name;
+      emailField.value = saved.email;
+      dateField.value = saved.weddingDate;
+      locationField.value = saved.location;
+
+      nameField.disabled = true;
+      emailField.disabled = true;
+      dateField.disabled = true;
+      locationField.disabled = true;
+      document.getElementById("submitBtn").style.display = "none";
+      changeBtn.style.display = "block";
+    }
+
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const formData = new FormData(form);
+      const userData = {
+        name: nameField.value,
+        email: emailField.value,
+        weddingDate: dateField.value,
+        location: locationField.value
+      };
+      localStorage.setItem("userDetails", JSON.stringify(userData));
 
+      // Send to Google Sheets
       fetch("https://script.google.com/macros/s/AKfycbzIT56V7mG0JkThw8NuZccFWeicX44p2W-0iey1FWCRnQqBLTxpHYeodjCFMFAGxm73hg/exec", {
         method: "POST",
-        body: new URLSearchParams(formData),
-      })
-      .then(() => {
-        responseMsg.textContent = "Your details were submitted successfully!";
-        form.reset();
-      })
-      .catch(() => {
-        responseMsg.textContent = "There was an error submitting your details.";
-        responseMsg.style.color = "red";
+        body: new URLSearchParams(userData)
+      }).then(() => {
+        successMsg.textContent = "Details saved successfully!";
+        form.querySelectorAll("input, select").forEach(el => el.disabled = true);
+        document.getElementById("submitBtn").style.display = "none";
+        changeBtn.style.display = "block";
       });
     });
+
+    changeBtn.addEventListener("click", () => {
+      nameField.disabled = false;
+      emailField.disabled = false;
+      dateField.disabled = false;
+      locationField.disabled = false;
+      document.getElementById("submitBtn").style.display = "block";
+      changeBtn.style.display = "none";
+    });
+
+    // Account visibility
+    const currentUser = localStorage.getItem("shaadiUser");
+    if (currentUser) {
+      document.getElementById("loginBtn")?.remove();
+      document.getElementById("accountSetup").style.display = "inline-block";
+    }
   </script>
 </body>
 </html>
