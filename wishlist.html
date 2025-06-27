@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Your Wishlist – ShaadiKarwalo</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #fff;
-      color: #333;
+      background: #fb6162;
+      color: white;
     }
     header {
       background: #ff5f5f;
@@ -18,12 +18,13 @@
     .header-container {
       display: flex;
       align-items: center;
+      justify-content: space-between;
     }
     .logo-container {
       display: flex;
       align-items: center;
-      color: white;
       text-decoration: none;
+      color: white;
     }
     .logo-container img {
       width: 60px;
@@ -33,7 +34,6 @@
     }
     .logo-container h1, .logo-container p {
       margin: 0;
-      color: white;
     }
     .logo-container p {
       font-size: 0.8rem;
@@ -59,22 +59,56 @@
       border: 1px solid #fb6162;
     }
 
+    .account-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      color: #fb6162;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      padding: 0.5rem;
+      z-index: 1;
+      right: 0;
+    }
+    .dropdown-content button {
+      background: none;
+      border: none;
+      color: #fb6162;
+      font-weight: bold;
+      display: block;
+      padding: 0.4rem;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+    }
+    .dropdown-content button:hover {
+      background-color: #ffe5e5;
+    }
+    .account-dropdown:hover .dropdown-content {
+      display: block;
+    }
+
     .wishlist {
       max-width: 700px;
       margin: 2rem auto;
       padding: 1rem;
-      background: #fff5f5;
+      background: white;
       border-radius: 8px;
+      color: #333;
     }
     .wishlist h2 {
       color: #fb6162;
+      text-align: center;
     }
     .wishlist ul {
       list-style: none;
       padding: 0;
     }
     .wishlist li {
-      background: white;
+      background: #fff0f0;
       padding: 0.8rem;
       margin-bottom: 0.8rem;
       border: 1px solid #ddd;
@@ -83,6 +117,7 @@
     .total {
       font-weight: bold;
       margin-top: 1rem;
+      text-align: center;
     }
   </style>
 </head>
@@ -96,6 +131,14 @@
           <p>Aap bas jodi banao, shaadi hum karwa denge</p>
         </div>
       </a>
+      <span id="accountSetup" class="account-dropdown" style="display: none;">
+        <span style="cursor: pointer;">👤 Account</span>
+        <div class="dropdown-content">
+          <button onclick="location.href='viewaccount.html'">View Account</button>
+          <button onclick="location.href='changepassword.html'">Change Password</button>
+          <button onclick="localStorage.removeItem('shaadiUser');location.reload();">Logout</button>
+        </div>
+      </span>
     </div>
   </header>
 
@@ -111,7 +154,7 @@
   </nav>
 
   <div class="wishlist">
-    <h2>Your Wishlist</h2>
+    <h2>💖 Your Wishlist</h2>
     <ul id="wishlistItems"></ul>
     <div class="total" id="finalTotal"></div>
   </div>
@@ -130,21 +173,10 @@
 
     document.getElementById("finalTotal").innerText = `Final Total: ₹${total}`;
 
-    // Login logic
     const currentUser = localStorage.getItem("shaadiUser");
     if (currentUser) {
       document.getElementById("loginNav")?.remove();
-      const accountDropdown = document.createElement("span");
-      accountDropdown.className = "account-dropdown";
-      accountDropdown.innerHTML = `
-        <span style="cursor: pointer;">👤 Account</span>
-        <div class="dropdown-content">
-          <button onclick="location.href='viewaccount.html'">View Account</button>
-          <button onclick="location.href='changepassword.html'">Change Password</button>
-          <button onclick="localStorage.removeItem('shaadiUser');location.reload();">Logout</button>
-        </div>
-      `;
-      document.querySelector("nav").appendChild(accountDropdown);
+      document.getElementById("accountSetup").style.display = "inline-block";
     }
   </script>
 </body>
