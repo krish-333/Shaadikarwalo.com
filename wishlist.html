@@ -2,42 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Your Wishlist – ShaadiKarwalo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: #fb6162;
       color: white;
+      margin: 0;
+      padding: 0;
     }
+
     header {
       background: #ff5f5f;
       padding: 1rem;
-    }
-    .header-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+
     .logo-container {
       display: flex;
       align-items: center;
       text-decoration: none;
       color: white;
     }
+
     .logo-container img {
       width: 60px;
+      border: 3px solid white;
+      border-radius: 10px;
       margin-right: 10px;
-      border-radius: 8px;
-      border: 2px solid #fff;
     }
-    .logo-container h1, .logo-container p {
+
+    .logo-container h1 {
       margin: 0;
-    }
-    .logo-container p {
-      font-size: 0.8rem;
-      font-style: italic;
+      font-size: 1.5rem;
+      color: white;
     }
 
     nav {
@@ -48,98 +49,61 @@
       gap: 1rem;
       flex-wrap: wrap;
     }
+
     nav a {
       color: #fb6162;
       font-weight: bold;
       text-decoration: none;
-      padding: 0.3rem 0.8rem;
+      padding: 0.2rem 0.6rem;
       border-radius: 4px;
     }
-    nav a.login {
-      border: 1px solid #fb6162;
-    }
 
-    .account-dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #fff;
-      color: #fb6162;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-      padding: 0.5rem;
-      z-index: 1;
-      right: 0;
-    }
-    .dropdown-content button {
-      background: none;
-      border: none;
-      color: #fb6162;
-      font-weight: bold;
-      display: block;
-      padding: 0.4rem;
-      cursor: pointer;
-      text-align: left;
-      width: 100%;
-    }
-    .dropdown-content button:hover {
-      background-color: #ffe5e5;
-    }
-    .account-dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .wishlist {
-      max-width: 700px;
-      margin: 2rem auto;
-      padding: 1rem;
+    .wishlist-box {
       background: white;
-      border-radius: 8px;
       color: #333;
+      padding: 1.2rem;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: 2rem auto;
     }
-    .wishlist h2 {
+
+    .wishlist-item {
+      background: #ffecec;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .wishlist-item h3 {
+      margin: 0 0 0.5rem 0;
       color: #fb6162;
-      text-align: center;
     }
-    .wishlist ul {
-      list-style: none;
-      padding: 0;
+
+    .remove-btn {
+      background: #fb6162;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 5px;
     }
-    .wishlist li {
-      background: #fff0f0;
-      padding: 0.8rem;
-      margin-bottom: 0.8rem;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-    }
+
     .total {
+      font-size: 1.2rem;
       font-weight: bold;
       margin-top: 1rem;
       text-align: center;
+      color: #222;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="header-container">
-      <a href="index.html" class="logo-container">
-        <img src="assets/logo.png" alt="Logo" />
-        <div>
-          <h1>ShaadiKarwalo</h1>
-          <p>Aap bas jodi banao, shaadi hum karwa denge</p>
-        </div>
-      </a>
-      <span id="accountSetup" class="account-dropdown" style="display: none;">
-        <span style="cursor: pointer;">👤 Account</span>
-        <div class="dropdown-content">
-          <button onclick="location.href='viewaccount.html'">View Account</button>
-          <button onclick="location.href='changepassword.html'">Change Password</button>
-          <button onclick="localStorage.removeItem('shaadiUser');location.reload();">Logout</button>
-        </div>
-      </span>
-    </div>
+    <a href="index.html" class="logo-container">
+      <img src="assets/logo.png" alt="Logo">
+      <h1>ShaadiKarwalo</h1>
+    </a>
   </header>
 
   <nav>
@@ -148,36 +112,54 @@
     <a href="catering.html">Catering</a>
     <a href="decor.html">Decor</a>
     <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add‑Ons</a>
-    <a href="wishlist.html">Wishlist ❤️</a>
-    <a href="login.html" id="loginNav" class="login">Login</a>
+    <a href="addons.html">Add-Ons</a>
   </nav>
 
-  <div class="wishlist">
-    <h2>💖 Your Wishlist</h2>
-    <ul id="wishlistItems"></ul>
-    <div class="total" id="finalTotal"></div>
-  </div>
+  <section class="wishlist-box">
+    <h2 style="text-align:center; color:#fb6162;">💖 Your Wishlist</h2>
+    <div id="wishlistItems"></div>
+    <p class="total" id="finalTotal">Final Total: ₹0</p>
+  </section>
 
   <script>
-    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    const list = document.getElementById("wishlistItems");
-    let total = 0;
+    function loadWishlist() {
+      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      const container = document.getElementById("wishlistItems");
+      const totalDisplay = document.getElementById("finalTotal");
+      container.innerHTML = "";
 
-    wishlist.forEach(item => {
-      const li = document.createElement("li");
-      li.innerHTML = `<strong>${item.name}</strong><br>₹${item.cost} × ${item.guests} guests = ₹${item.total}`;
-      total += item.total;
-      list.appendChild(li);
-    });
+      let total = 0;
 
-    document.getElementById("finalTotal").innerText = `Final Total: ₹${total}`;
+      wishlist.forEach((item, index) => {
+        const name = item.name || "Unnamed";
+        const pricePerGuest = parseInt(item.pricePerGuest) || 0;
+        const guests = parseInt(item.guests) || 0;
+        const cost = pricePerGuest * guests;
 
-    const currentUser = localStorage.getItem("shaadiUser");
-    if (currentUser) {
-      document.getElementById("loginNav")?.remove();
-      document.getElementById("accountSetup").style.display = "inline-block";
+        total += cost;
+
+        const box = document.createElement("div");
+        box.className = "wishlist-item";
+        box.innerHTML = `
+          <h3>${name}</h3>
+          <p>₹${pricePerGuest} × ${guests} guests = ₹${cost}</p>
+          <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+        `;
+
+        container.appendChild(box);
+      });
+
+      totalDisplay.textContent = `Final Total: ₹${total}`;
     }
+
+    function removeItem(index) {
+      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      wishlist.splice(index, 1);
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      loadWishlist();
+    }
+
+    window.onload = loadWishlist;
   </script>
 </body>
 </html>
