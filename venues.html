@@ -93,6 +93,7 @@
       height: 180px;
       object-fit: cover;
       background: #eee;
+      border-radius: 10px 10px 0 0;
     }
 
     .card-content {
@@ -192,16 +193,16 @@
 
   <script>
     const venues = [
-      { name: "Grand Palace", cost: 1500, img: "https://source.unsplash.com/300x200/?wedding,venue,1" },
-      { name: "Royal Garden", cost: 1200, img: "https://source.unsplash.com/300x200/?wedding,venue,2" },
-      { name: "The Heritage Hall", cost: 2000, img: "https://source.unsplash.com/300x200/?wedding,venue,3" },
-      { name: "Sunset Pavilion", cost: 1800, img: "https://source.unsplash.com/300x200/?wedding,venue,4" },
-      { name: "Emerald Greens", cost: 1400, img: "https://source.unsplash.com/300x200/?wedding,venue,5" },
-      { name: "Diamond Lawn", cost: 1600, img: "https://source.unsplash.com/300x200/?wedding,venue,6" },
-      { name: "Ocean View Banquet", cost: 1900, img: "https://source.unsplash.com/300x200/?wedding,venue,7" },
-      { name: "Pearl Palace", cost: 1700, img: "https://source.unsplash.com/300x200/?wedding,venue,8" },
-      { name: "Rosewood Hall", cost: 1300, img: "https://source.unsplash.com/300x200/?wedding,venue,9" },
-      { name: "Silver Springs", cost: 1100, img: "https://source.unsplash.com/300x200/?wedding,venue,10" }
+      { name: "Grand Palace", cost: 1500 },
+      { name: "Royal Garden", cost: 1200 },
+      { name: "The Heritage Hall", cost: 2000 },
+      { name: "Sunset Pavilion", cost: 1800 },
+      { name: "Emerald Greens", cost: 1400 },
+      { name: "Diamond Lawn", cost: 1600 },
+      { name: "Ocean View Banquet", cost: 1900 },
+      { name: "Pearl Palace", cost: 1700 },
+      { name: "Rosewood Hall", cost: 1300 },
+      { name: "Silver Springs", cost: 1100 }
     ];
 
     function getWishlist() {
@@ -255,7 +256,7 @@
         const isWishlisted = wishlist.find(item => item.name === v.name);
 
         card.innerHTML = `
-          <img src="${v.img}" alt="${v.name}" onerror="this.src='https://via.placeholder.com/300x200?text=Venue'" />
+          <img src="assets/venue-placeholder.jpg" alt="${v.name}" />
           <div class="card-content">
             <div>
               <h3>${v.name}</h3>
