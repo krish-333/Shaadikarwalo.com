@@ -55,9 +55,15 @@
       border-radius: 5px;
       cursor: pointer;
     }
+    .message {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
     .success {
       color: green;
-      margin-top: 1rem;
+    }
+    .error {
+      color: red;
     }
   </style>
 </head>
@@ -74,7 +80,7 @@
       <input type="tel" id="phone" placeholder="Phone Number" required />
       <input type="password" id="password" placeholder="Password" required />
       <button type="submit">Login / Register</button>
-      <p id="loginMsg" class="success"></p>
+      <p id="loginMsg" class="message"></p>
     </form>
   </div>
 
@@ -83,25 +89,39 @@
       e.preventDefault();
       const phone = document.getElementById("phone").value.trim();
       const password = document.getElementById("password").value.trim();
+      const msg = document.getElementById("loginMsg");
 
-      const data = { phone, password };
+      let users = JSON.parse(localStorage.getItem("shaadiUsers")) || {};
 
-      // Store in Google Sheets
-      fetch("https://script.google.com/macros/s/AKfycbwwMCxrTFq-N76u3scaXLCZmKLTVQT5jNW_epO0AjtKwqmqLmIUI0kSu-5_f40pMZoW/exec", {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      if (users[phone]) {
+        // Existing user - check password
+        if (users[phone] === password) {
+          msg.textContent = "Login Successful!";
+          msg.className = "message success";
+          localStorage.setItem("shaadiUser", phone);
+          setTimeout(() => window.location.href = "index.html", 1000);
+        } else {
+          msg.textContent = "Incorrect password!";
+          msg.className = "message error";
+        }
+      } else {
+        // New user - save and register
+        users[phone] = password;
+        localStorage.setItem("shaadiUsers", JSON.stringify(users));
+        localStorage.setItem("shaadiUser", phone);
+        msg.textContent = "Registered & Logged In!";
+        msg.className = "message success";
 
-      // Simulate login by saving to localStorage
-      localStorage.setItem("shaadiUser", phone);
-      document.getElementById("loginMsg").textContent = "Login Successful!";
-      document.getElementById("loginForm").reset();
+        // Save to Google Sheets too
+        fetch("https://script.google.com/macros/s/AKfycbwwMCxrTFq-N76u3scaXLCZmKLTVQT5jNW_epO0AjtKwqmqLmIUI0kSu-5_f40pMZoW/exec", {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ phone, password }),
+        });
 
-      setTimeout(() => {
-        window.location.href = "index.html";
-      }, 1000);
+        setTimeout(() => window.location.href = "index.html", 1000);
+      }
     });
   </script>
 </body>
