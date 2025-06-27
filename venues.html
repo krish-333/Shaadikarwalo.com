@@ -82,8 +82,10 @@
       color: #333;
       border-radius: 10px;
       width: 300px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
     }
 
     .card img {
@@ -95,6 +97,10 @@
 
     .card-content {
       padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .card-content h3 {
@@ -206,48 +212,74 @@
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
     }
 
-    function toggleWishlist(button, itemName) {
+    function toggleWishlist(button, item, guests, totalSpan) {
       let wishlist = getWishlist();
-      const index = wishlist.indexOf(itemName);
-      if (index === -1) {
-        wishlist.push(itemName);
+      const exists = wishlist.find(v => v.name === item.name);
+      const guestCount = parseInt(guests.value) || 0;
+      const total = item.cost * guestCount;
+
+      if (!guestCount || total === 0) {
+        alert("Please enter number of guests before liking.");
+        return;
+      }
+
+      if (!exists) {
+        wishlist.push({
+          name: item.name,
+          costPerGuest: item.cost,
+          guests: guestCount,
+          total: total
+        });
         button.textContent = "❤️";
       } else {
-        wishlist.splice(index, 1);
+        wishlist = wishlist.filter(v => v.name !== item.name);
         button.textContent = "🤍";
       }
+
       saveWishlist(wishlist);
     }
 
-    function calcTotal(input, perCost) {
-      const total = input.closest(".card-content").querySelector(".total");
+    function calcTotal(input, perCost, totalSpan) {
       const guests = parseInt(input.value) || 0;
-      total.textContent = guests * perCost;
+      totalSpan.textContent = guests * perCost;
     }
 
     function renderVenues() {
       const container = document.getElementById("venueList");
       const wishlist = getWishlist();
+
       venues.forEach(v => {
-        const div = document.createElement("div");
-        div.className = "card";
-        const isWishlisted = wishlist.includes(v.name);
-        div.innerHTML = `
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const isWishlisted = wishlist.find(item => item.name === v.name);
+
+        card.innerHTML = `
           <img src="${v.img}" alt="${v.name}" onerror="this.src='https://via.placeholder.com/300x200?text=Venue'" />
           <div class="card-content">
-            <h3>${v.name}</h3>
-            <p>Beautiful ${v.name.toLowerCase()} perfect for weddings and receptions.</p>
-            <div class="cost-row">
-              <div class="input-section">
-                <span>₹${v.cost}/guest</span>
-                <input type="number" min="1" placeholder="Guests" onchange="calcTotal(this, ${v.cost})" />
+            <div>
+              <h3>${v.name}</h3>
+              <p>Beautiful ${v.name.toLowerCase()} perfect for weddings and receptions.</p>
+              <div class="cost-row">
+                <div class="input-section">
+                  <span>₹${v.cost}/guest</span>
+                  <input type="number" placeholder="Guests" min="1" />
+                </div>
+                <button class="like-btn">${isWishlisted ? "❤️" : "🤍"}</button>
               </div>
-              <button class="like-btn" onclick="toggleWishlist(this, '${v.name}')">${isWishlisted ? "❤️" : "🤍"}</button>
+              <div class="total-price">Total: ₹<span class="total">0</span></div>
             </div>
-            <div class="total-price">Total: ₹<span class="total">0</span></div>
           </div>
         `;
-        container.appendChild(div);
+
+        const input = card.querySelector("input");
+        const totalSpan = card.querySelector(".total");
+        const btn = card.querySelector(".like-btn");
+
+        input.addEventListener("input", () => calcTotal(input, v.cost, totalSpan));
+        btn.addEventListener("click", () => toggleWishlist(btn, v, input, totalSpan));
+
+        container.appendChild(card);
       });
     }
 
