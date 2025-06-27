@@ -273,10 +273,10 @@
       const index = wishlist.indexOf(itemName);
       if (index === -1) {
         wishlist.push(itemName);
-        button.textContent = '❤️ Liked';
+        button.textContent = '❤️';
       } else {
         wishlist.splice(index, 1);
-        button.textContent = '🤍 Like';
+        button.textContent = '🤍';
       }
       saveWishlist(wishlist);
       renderWishlist();
