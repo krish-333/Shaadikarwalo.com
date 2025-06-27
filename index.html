@@ -58,6 +58,40 @@
     }
 
     .logo-link { text-decoration: none; color: white !important; }
+
+    #suggestForm {
+      background: white;
+      color: #333;
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    #suggestForm input,
+    #suggestForm select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    #suggestForm button {
+      background: #fb6162;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #suggestionMsg {
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -127,6 +161,24 @@
     </div>
   </section>
 
+  <!-- Suggestion Form Section -->
+  <section>
+    <form id="suggestForm">
+      <h2 style="text-align:center;color:#fb6162;">Let's Find the Perfect Package for You</h2>
+      <label for="budget">Your Budget (₹):</label>
+      <input type="number" id="budget" required placeholder="Enter your wedding budget" />
+
+      <label for="location">Wedding Location:</label>
+      <input type="text" id="location" required placeholder="Enter preferred location" />
+
+      <label for="weddingDate">Wedding Date:</label>
+      <input type="date" id="weddingDate" required />
+
+      <button type="submit">Submit</button>
+      <p id="suggestionMsg"></p>
+    </form>
+  </section>
+
   <!-- Change Password Section -->
   <section id="changePasswordSection">
     <h3>Change Password</h3>
@@ -155,9 +207,8 @@
     }
 
     function viewAccount() {
-  window.location.href = "viewaccount.html";
+      window.location.href = "viewaccount.html";
     }
-
 
     function showChangePassword() {
       document.getElementById("changePasswordSection").style.display = "block";
@@ -183,6 +234,43 @@
     function scrollToWishlist() {
       window.location.href = "wishlist.html";
     }
+
+    // Handle Suggestion Form Submission
+    document.getElementById("suggestForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const budget = document.getElementById("budget").value;
+      const location = document.getElementById("location").value;
+      const date = document.getElementById("weddingDate").value;
+      const msg = document.getElementById("suggestionMsg");
+
+      // Date validation: at least 14 days ahead
+      const selectedDate = new Date(date);
+      const today = new Date();
+      const minDate = new Date(today.setDate(today.getDate() + 14));
+      if (selectedDate < minDate) {
+        msg.style.color = "red";
+        msg.textContent = "Please choose a date at least 14 days from today.";
+        return;
+      }
+
+      const data = { budget, location, date };
+
+      fetch("https://script.google.com/macros/s/AKfycbwBZHg9Q5qFehBbXNEQF96tzwOjSaionhaRNtxYn0jPFhtj1VYLkWxR7b4_9NU5z2cv/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(res => res.json())
+      .then(response => {
+        msg.style.color = "green";
+        msg.textContent = "Thank you! We'll suggest a perfect package soon.";
+        document.getElementById("suggestForm").reset();
+      })
+      .catch(err => {
+        msg.style.color = "red";
+        msg.textContent = "Something went wrong. Try again.";
+      });
+    });
   </script>
 </body>
 </html>
