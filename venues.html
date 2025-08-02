@@ -2,187 +2,160 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Venues | ShaadiKarwalo</title>
-  <link rel="icon" href="assets/favicon2.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShaadiKarwalo | Venues</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="assets/favicon2.png" />
   <style>
-    :root {
-      --primary: #ff5a5f;
-      --secondary: #fff0f0;
-      --text-dark: #333;
-      --text-light: #777;
-      --bg: #ffffff;
-    }
-
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg);
-      color: var(--text-dark);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fffaf5;
+      color: #333;
     }
 
-    nav {
-      background-color: var(--primary);
-      padding: 12px;
+    header {
+      background-color: #d72323;
+      padding: 10px 20px;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
       align-items: center;
+      justify-content: space-between;
+      color: white;
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    header .logo img {
+      height: 40px;
     }
 
     nav a {
       color: white;
+      margin: 0 10px;
       text-decoration: none;
-      margin: 6px 12px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .page-title {
+      text-align: center;
+      background-color: #d72323;
+      color: white;
+      padding: 20px 0;
+      font-size: 28px;
       font-weight: bold;
     }
 
-    h1 {
-      text-align: center;
-      padding: 20px;
-      color: var(--primary);
-    }
-
-    .container {
+    .venue-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 20px;
-      padding: 20px;
+      padding: 30px;
     }
 
-    .card {
-      border: 1px solid #ddd;
-      border-radius: 10px;
+    .venue-card {
+      background-color: #fff;
+      border-radius: 8px;
       overflow: hidden;
-      background-color: var(--secondary);
-      padding: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .card img {
+    .venue-card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
-      border-radius: 8px;
     }
 
-    .card h3 {
-      margin: 10px 0 5px;
-      color: var(--primary);
+    .venue-card-content {
+      padding: 15px;
     }
 
-    .card input {
-      width: 80px;
-      padding: 4px;
-      margin-right: 10px;
-    }
-
-    .buttons {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .buttons button {
-      padding: 6px 12px;
-      border: none;
-      border-radius: 4px;
-      background-color: var(--primary);
-      color: white;
-      cursor: pointer;
-    }
-
-    .wishlist {
+    .venue-card-content h3 {
+      margin: 0;
       font-size: 20px;
-      color: #999;
-      cursor: pointer;
+      color: #d72323;
     }
 
-    .wishlist.liked {
-      color: red;
+    .venue-card-content p {
+      font-size: 14px;
+      margin: 10px 0;
+    }
+
+    .venue-card-content button {
+      background-color: #d72323;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: var(--primary);
+      background-color: #d72323;
       color: white;
+      padding: 10px 0;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo">
+      <img src="assets/logo.png" alt="ShaadiKarwalo" />
+      <h1>ShaadiKarwalo</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="venues.html">Venues</a>
+      <a href="catering.html">Catering</a>
+      <a href="makeup.html">Makeup</a>
+      <a href="decor.html">Decor</a>
+      <a href="addons.html">Add-Ons</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="venues.html">Venues</a>
-  <a href="catering.html">Catering</a>
-  <a href="decor.html">Decor</a>
-  <a href="makeup.html">Makeup</a>
-  <a href="addons.html">Add-ons</a>
-  <a href="login.html">Login</a>
-  <a href="account.html">View Account</a>
-  <span class="wishlist-icon">
-    <a href="wishlist.html" style="color: white; text-decoration: none;">♥ Wishlist</a>
-  </span>
-</nav>
+  <div class="page-title">Venues</div>
 
-<h1>Explore Venues</h1>
-
-<div class="container">
-  <!-- Venue cards -->
-  <!-- Dummy repeated cards -->
-  <script>
-    const venues = [
-      { name: "The Royal Palace", price: 1500, image: "https://source.unsplash.com/featured/?wedding,venue1" },
-      { name: "Grand Garden", price: 1200, image: "https://source.unsplash.com/featured/?wedding,venue2" },
-      { name: "Seaside Retreat", price: 1800, image: "https://source.unsplash.com/featured/?wedding,venue3" },
-      { name: "Mountain Bliss", price: 1000, image: "https://source.unsplash.com/featured/?wedding,venue4" },
-      { name: "Urban Banquet", price: 1300, image: "https://source.unsplash.com/featured/?wedding,venue5" },
-      { name: "Vintage Villa", price: 1100, image: "https://source.unsplash.com/featured/?wedding,venue6" },
-      { name: "Cultural Courtyard", price: 1400, image: "https://source.unsplash.com/featured/?wedding,venue7" },
-      { name: "Lakeside Venue", price: 1700, image: "https://source.unsplash.com/featured/?wedding,venue8" },
-      { name: "Sunset Pavilion", price: 1600, image: "https://source.unsplash.com/featured/?wedding,venue9" },
-      { name: "Rustic Garden", price: 1250, image: "https://source.unsplash.com/featured/?wedding,venue10" },
-    ];
-
-    document.write(venues.map((v, i) => `
-      <div class="card">
-        <img src="${v.image}" alt="${v.name}">
-        <h3>${v.name}</h3>
-        <p>₹${v.price} per person</p>
-        <label>Guests: <input type="number" min="1" id="guests-${i}" value="100" onchange="calculate(${i}, ${v.price})"></label>
-        <p>Total: ₹<span id="total-${i}">${v.price * 100}</span></p>
-        <div class="buttons">
-          <button onclick="alert('More details coming soon!')">Know More</button>
-          <span class="wishlist" onclick="toggleWishlist(this, '${v.name}')">♥</span>
-        </div>
+  <div class="venue-grid">
+    <!-- Dummy Venue Cards -->
+    <div class="venue-card">
+      <img src="assets/venue1.jpg" alt="Venue 1" />
+      <div class="venue-card-content">
+        <h3>Royal Palace</h3>
+        <p>Perfect for grand weddings with 500+ guests.</p>
+        <button>Know More</button>
       </div>
-    `).join(''));
-  </script>
-</div>
+    </div>
+    <div class="venue-card">
+      <img src="assets/venue2.jpg" alt="Venue 2" />
+      <div class="venue-card-content">
+        <h3>Lakeview Garden</h3>
+        <p>Scenic lakeside venue for dreamy weddings.</p>
+        <button>Know More</button>
+      </div>
+    </div>
+    <div class="venue-card">
+      <img src="assets/venue3.jpg" alt="Venue 3" />
+      <div class="venue-card-content">
+        <h3>City Banquet</h3>
+        <p>Modern interiors with central city location.</p>
+        <button>Know More</button>
+      </div>
+    </div>
+    <!-- Add more cards as needed -->
+  </div>
 
-<footer>
-  © 2025 ShaadiKarwalo | 📞 9833405618 | ✉️ shaadikarwaalo@gmail.com
-</footer>
-
-<script>
-  function calculate(i, price) {
-    const guests = document.getElementById(`guests-${i}`).value;
-    document.getElementById(`total-${i}`).innerText = guests * price;
-  }
-
-  function toggleWishlist(el, name) {
-    el.classList.toggle("liked");
-    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    if (wishlist.includes(name)) {
-      wishlist = wishlist.filter(item => item !== name);
-    } else {
-      wishlist.push(name);
-    }
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  }
-</script>
-
+  <footer>
+    <p>© 2025 ShaadiKarwalo | 📞 9833405618 | ✉️ shaadikarwaalo@gmail.com</p>
+  </footer>
 </body>
 </html>
