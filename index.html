@@ -153,6 +153,10 @@
       cursor: pointer;
     }
 
+    .card button:hover {
+      background-color: var(--accent);
+    }
+
     .about p {
       max-width: 800px;
       margin: 0 auto;
@@ -209,21 +213,21 @@
     <h2>ShaadiKarwalo</h2>
   </div>
   <nav>
-    <a href="#">Home</a>
-    <a href="#">Venues</a>
-    <a href="#">Catering</a>
-    <a href="#">Decor</a>
-    <a href="#">Makeup</a>
-    <a href="#">Add-ons</a>
-    <a href="#">Login</a>
-    <span class="wishlist-icon">♥ Wishlist</span>
+    <a href="index.html">Home</a>
+    <a href="venues.html">Venues</a>
+    <a href="catering.html">Catering</a>
+    <a href="decor.html">Decor</a>
+    <a href="makeup.html">Makeup</a>
+    <a href="addons.html">Add-ons</a>
+    <a href="login.html">Login</a>
+    <span class="wishlist-icon"><a href="wishlist.html" style="color: var(--primary); text-decoration: none;">♥ Wishlist</a></span>
   </nav>
 </header>
 
 <section class="hero">
   <h1>Plan Your Perfect Wedding</h1>
   <p>All-inclusive wedding packages tailored to your dreams and budget</p>
-  <button>Explore Packages</button>
+  <button onclick="window.location.href='packages.html'">Explore Packages</button>
 </section>
 
 <section class="packages">
@@ -232,22 +236,22 @@
     <div class="card">
       <h3>Budget Bliss</h3>
       <p>For small weddings under ₹8L — simple, elegant, and stress-free.</p>
-      <button>Know More</button>
+      <button onclick="location.href='package-budget.html'">Know More</button>
     </div>
     <div class="card">
       <h3>Classic Charm</h3>
       <p>Mid-range packages with everything you need for a perfect celebration.</p>
-      <button>Know More</button>
+      <button onclick="location.href='package-classic.html'">Know More</button>
     </div>
     <div class="card">
       <h3>Royal Grandeur</h3>
       <p>Lavish ceremonies with royal themes and top-tier arrangements.</p>
-      <button>Know More</button>
+      <button onclick="location.href='package-royal.html'">Know More</button>
     </div>
     <div class="card">
       <h3>Luxury Legacy</h3>
       <p>The ultimate premium package for those who want nothing but the best.</p>
-      <button>Know More</button>
+      <button onclick="location.href='package-luxury.html'">Know More</button>
     </div>
   </div>
 </section>
@@ -273,7 +277,3 @@
 
 </body>
 </html>
-
-
-
-
