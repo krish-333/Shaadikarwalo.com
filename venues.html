@@ -2,194 +2,189 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShaadiKarwalo - Venues</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Venues - ShaadiKarwalo</title>
   <link rel="icon" type="image/png" href="assets/favicon2.png" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #fff1f0;
+      font-family: 'Inter', sans-serif;
+      background-color: #fff8f8;
       color: #333;
     }
-
     header {
-      background-color: #a80038;
+      background-color: #d32f2f;
       color: white;
-      padding: 1rem 2rem;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      font-size: 1.5rem;
-      font-weight: bold;
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      margin: 0;
     }
-
     nav a {
       color: white;
+      margin: 0 12px;
       text-decoration: none;
-      margin-left: 1rem;
       font-weight: bold;
     }
-
-    .container {
-      padding: 2rem;
-    }
-
-    h1 {
-      text-align: center;
-      color: #a80038;
-    }
-
-    .venue-card {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin: 1rem 0;
-      padding: 1rem;
-    }
-
-    .venue-card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .venue-info {
-      margin-top: 1rem;
-    }
-
-    .calculator {
-      margin: 1rem 0;
-    }
-
     .wishlist-btn {
-      background-color: #a80038;
-      color: white;
-      padding: 0.5rem 1rem;
+      background: none;
       border: none;
+      color: white;
+      font-size: 20px;
       cursor: pointer;
-      border-radius: 4px;
     }
-
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+      font-family: 'Playfair Display', serif;
+      color: #c2185b;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 0 30px 40px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.02);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .card-body {
+      padding: 15px;
+    }
+    .card h3 {
+      margin: 0;
+      color: #d32f2f;
+      font-family: 'Playfair Display', serif;
+    }
+    .price {
+      margin: 10px 0;
+      font-weight: bold;
+      color: #555;
+    }
+    .card input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .wishlist {
+      background-color: #d32f2f;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
     footer {
-      background-color: #a80038;
+      background-color: #d32f2f;
       color: white;
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-
-    input[type='number'] {
-      width: 80px;
-      padding: 5px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .total-cost {
-      font-weight: bold;
-      color: #333;
+      padding: 20px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">💍 ShaadiKarwalo</div>
-  <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="venues.html">Venues</a>
-    <a href="catering.html">Catering</a>
-    <a href="decor.html">Decor</a>
-    <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add-Ons</a>
-    <a href="wishlist.html">❤️ Wishlist</a>
-    <a href="login.html">Login</a>
-  </nav>
-</header>
+  <header>
+    <h1>ShaadiKarwalo</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="venues.html">Venues</a>
+      <a href="catering.html">Catering</a>
+      <a href="decor.html">Decor</a>
+      <a href="makeup.html">Makeup</a>
+      <a href="addons.html">Add-Ons</a>
+      <a href="login.html">Login</a>
+      <a href="viewaccount.html">Account</a>
+      <button class="wishlist-btn" onclick="window.location.href='index.html#wishlist'">❤️</button>
+    </nav>
+  </header>
 
-<main class="container">
-  <h1>Choose Your Dream Venue</h1>
+  <h2>Choose Your Dream Venue</h2>
+  <div class="container" id="venueContainer"></div>
 
-  <!-- Venue card -->
-  <div class="venue-card" data-name="Royal Palace" data-price="2000">
-    <img src="https://via.placeholder.com/600x300?text=Royal+Palace+Venue" alt="Royal Palace" />
-    <div class="venue-info">
-      <h3>Royal Palace</h3>
-      <p>Elegant royal-themed wedding venue.</p>
-      <div class="calculator">
-        <label>Guests: </label>
-        <input type="number" class="guest-count" min="1" value="100" />
-        <span class="total-cost">Total: ₹200000</span>
-      </div>
-      <button class="wishlist-btn" onclick="addToWishlist(this)">❤️ Add to Wishlist</button>
-    </div>
-  </div>
+  <footer>
+    &copy; 2025 ShaadiKarwalo | Contact: 9833405618 | Email: shaadikarwaalo@gmail.com
+  </footer>
 
-  <!-- Repeat the above block with different venues -->
-  <div class="venue-card" data-name="Beach Bliss" data-price="1800">
-    <img src="https://via.placeholder.com/600x300?text=Beach+Bliss+Venue" alt="Beach Bliss" />
-    <div class="venue-info">
-      <h3>Beach Bliss</h3>
-      <p>Serene beachside wedding vibes.</p>
-      <div class="calculator">
-        <label>Guests: </label>
-        <input type="number" class="guest-count" min="1" value="100" />
-        <span class="total-cost">Total: ₹180000</span>
-      </div>
-      <button class="wishlist-btn" onclick="addToWishlist(this)">❤️ Add to Wishlist</button>
-    </div>
-  </div>
+  <script>
+    const venues = [
+      { name: "Royal Palace", price: 1000, image: "assets/venue1.jpg" },
+      { name: "Dream Garden", price: 850, image: "assets/venue2.jpg" },
+      { name: "Heritage Hall", price: 1200, image: "assets/venue3.jpg" },
+      { name: "Sunset Lawns", price: 950, image: "assets/venue4.jpg" },
+      { name: "Beach View Banquet", price: 1100, image: "assets/venue5.jpg" },
+      { name: "Classic Courtyard", price: 800, image: "assets/venue6.jpg" },
+      { name: "Vintage Vows", price: 1250, image: "assets/venue7.jpg" },
+      { name: "Golden Acres", price: 1400, image: "assets/venue8.jpg" },
+      { name: "City Lights Venue", price: 1050, image: "assets/venue9.jpg" },
+      { name: "Heavenly Halls", price: 950, image: "assets/venue10.jpg" },
+    ];
 
-</main>
+    const container = document.getElementById("venueContainer");
 
-<footer>
-  &copy; 2025 ShaadiKarwalo | 📞 9833405618 | 📧 shaadikarwaalo@gmail.com
-</footer>
-
-<script>
-  // Update total cost based on guests
-  document.querySelectorAll('.guest-count').forEach(input => {
-    input.addEventListener('input', function() {
-      const card = input.closest('.venue-card');
-      const perHead = parseInt(card.getAttribute('data-price'));
-      const guestCount = parseInt(input.value) || 0;
-      const total = guestCount * perHead;
-      card.querySelector('.total-cost').innerText = `Total: ₹${total}`;
+    venues.forEach((venue, index) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${venue.image}" alt="${venue.name}">
+        <div class="card-body">
+          <h3>${venue.name}</h3>
+          <div class="price">₹${venue.price} per guest</div>
+          <input type="number" placeholder="Enter guest count" id="guests${index}" min="1" />
+          <button class="wishlist" onclick="addToWishlist(${index})">Add to Wishlist ❤️</button>
+        </div>
+      `;
+      container.appendChild(card);
     });
-  });
 
-  // Add to wishlist
-  function addToWishlist(button) {
-    const card = button.closest('.venue-card');
-    const name = card.getAttribute('data-name');
-    const price = card.getAttribute('data-price');
-    const guests = card.querySelector('.guest-count').value;
-    const totalCost = guests * price;
+    function addToWishlist(index) {
+      const guestInput = document.getElementById(`guests${index}`);
+      const guestCount = parseInt(guestInput.value);
+      if (isNaN(guestCount) || guestCount <= 0) {
+        alert("Please enter a valid number of guests.");
+        return;
+      }
+      const selected = venues[index];
+      const totalPrice = guestCount * selected.price;
 
-    const item = {
-      name,
-      price,
-      guests,
-      totalCost,
-      type: "Venue"
-    };
+      const item = {
+        name: selected.name,
+        total: totalPrice,
+        guests: guestCount,
+        image: selected.image,
+        type: "Venue"
+      };
 
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    wishlist.push(item);
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    alert(`${name} added to wishlist!`);
-  }
-</script>
+      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      wishlist.push(item);
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      alert(`${selected.name} added to wishlist with ₹${totalPrice} total cost.`);
+    }
+  </script>
 
 </body>
 </html>
