@@ -2,245 +2,187 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Venues – ShaadiKarwalo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Venues | ShaadiKarwalo</title>
+  <link rel="icon" href="assets/favicon2.png" type="image/png">
   <style>
+    :root {
+      --primary: #ff5a5f;
+      --secondary: #fff0f0;
+      --text-dark: #333;
+      --text-light: #777;
+      --bg: #ffffff;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #fb6162;
-      color: white;
-    }
-    header {
-      background: #ff5f5f;
-      padding: 1rem;
-    }
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo-container {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: white;
-    }
-    .logo-container img {
-      width: 60px;
-      margin-right: 10px;
-      border-radius: 8px;
-      border: 2px solid #fff;
-    }
-    .logo-container h1, .logo-container p {
-      margin: 0;
-    }
-    .logo-container p {
-      font-size: 0.8rem;
-      font-style: italic;
+      background-color: var(--bg);
+      color: var(--text-dark);
     }
 
     nav {
-      background: white;
-      padding: 0.8rem;
+      background-color: var(--primary);
+      padding: 12px;
       display: flex;
-      justify-content: center;
-      gap: 1rem;
       flex-wrap: wrap;
-    }
-    nav a {
-      color: #fb6162;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    nav a.login {
-      border: 1px solid #fb6162;
-      padding: 0.3rem 0.8rem;
-      border-radius: 4px;
+      justify-content: space-around;
+      align-items: center;
     }
 
-    .account-dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #fff;
-      color: #fb6162;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-      padding: 0.5rem;
-      z-index: 1;
-      right: 0;
-    }
-    .dropdown-content button {
-      background: none;
-      border: none;
-      color: #fb6162;
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 6px 12px;
       font-weight: bold;
-      display: block;
-      padding: 0.4rem;
-      cursor: pointer;
-      text-align: left;
-      width: 100%;
     }
-    .dropdown-content button:hover {
-      background-color: #ffe5e5;
-    }
-    .account-dropdown:hover .dropdown-content {
-      display: block;
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      color: var(--primary);
     }
 
     .container {
-      padding: 2rem;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
     }
+
     .card {
-      background: white;
-      border-radius: 12px;
-      padding: 1rem;
-      color: #333;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: var(--secondary);
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
-    .card h3 {
-      color: #fb6162;
-      margin-top: 0.5rem;
-    }
-    .card input {
+
+    .card img {
       width: 100%;
-      margin-top: 5px;
-      padding: 5px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
     }
-    .card .bottom-row {
+
+    .card h3 {
+      margin: 10px 0 5px;
+      color: var(--primary);
+    }
+
+    .card input {
+      width: 80px;
+      padding: 4px;
+      margin-right: 10px;
+    }
+
+    .buttons {
+      margin-top: 10px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      margin-top: 0.5rem;
+      align-items: center;
     }
-    .like-btn {
-      background: #fb6162;
-      color: white;
+
+    .buttons button {
+      padding: 6px 12px;
       border: none;
-      border-radius: 50%;
-      padding: 8px;
+      border-radius: 4px;
+      background-color: var(--primary);
+      color: white;
       cursor: pointer;
-      font-size: 16px;
+    }
+
+    .wishlist {
+      font-size: 20px;
+      color: #999;
+      cursor: pointer;
+    }
+
+    .wishlist.liked {
+      color: red;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: var(--primary);
+      color: white;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <a href="index.html" class="logo-container">
-        <img src="assets/logo.png" alt="Logo" />
-        <div>
-          <h1>ShaadiKarwalo</h1>
-          <p>Aap bas jodi banao, shaadi hum karwa denge</p>
-        </div>
-      </a>
-      <span id="accountSetup" class="account-dropdown" style="display: none;">
-        <span style="cursor: pointer;">👤 Account</span>
-        <div class="dropdown-content">
-          <button onclick="location.href='viewaccount.html'">View Account</button>
-          <button onclick="location.href='changepassword.html'">Change Password</button>
-          <button onclick="localStorage.removeItem('shaadiUser');location.reload();">Logout</button>
-        </div>
-      </span>
-    </div>
-  </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="venues.html">Venues</a>
-    <a href="catering.html">Catering</a>
-    <a href="decor.html">Decor</a>
-    <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add‑Ons</a>
-    <a href="wishlist.html">Wishlist ❤️</a>
-    <a href="login.html" id="loginNav" class="login">Login</a>
-  </nav>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="venues.html">Venues</a>
+  <a href="catering.html">Catering</a>
+  <a href="decor.html">Decor</a>
+  <a href="makeup.html">Makeup</a>
+  <a href="addons.html">Add-ons</a>
+  <a href="login.html">Login</a>
+  <a href="account.html">View Account</a>
+  <span class="wishlist-icon">
+    <a href="wishlist.html" style="color: white; text-decoration: none;">♥ Wishlist</a>
+  </span>
+</nav>
 
-  <div class="container" id="venueList"></div>
+<h1>Explore Venues</h1>
 
+<div class="container">
+  <!-- Venue cards -->
+  <!-- Dummy repeated cards -->
   <script>
     const venues = [
-      { name: "Dream Garden", cost: 1200 },
-      { name: "Skyline Lawn", cost: 900 },
-      { name: "Sunset Point", cost: 1100 },
-      { name: "Heritage Hall", cost: 1300 },
-      { name: "Lush Lawns", cost: 1000 },
-      { name: "Ocean View", cost: 1400 },
-      { name: "Regal Palace", cost: 1600 },
-      { name: "Royal Fort", cost: 1500 },
-      { name: "Golden Greens", cost: 1050 },
-      { name: "Pearl Paradise", cost: 1250 },
+      { name: "The Royal Palace", price: 1500, image: "https://source.unsplash.com/featured/?wedding,venue1" },
+      { name: "Grand Garden", price: 1200, image: "https://source.unsplash.com/featured/?wedding,venue2" },
+      { name: "Seaside Retreat", price: 1800, image: "https://source.unsplash.com/featured/?wedding,venue3" },
+      { name: "Mountain Bliss", price: 1000, image: "https://source.unsplash.com/featured/?wedding,venue4" },
+      { name: "Urban Banquet", price: 1300, image: "https://source.unsplash.com/featured/?wedding,venue5" },
+      { name: "Vintage Villa", price: 1100, image: "https://source.unsplash.com/featured/?wedding,venue6" },
+      { name: "Cultural Courtyard", price: 1400, image: "https://source.unsplash.com/featured/?wedding,venue7" },
+      { name: "Lakeside Venue", price: 1700, image: "https://source.unsplash.com/featured/?wedding,venue8" },
+      { name: "Sunset Pavilion", price: 1600, image: "https://source.unsplash.com/featured/?wedding,venue9" },
+      { name: "Rustic Garden", price: 1250, image: "https://source.unsplash.com/featured/?wedding,venue10" },
     ];
 
-    const list = document.getElementById("venueList");
-
-    venues.forEach(venue => {
-      const card = document.createElement("div");
-      card.className = "card";
-
-      const guestInput = document.createElement("input");
-      guestInput.type = "number";
-      guestInput.placeholder = "Number of guests";
-
-      const totalPara = document.createElement("p");
-      totalPara.textContent = "Total: ₹0";
-
-      guestInput.addEventListener("input", () => {
-        const guests = parseInt(guestInput.value) || 0;
-        const total = guests * venue.cost;
-        totalPara.textContent = `Total: ₹${total}`;
-      });
-
-      const likeBtn = document.createElement("button");
-      likeBtn.className = "like-btn";
-      likeBtn.innerHTML = "🤍";
-
-      likeBtn.addEventListener("click", () => {
-        const guests = parseInt(guestInput.value);
-        if (!guests || guests <= 0) {
-          alert("Please enter number of guests.");
-          return;
-        }
-
-        const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-        wishlist.push({
-          name: venue.name,
-          cost: venue.cost,
-          guests: guests,
-          total: guests * venue.cost
-        });
-        localStorage.setItem("wishlist", JSON.stringify(wishlist));
-        likeBtn.innerHTML = "💖";
-        alert("Added to wishlist!");
-      });
-
-      card.innerHTML = `
-        <h3>${venue.name}</h3>
-        <p>Cost per guest: ₹${venue.cost}</p>
-      `;
-      card.appendChild(guestInput);
-      const bottomRow = document.createElement("div");
-      bottomRow.className = "bottom-row";
-      bottomRow.appendChild(totalPara);
-      bottomRow.appendChild(likeBtn);
-      card.appendChild(bottomRow);
-      list.appendChild(card);
-    });
-
-    const currentUser = localStorage.getItem("shaadiUser");
-    if (currentUser) {
-      document.getElementById("loginNav")?.remove();
-      document.getElementById("accountSetup").style.display = "inline-block";
-    }
+    document.write(venues.map((v, i) => `
+      <div class="card">
+        <img src="${v.image}" alt="${v.name}">
+        <h3>${v.name}</h3>
+        <p>₹${v.price} per person</p>
+        <label>Guests: <input type="number" min="1" id="guests-${i}" value="100" onchange="calculate(${i}, ${v.price})"></label>
+        <p>Total: ₹<span id="total-${i}">${v.price * 100}</span></p>
+        <div class="buttons">
+          <button onclick="alert('More details coming soon!')">Know More</button>
+          <span class="wishlist" onclick="toggleWishlist(this, '${v.name}')">♥</span>
+        </div>
+      </div>
+    `).join(''));
   </script>
+</div>
+
+<footer>
+  © 2025 ShaadiKarwalo | 📞 9833405618 | ✉️ shaadikarwaalo@gmail.com
+</footer>
+
+<script>
+  function calculate(i, price) {
+    const guests = document.getElementById(`guests-${i}`).value;
+    document.getElementById(`total-${i}`).innerText = guests * price;
+  }
+
+  function toggleWishlist(el, name) {
+    el.classList.toggle("liked");
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    if (wishlist.includes(name)) {
+      wishlist = wishlist.filter(item => item !== name);
+    } else {
+      wishlist.push(name);
+    }
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }
+</script>
+
 </body>
 </html>
