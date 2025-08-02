@@ -4,114 +4,183 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login | ShaadiKarwalo</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <link rel="icon" type="image/png" href="assets/favicon2.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter&display=swap" rel="stylesheet" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #fff4f4;
+    :root {
+      --primary: #d32f2f;
+      --accent: #c2185b;
+      --bg-light: #fff5f5;
+      --text-dark: #212121;
+      --white: #fff;
     }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-dark);
+    }
+
     header {
-      background-color: #ff5e5e;
-      padding: 15px 40px;
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 0.5rem;
     }
-    header h1 {
-      color: white;
-      margin: 0;
+
+    .logo img {
+      width: 40px;
+      height: 40px;
     }
+
     nav a {
-      margin-left: 20px;
-      color: white;
+      color: var(--white);
       text-decoration: none;
+      margin: 0 0.8rem;
       font-weight: bold;
     }
-    .container {
-      max-width: 400px;
-      margin: 60px auto;
-      padding: 40px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+
+    nav a:hover {
+      text-decoration: underline;
     }
-    .container h2 {
-      text-align: center;
-      color: #ff5e5e;
+
+    .wishlist-icon {
+      background: var(--white);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: bold;
     }
-    input[type="text"], input[type="password"] {
+
+    .login-section {
+      background: var(--bg-light);
+      padding: 4rem 2rem;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-box {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       width: 100%;
-      padding: 14px;
-      margin: 15px 0;
+      max-width: 400px;
+    }
+
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary);
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 1.2rem;
       border: 1px solid #ccc;
       border-radius: 8px;
+      font-size: 1rem;
     }
-    input[type="submit"] {
-      width: 100%;
-      padding: 14px;
-      background-color: #ff5e5e;
-      border: none;
-      color: white;
+
+    .login-box input[type="submit"] {
+      background: var(--primary);
+      color: var(--white);
       font-weight: bold;
-      border-radius: 8px;
+      border: none;
       cursor: pointer;
     }
-    input[type="submit"]:hover {
-      background-color: #ff3e3e;
+
+    .login-box input[type="submit"]:hover {
+      background: var(--accent);
     }
-    footer {
+
+    .login-box p {
       text-align: center;
-      padding: 20px;
-      margin-top: 60px;
-      background-color: #ff5e5e;
-      color: white;
+      font-size: 0.9rem;
+    }
+
+    .login-box a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    footer {
+      background: var(--text-dark);
+      color: var(--white);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>ShaadiKarwalo</h1>
+    <div class="logo">
+      <img src="assets/logo.png" alt="Logo" />
+      <h2>ShaadiKarwalo</h2>
+    </div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="venues.html">Venues</a>
-      <a href="catering.html">Catering</a>
-      <a href="decor.html">Decor</a>
-      <a href="makeup.html">Makeup</a>
-      <a href="addons.html">Add-Ons</a>
+      <a href="#">Venues</a>
+      <a href="#">Catering</a>
+      <a href="#">Decor</a>
+      <a href="#">Makeup</a>
+      <a href="#">Add-ons</a>
+      <a href="login.html">Login</a>
+      <span class="wishlist-icon">♥ Wishlist</span>
     </nav>
   </header>
 
-  <div class="container">
-    <h2>Login</h2>
-    <form id="loginForm">
-      <input type="text" id="phone" name="phone" placeholder="Enter 10-digit Phone Number" maxlength="10" pattern="\d{10}" required />
-      <input type="password" id="password" name="password" placeholder="Enter Password" required />
+  <section class="login-section">
+    <form id="loginForm" class="login-box">
+      <h2>Login</h2>
+      <input type="text" id="phone" name="phone" placeholder="Phone Number (10 digits)" pattern="\d{10}" maxlength="10" required />
+      <input type="password" id="password" name="password" placeholder="Password" required />
       <input type="submit" value="Login" />
+      <p>Don’t have an account? <a href="#">Register here</a></p>
     </form>
-    <p style="text-align:center;">Don't have an account? <a href="#">Register</a></p>
-  </div>
+  </section>
 
   <footer>
-    &copy; 2025 ShaadiKarwalo | Contact: 9833405618 | Email: shaadikarwaalo@gmail.com
+    &copy; 2025 ShaadiKarwalo | 📞 9833405618 | 📧 shaadikarwaalo@gmail.com
   </footer>
 
   <script>
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
+
       const phone = document.getElementById('phone').value.trim();
       const password = document.getElementById('password').value.trim();
 
       if (!/^\d{10}$/.test(phone)) {
-        alert("Phone number must be exactly 10 digits.");
+        alert("Please enter a valid 10-digit phone number.");
         return;
       }
 
       fetch("https://script.google.com/macros/s/AKfycbwwMCxrTFq-N76u3scaXLCZmKLTVQT5jNW_epO0AjtKwqmqLmIUI0kSu-5_f40pMZoW/exec", {
         method: "POST",
-        mode: "no-cors", // Needed for Google Apps Script web app
+        mode: "no-cors",
         headers: {
           "Content-Type": "application/json"
         },
@@ -122,9 +191,6 @@
         })
       });
 
-      // Since no-cors doesn't allow response handling, you must either:
-      // 1. Use Google Apps Script with CORS enabled and return response
-      // 2. Or redirect blindly
       alert("Login submitted. If valid, you'll be redirected.");
       window.location.href = "index.html";
     });
