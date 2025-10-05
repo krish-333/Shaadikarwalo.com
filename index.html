@@ -179,7 +179,7 @@
 
 <header>
   <div class="logo" data-page="home">
-    <img src="data:image/png;base64,...(your full logo base64 string here)..." alt="VivahKarwalo Logo" />
+    <img src="assets/logo.png" alt="VivahKarwalo Logo" />
     <h2>VivahKarwalo</h2>
   </div>
   <nav>
@@ -254,6 +254,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const pages = document.querySelectorAll('.page-content');
     const navLinks = document.querySelectorAll('nav a[data-page], .logo, button[data-page], .dropdown-content button[data-page]');
+    const wishlistKey = 'vivahKarwaloWishlist';
 
     // --- Core Navigation Logic ---
     function showPage(pageId) {
@@ -263,9 +264,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (activePage) {
             activePage.classList.add('active');
             window.scrollTo(0, 0);
-            runFadeIn(activePage); // Run animations only for the active page
+            runFadeIn(activePage);
 
-            // Trigger dynamic content loading
             if (pageId === 'venues' && !activePage.dataset.loaded) { loadVenues(); activePage.dataset.loaded = 'true'; }
             if (pageId === 'catering' && !activePage.dataset.loaded) { loadCatering(); activePage.dataset.loaded = 'true'; }
             if (pageId === 'makeup' && !activePage.dataset.loaded) { loadMakeup(); activePage.dataset.loaded = 'true'; }
@@ -284,7 +284,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // --- Fix: Make function globally accessible for HTML onclick ---
     window.showPage = showPage;
 
     // --- Authentication Check & Logout ---
@@ -293,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const logoutBtn = document.getElementById('logoutBtn');
 
     function checkAuth() {
-        if (localStorage.getItem('VivahUser')) {
+        if (localStorage.getItem('shaadiUser')) {
             loginBtn.style.display = 'none';
             accountDropdown.style.display = 'inline-block';
         } else {
@@ -303,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     logoutBtn.addEventListener('click', () => {
-        localStorage.removeItem('VivahUser');
+        localStorage.removeItem('shaadiUser');
         alert('You have been logged out.');
         checkAuth();
         showPage('home');
@@ -368,8 +367,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // --- WISHLIST & CALCULATOR LOGIC ---
-    function loadWishlist() { /* ... same as your previous version ... */ }
-    window.removeItemFromWishlist = function(index) { /* ... same as your previous version ... */ }
+    function loadWishlist() {
+        const wishlist = JSON.parse(localStorage.getItem(wishlistKey)) || [];
+        const container = document.getElementById("wishlistItems");
+        const totalDisplay = document.getElementById("finalTotal");
+        container.innerHTML = ""; let total = 0;
+        if (wishlist.length === 0) {
+            container.innerHTML = `<p class="empty-wishlist">Your wishlist is currently empty.</p>`;
+        } else {
+            wishlist.forEach((item, index) => {
+              const price = item.price || 0; total += price;
+              const box = document.createElement("div"); box.className = "wishlist-item";
+              box.innerHTML = `<div class="item-details"><h3>${item.name}</h3><p>${item.category}${item.details ? ` (${item.details})` : ''}</p></div><div class="item-actions"><p class="price">₹${price.toLocaleString('en-IN')}</p><button class="remove-btn" onclick="removeItemFromWishlist(${index})">Remove</button></div>`;
+              container.appendChild(box);
+            });
+        }
+        totalDisplay.textContent = `Final Total: ₹${total.toLocaleString('en-IN')}`;
+    }
+    
+    window.removeItemFromWishlist = function(index) {
+        let wishlist = JSON.parse(localStorage.getItem(wishlistKey)) || [];
+        wishlist.splice(index, 1);
+        localStorage.setItem(wishlistKey, JSON.stringify(wishlist));
+        loadWishlist();
+    }
 
     window.updateCateringTotal = function(index) {
         const guestsInput = document.getElementById(`catering-guests-${index}`);
@@ -383,14 +404,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    window.addGenericToWishlist = function(name, price, category) {
-        const item = { name, price, category };
-        let wishlist = JSON.parse(localStorage.getItem('VivahKarwaloWishlist')) || [];
+    window.addGenericToWishlist = function(name, price, category, details = "") {
+        const item = { name, price, category, details };
+        let wishlist = JSON.parse(localStorage.getItem(wishlistKey)) || [];
         if (wishlist.some(i => i.name === name)) {
           alert(name + " is already in your wishlist.");
         } else {
           wishlist.push(item);
-          localStorage.setItem('VivahKarwaloWishlist', JSON.stringify(wishlist));
+          localStorage.setItem(wishlistKey, JSON.stringify(wishlist));
           alert("Added " + name + " to your wishlist!");
         }
     };
@@ -398,28 +419,24 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addInteractiveToWishlist = function(type, index) {
         const guestsInput = document.getElementById(`${type}-guests-${index}`);
         const guests = parseInt(guestsInput.value);
-        if (isNaN(guests) || guests <= 0) {
-            alert("Please enter a valid number of guests."); return;
-        }
+        if (isNaN(guests) || guests <= 0) { alert("Please enter a valid number of guests."); return; }
         
         const dataArray = type === 'venue' ? venuesData : cateringsData;
         const selected = dataArray[index];
         const pricePerGuest = selected.price || selected.pricePerGuest;
         const totalPrice = guests * pricePerGuest;
 
-        const item = {
-            name: selected.name,
-            price: totalPrice,
-            details: `${guests} guests × ₹${pricePerGuest}/guest`,
-            category: type.charAt(0).toUpperCase() + type.slice(1)
-        };
-        addGenericToWishlist(item.name, item.price, item.category, item.details); // Use the generic adder
+        const itemName = selected.name;
+        const itemCategory = type.charAt(0).toUpperCase() + type.slice(1);
+        const itemDetails = `${guests} guests × ₹${pricePerGuest}/guest`;
+        
+        addGenericToWishlist(itemName, totalPrice, itemCategory, itemDetails);
     };
 
     // --- FORM SUBMISSION LOGIC ---
     document.getElementById('loginForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        localStorage.setItem('VivahUser', 'true'); // Dummy login
+        localStorage.setItem('shaadiUser', 'true');
         alert("Login Successful!");
         checkAuth(); showPage('viewaccount');
     });
@@ -431,15 +448,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function loadAccountDetails() {
         const savedDetails = JSON.parse(localStorage.getItem("userDetails"));
+        const allFields = accountForm.querySelectorAll("input, select");
         if (savedDetails) {
             accountForm.name.value = savedDetails.name;
             accountForm.email.value = savedDetails.email;
             accountForm.weddingDate.value = savedDetails.weddingDate;
             accountForm.location.value = savedDetails.location;
-
-            accountForm.querySelectorAll("input, select").forEach(el => el.disabled = true);
+            allFields.forEach(el => el.disabled = true);
             submitBtn.style.display = "none";
             changeDetailsBtn.style.display = "block";
+        } else {
+            allFields.forEach(el => el.disabled = false);
+            submitBtn.style.display = "block";
+            changeDetailsBtn.style.display = "none";
         }
     }
     
@@ -466,20 +487,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- FADE-IN ANIMATION ---
     function runFadeIn(container) {
         const faders = (container || document).querySelectorAll('.fade-in');
-        const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-        const observer = new IntersectionObserver(function(entries, self) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('visible');
-                self.unobserve(entry.target);
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
             });
-        }, appearOptions);
+        }, { threshold: 0.1 });
         faders.forEach(fader => observer.observe(fader));
     }
     
     // --- INITIAL PAGE LOAD ---
     checkAuth();
-    runFadeIn(document.getElementById('home')); // Animate home page on initial load
+    runFadeIn(document.getElementById('home'));
 });
 
 </script>
