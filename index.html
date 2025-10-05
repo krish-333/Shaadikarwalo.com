@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VivahKarwalo - Curators of Timeless Weddings</title>
+  <title>ShaadiKarwalo - Curators of Timeless Weddings</title>
   <link rel="icon" type="image/png" href="assets/Gemini_Generated_Image_2yfp6t2yfp6t2yfp.png" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,41 +11,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
   
   <style>
-    /* --- AESTHETIC INDIAN WEDDING THEME --- */
+    /* --- AESTHETIC INDIAN WEDDING THEME - MASTER STYLESHEET --- */
     
     :root {
-      /* Updated Color Palette: Pastel Pink & Light Gold */
       --primary: #F5D6D4; /* Softer Pastel Pink */
       --secondary: #F4EBE2; /* Warm Ivory */
       --accent: #E0C9A6;   /* Light Shimmering Gold */
       --text-dark: #4A403A;  /* Deep Brown */
       --white: #FFFFFF;
       
-      /* Typography */
       --font-heading: 'Cormorant Garamond', serif;
       --font-body: 'Montserrat', sans-serif;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: var(--font-body);
       background-color: var(--secondary);
       color: var(--text-dark);
-      overflow-x: hidden; /* Prevents horizontal scroll from animations */
+      overflow-x: hidden;
     }
     
     /* --- HEADER & NAVIGATION --- */
     header {
-      background-color: rgba(244, 235, 226, 0.8); /* Translucent Ivory */
+      background-color: rgba(244, 235, 226, 0.8);
       backdrop-filter: blur(10px);
       padding: 1rem 3rem;
       display: flex;
@@ -56,8 +46,7 @@
       z-index: 1000;
       border-bottom: 1px solid rgba(224, 201, 166, 0.3);
     }
-
-    .logo { display: flex; align-items: center; gap: 0.75rem; }
+    .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; cursor: pointer; }
     .logo img { width: 45px; height: 45px; }
     .logo h2 { color: var(--text-dark); font-family: var(--font-heading); font-size: 1.8rem; }
     
@@ -67,24 +56,11 @@
       text-decoration: none;
       font-weight: 500;
       font-size: 1rem;
-      position: relative;
-      padding: 5px 0;
+      cursor: pointer;
     }
-    nav a::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 1.5px;
-        bottom: 0;
-        left: 0;
-        background-color: var(--accent);
-        transition: width 0.3s ease-in-out;
-    }
-    nav a:hover::after { width: 100%; }
-
     .btn-nav {
         background: var(--primary);
-        color: var(--text-dark); /* Changed for better contrast */
+        color: var(--text-dark);
         padding: 0.6rem 1.2rem;
         border-radius: 50px;
         text-decoration: none;
@@ -93,253 +69,640 @@
     }
     .btn-nav:hover { background-color: var(--accent); color: var(--white); }
 
-    /* --- HERO SECTION --- */
+    /* --- PAGE CONTENT WRAPPER --- */
+    .page-content {
+        display: none; /* All pages are hidden by default */
+    }
+    .page-content.active {
+        display: block; /* The active page is shown */
+    }
+
+    /* --- HERO & HOMEPAGE STYLES --- */
     .hero {
-      background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1597855032558-42c272891930?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
-      background-size: cover;
-      background-position: center;
-      color: var(--white);
-      padding: 8rem 2rem;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 80vh;
+      background-image: linear-gradient(rgba(40, 30, 30, 0.3), rgba(40, 30, 30, 0.3)), url('https://images.unsplash.com/photo-1627892382365-276326c2b834?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+      background-size: cover; background-position: center; color: var(--white);
+      padding: 8rem 2rem; text-align: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 85vh;
     }
-
     .hero h1 {
-      font-family: var(--font-heading);
-      font-size: 4.5rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+      font-family: var(--font-heading); font-size: 4.5rem; font-weight: 700;
+      margin-bottom: 1rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
     }
-
-    .hero p {
-      font-size: 1.25rem;
-      margin-bottom: 2.5rem;
-      max-width: 600px;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-    }
-
+    .hero p { font-size: 1.25rem; margin-bottom: 2.5rem; max-width: 600px; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
     .btn-hero {
-        background: var(--white);
-        color: var(--text-dark);
-        border: none;
-        padding: 0.9rem 2rem;
-        font-size: 1.1rem;
-        font-weight: 500;
-        cursor: pointer;
-        border-radius: 50px;
-        transition: all 0.3s ease;
+        background: var(--white); color: var(--text-dark); border: none;
+        padding: 0.9rem 2rem; font-size: 1.1rem; font-weight: 500;
+        cursor: pointer; border-radius: 50px; transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
     .btn-hero:hover { background-color: var(--primary); color: var(--text-dark); transform: translateY(-3px); }
 
-    /* --- GENERAL SECTION STYLING --- */
-    .section {
-      padding: 6rem 3rem;
-    }
+    /* --- GENERAL SECTION & CARD STYLES --- */
+    .section { padding: 6rem 3rem; }
     .section-title {
-      text-align: center;
-      font-family: var(--font-heading);
-      font-size: 3rem;
-      margin-bottom: 3rem;
-      color: var(--text-dark);
-      font-weight: 600;
+      text-align: center; font-family: var(--font-heading); font-size: 3rem;
+      margin-bottom: 3rem; color: var(--text-dark); font-weight: 600;
     }
-    
-    /* --- PACKAGES & CARDS --- */
     .package-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-      max-width: 1400px;
-      margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem; max-width: 1400px; margin: 0 auto;
     }
     .card {
-      background: var(--white);
-      border-radius: 8px;
-      box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05);
-      padding: 2rem;
-      border: 1px solid rgba(224, 201, 166, 0.3);
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
+      background: var(--white); border-radius: 8px; box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05);
+      padding: 2rem; border: 1px solid rgba(224, 201, 166, 0.3); transition: all 0.3s ease;
+      display: flex; flex-direction: column; text-align: center;
     }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(74, 64, 58, 0.1);
-    }
-    .card h3 {
-      font-family: var(--font-heading);
-      color: var(--text-dark);
-      font-size: 1.8rem;
-      margin-bottom: 0.75rem;
-    }
-    .card p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      flex-grow: 1; 
-    }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(74, 64, 58, 0.1); }
+    .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1.5rem; }
+    .card h3 { font-family: var(--font-heading); color: var(--text-dark); font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .card p { font-size: 1rem; margin-bottom: 1.5rem; flex-grow: 1; }
     .btn-card {
-        background-color: transparent;
-        color: var(--text-dark);
-        border: 1.5px solid var(--primary);
-        padding: 0.6rem 1.5rem;
-        border-radius: 50px;
-        cursor: pointer;
-        font-weight: 500;
-        align-self: flex-start; 
-        transition: all 0.3s ease;
+        background-color: transparent; color: var(--text-dark); border: 1.5px solid var(--primary);
+        padding: 0.6rem 1.5rem; border-radius: 50px; cursor: pointer; font-weight: 500;
+        align-self: center; transition: all 0.3s ease;
     }
     .btn-card:hover { background-color: var(--primary); color: var(--text-dark); }
-
-    /* --- ABOUT SECTION --- */
-    .about {
-        background: var(--white);
-    }
-    .about p {
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      line-height: 1.8;
-      text-align: center;
-    }
-
-    /* --- CONTACT FORM --- */
-    .contact form {
-      max-width: 600px;
-      margin: 0 auto;
-      display: grid;
-      gap: 1.5rem;
-    }
+    .about { background: var(--white); }
+    .about p { max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8; text-align: center; }
+    .contact form { max-width: 600px; margin: 0 auto; display: grid; gap: 1.5rem; }
     .contact input, .contact textarea {
-      padding: 1rem;
-      border: 1px solid rgba(224, 201, 166, 0.4);
-      border-radius: 8px;
-      font-family: var(--font-body);
-      font-size: 1rem;
-      background: var(--white);
+      padding: 1rem; border: 1px solid rgba(224, 201, 166, 0.4); border-radius: 8px;
+      font-family: var(--font-body); font-size: 1rem; background: var(--white);
     }
-    .contact input:focus, .contact textarea:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px var(--primary);
+    .contact input:focus, .contact textarea:focus { outline: none; box-shadow: 0 0 0 2px var(--primary); }
+
+    /* --- PAGE DETAIL STYLES (for packages) --- */
+    .page-title-section { padding: 4rem 2rem; text-align: center; background-color: var(--white); }
+    .page-title { font-family: var(--font-heading); font-size: 3rem; color: var(--text-dark); font-weight: 600; }
+    .container { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
+    .package-details { background-color: var(--white); padding: 3rem; border-radius: 8px; box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05); }
+    .p-section { margin-bottom: 2.5rem; } .p-section:last-child { margin-bottom: 0; }
+    .p-section h3 { font-family: var(--font-heading); font-size: 1.8rem; color: var(--text-dark); border-bottom: 1px solid var(--primary); padding-bottom: 0.75rem; margin-bottom: 1.5rem; }
+    .p-section p, .p-section li { line-height: 1.8; font-size: 1.05rem; }
+    .p-section ul { list-style: none; padding: 0; }
+    .p-section ul li { padding-left: 1.5rem; position: relative; margin-bottom: 0.8rem; }
+    .p-section ul li::before { content: '✓'; color: var(--primary); position: absolute; left: 0; font-weight: bold; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    .gallery img { width: 100%; border-radius: 8px; height: 220px; object-fit: cover; }
+
+    /* --- INTERACTIVE CARD STYLES (for Catering/Venues) --- */
+    .card .interactive-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: auto; padding-top: 1rem; }
+    .card input[type="number"] { padding: 0.6rem; border: 1px solid rgba(224, 201, 166, 0.4); border-radius: 8px; font-family: var(--font-body); font-size: 1rem; background: var(--white); width: 100px; }
+    .card input[type="number"]:focus { outline: none; box-shadow: 0 0 0 2px var(--primary); }
+
+    /* --- LOGIN/ACCOUNT FORM STYLES --- */
+    .form-section { display: flex; align-items: center; justify-content: center; padding: 2rem; min-height: 80vh; }
+    .form-container {
+      background: var(--white); border-radius: 8px; box-shadow: 0 5px 25px rgba(74, 64, 58, 0.1);
+      padding: 3rem; border: 1px solid rgba(224, 201, 166, 0.3); width: 100%; max-width: 450px;
     }
+    .form-container h2 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 2rem; color: var(--text-dark); font-weight: 600; text-align: center; }
+    .form-container input, .form-container select { width: 100%; padding: 1rem; margin-bottom: 1.5rem; border: 1px solid rgba(224, 201, 166, 0.4); border-radius: 8px; font-family: var(--font-body); font-size: 1rem; background: var(--white); }
+    .form-container input:focus, .form-container select:focus { outline: none; box-shadow: 0 0 0 2px var(--primary); }
+    .btn-submit { width: 100%; background: var(--primary); color: var(--text-dark); border: none; padding: 0.9rem 2rem; font-size: 1.1rem; font-weight: 500; cursor: pointer; border-radius: 50px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 1rem; }
+    .btn-submit:hover { background-color: var(--accent); color: var(--white); transform: translateY(-3px); }
+    .form-container p { text-align: center; margin-top: 1.5rem; font-size: 0.9rem; }
+    .form-container p a { color: var(--primary); text-decoration: none; font-weight: bold; }
+    .form-container p a:hover { text-decoration: underline; }
+
+    /* --- WISHLIST STYLES --- */
+    .wishlist-container { max-width: 800px; margin: 0 auto; background: var(--white); padding: 2rem; border-radius: 8px; box-shadow: 0 5px 25px rgba(74, 64, 58, 0.1); }
+    #wishlistItems { border-bottom: 2px solid var(--primary); margin-bottom: 2rem; }
+    .wishlist-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 1.5rem 0; border-top: 1px solid rgba(224, 201, 166, 0.3); }
+    .wishlist-item:first-child { border-top: none; }
+    .item-details h3 { font-family: var(--font-heading); font-size: 1.6rem; color: var(--text-dark); margin: 0 0 0.5rem 0; }
+    .item-details p { margin: 0; color: #777; }
+    .item-actions { text-align: right; }
+    .item-actions .price { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; }
+    .remove-btn { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 0.4rem 0.8rem; border-radius: 50px; cursor: pointer; font-weight: 500; transition: all 0.3s ease; }
+    .remove-btn:hover { background-color: var(--primary); color: var(--text-dark); }
+    .total-section { text-align: right; font-size: 1.5rem; font-weight: bold; font-family: var(--font-heading); }
+    .empty-wishlist { text-align: center; padding: 4rem 0; color: #999; }
 
     /* --- FOOTER --- */
-    footer {
-      background: var(--primary);
-      color: var(--text-dark);
-      text-align: center;
-      padding: 3rem 2rem;
-      font-size: 1rem;
-    }
+    footer { background: var(--primary); color: var(--text-dark); text-align: center; padding: 3rem 2rem; font-size: 1rem; }
     
-    /* Animation class for fade-in effect */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    /* --- ANIMATION --- */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">
-    <img src="assets/logo.png" alt="VivahKarwalo Logo" />
-    <h2>VivahKarwalo</h2>
+  <div class="logo" data-page="home">
+    <img src="data:image/png;base64,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" alt="ShaadiKarwalo Logo" />
+    <h2>ShaadiKarwalo</h2>
   </div>
   <nav>
-    <a href="#packages">Packages</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-    <a href="login.html" class="btn-nav">Client Login</a>
+    <a data-page="home">Home</a>
+    <a data-page="venues">Venues</a>
+    <a data-page="catering">Catering</a>
+    <a data-page="makeup">Makeup</a>
+    <a data-page="decor">Decor</a>
+    <a data-page="addons">Add-Ons</a>
+    <a data-page="wishlist">Wishlist</a>
+    <a data-page="login" class="btn-nav" id="loginBtn">Client Login</a>
+    <a data-page="viewaccount" id="accountBtn" style="display: none; font-weight: 500; cursor: pointer;">👤 View Account</a>
   </nav>
 </header>
 
 <main>
-    <section class="hero">
-        <h1 class="fade-in">Crafting Timeless Celebrations</h1>
-        <p class="fade-in">From intimate gatherings to grand affairs, we weave your love story into an unforgettable wedding experience. Based in the heart of India, serving dreams worldwide.</p>
-        <button onclick="window.location.href='#packages'" class="btn-hero fade-in">Discover Our Packages</button>
-    </section>
 
-    <section id="packages" class="section packages">
-        <h2 class="section-title fade-in">Our Signature Collections</h2>
-        <div class="package-grid">
-            <div class="card fade-in">
-                <h3>The Intimate Elopement</h3>
-                <p>For the wildly in love. A beautifully curated, stress-free celebration for up to 25 cherished guests.</p>
-                <button onclick="location.href='package-budget.html'" class="btn-card">Explore Details</button>
+    <div id="home" class="page-content active">
+        <section class="hero">
+            <h1 class="fade-in">Crafting Timeless Celebrations</h1>
+            <p class="fade-in">From intimate gatherings to grand affairs, we weave your love story into an unforgettable wedding experience.</p>
+            <a class="btn-hero fade-in" href="#packages-section">Discover Our Packages</a>
+        </section>
+
+        <section id="packages-section" class="section packages">
+            <h2 class="section-title fade-in">Our Signature Collections</h2>
+            <div class="package-grid">
+                <div class="card fade-in">
+                    <h3>Budget Package</h3>
+                    <p>An affordable package with all essentials for a beautiful, intimate wedding experience.</p>
+                    <button data-page="budget" class="btn-card">Explore Details</button>
+                </div>
+                <div class="card fade-in">
+                    <h3>Classic Package</h3>
+                    <p>Timeless elegance and refined details. Our most popular collection for a perfectly balanced celebration.</p>
+                    <button data-page="classic" class="btn-card">Explore Details</button>
+                </div>
+                <div class="card fade-in">
+                    <h3>Luxury Package</h3>
+                    <p>Sheer elegance and seamless execution, combining grand visuals and luxury experiences.</p>
+                    <button data-page="luxury" class="btn-card">Explore Details</button>
+                </div>
+                <div class="card fade-in">
+                    <h3>Premium Package</h3>
+                    <p>A luxurious offering for a royal celebration with top-tier services and opulent arrangements.</p>
+                    <button data-page="premium" class="btn-card">Explore Details</button>
+                </div>
             </div>
-            <div class="card fade-in">
-                <h3>The Classic Romance</h3>
-                <p>Timeless elegance and refined details. Our most popular collection for a perfectly balanced celebration.</p>
-                <button onclick="location.href='package-classic.html'" class="btn-card">Explore Details</button>
+        </section>
+
+        <section id="about" class="section about">
+            <h2 class="section-title fade-in">Our Philosophy</h2>
+            <p class="fade-in">At ShaadiKarwalo, we believe a wedding is more than an event—it's the first chapter of your legacy. Our passion is translating your unique story into a seamless and beautiful experience.</p>
+        </section>
+
+        <section id="contact" class="section contact">
+            <h2 class="section-title fade-in">Begin Your Journey</h2>
+            <form action="#" method="post" class="fade-in">
+                <input type="text" placeholder="Your Name" required />
+                <input type="email" placeholder="Your Email" required />
+                <textarea rows="5" placeholder="Tell us a little about your dream wedding..." required></textarea>
+                <button type="submit" class="btn-hero" style="width: 100%;">Send Inquiry</button>
+            </form>
+        </section>
+    </div>
+    <div id="venues" class="page-content">
+        <section class="section">
+            <h2 class="section-title fade-in">Choose Your Dream Venue</h2>
+            <div id="venueContainer" class="package-grid"></div>
+        </section>
+    </div>
+    <div id="catering" class="page-content">
+        <section class="section">
+            <h2 class="section-title fade-in">Catering Services</h2>
+            <div id="cateringList" class="package-grid"></div>
+        </section>
+    </div>
+    <div id="makeup" class="page-content">
+         <section class="section">
+            <h2 class="section-title fade-in">Makeup Artists</h2>
+            <div id="makeupList" class="package-grid"></div>
+        </section>
+    </div>
+    <div id="decor" class="page-content">
+         <section class="section">
+            <h2 class="section-title fade-in">Wedding Decor</h2>
+            <div id="decorList" class="package-grid"></div>
+        </section>
+    </div>
+    <div id="addons" class="page-content">
+        <section class="section">
+            <h2 class="section-title fade-in">Optional Add-Ons</h2>
+            <div id="addonsList" class="package-grid"></div>
+        </section>
+    </div>
+    <div id="wishlist" class="page-content">
+        <section class="section">
+            <h2 class="section-title fade-in">💖 Your Wishlist</h2>
+            <div class="wishlist-container fade-in">
+                <div id="wishlistItems"></div>
+                <div id="finalTotal" class="total-section">Final Total: ₹0</div>
             </div>
-            <div class="card fade-in">
-                <h3>The Royal Affair</h3>
-                <p>A lavish, multi-day spectacle of heritage and grandeur. For those who desire nothing less than a royal legacy.</p>
-                <button onclick="location.href='package-royal.html'" class="btn-card">Explore Details</button>
+        </section>
+    </div>
+    <div id="login" class="page-content">
+        <section class="form-section">
+            <form id="loginForm" class="form-container fade-in">
+              <h2>Client Login</h2>
+              <input type="text" id="phone" name="phone" placeholder="Phone Number (10 digits)" pattern="\d{10}" maxlength="10" required />
+              <input type="password" id="password" name="password" placeholder="Password" required />
+              <input type="submit" value="Login" class="btn-submit"/>
+              <p>Don’t have an account? <a href="#">Register here</a></p>
+            </form>
+        </section>
+    </div>
+    <div id="viewaccount" class="page-content">
+        <section class="form-section">
+            <div class="form-container fade-in">
+              <h2>Account Details</h2>
+              <form id="accountForm">
+                <input type="text" id="name" placeholder="Your Name" required />
+                <input type="email" id="email" placeholder="Email Address" required />
+                <input type="date" id="weddingDate" required />
+                <select id="location" required>
+                  <option value="">Select Wedding City</option>
+                  <option>Mumbai</option> <option>Delhi</option> <option>Bangalore</option>
+                  <option>Chennai</option> <option>Kolkata</option>
+                </select>
+                <button type="submit" id="submitBtn" class="btn-submit">Save Details</button>
+              </form>
+              <button id="changeDetailsBtn" class="btn-submit" style="display:none;">Change Details</button>
+              <p class="success-msg" id="successMsg"></p>
             </div>
-            <div class="card fade-in">
-                <h3>The Destination Dream</h3>
-                <p>From palace courtyards to pristine beaches. We handle every detail of your breathtaking destination wedding.</p>
-                <button onclick="location.href='package-luxury.html'" class="btn-card">Explore Details</button>
+        </section>
+    </div>
+    <div id="budget" class="page-content">
+        <section class="page-title-section">
+            <h1 class="page-title fade-in">Budget Package</h1>
+        </section>
+        <div class="container">
+          <div class="package-details">
+            <div class="p-section fade-in">
+              <p><strong>Price:</strong> ₹7,99,999</p>
+              <p>This affordable package includes all essentials for a beautiful, intimate wedding experience for up to 200 guests.</p>
+            </div>
+            <div class="p-section fade-in">
+              <h3>What's Included:</h3>
+              <ul>
+                <li><strong>Venue:</strong> Budget banquet hall</li>
+                <li><strong>Catering:</strong> Veg buffet with 3-course meal</li>
+                <li><strong>Decor:</strong> Traditional floral setup</li>
+                <li><strong>Makeup:</strong> Basic bridal makeup</li>
+                <li><strong>Photography:</strong> Candid + Traditional (1 day)</li>
+              </ul>
+            </div>
+            <div class="p-section fade-in">
+              <h3>Gallery:</h3>
+              <div class="gallery">
+                <img src="assets/budget1.jpg" alt="Budget Wedding 1" />
+                <img src="assets/budget2.jpg" alt="Budget Wedding 2" />
+                <img src="assets/budget3.jpg" alt="Budget Wedding 3" />
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div id="classic" class="page-content">
+        <section class="page-title-section">
+            <h1 class="page-title fade-in">Classic Package</h1>
+        </section>
+        <div class="container">
+          <div class="package-details">
+            <div class="p-section fade-in">
+              <p><strong>Price:</strong> ₹16,00,000</p>
+              <p>Perfect for couples who want a well-rounded wedding with beautiful aesthetics, ideal for 300–350 guests.</p>
+            </div>
+            <div class="p-section fade-in">
+              <h3>What's Included:</h3>
+              <ul>
+                <li><strong>Venue:</strong> Premium banquet or lawn</li>
+                <li><strong>Catering:</strong> Multi-cuisine 4-course menu</li>
+                <li><strong>Decor:</strong> Designer floral and theme decor</li>
+                <li><strong>Makeup:</strong> Bridal HD makeup + 3 family members</li>
+                <li><strong>Photography:</strong> 2-day candid + cinematic video</li>
+              </ul>
+            </div>
+            <div class="p-section fade-in">
+              <h3>Gallery:</h3>
+              <div class="gallery">
+                <img src="assets/classic1.jpg" alt="Classic Wedding 1" />
+                <img src="assets/classic2.jpg" alt="Classic Wedding 2" />
+                <img src="assets/classic3.jpg" alt="Classic Wedding 3" />
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div id="luxury" class="page-content">
+        <section class="page-title-section">
+            <h1 class="page-title fade-in">Luxury Package</h1>
+        </section>
+        <div class="container">
+            <div class="package-details">
+                <div class="p-section fade-in">
+                    <p><strong>Price:</strong> ₹30,00,000</p>
+                    <p>Sheer elegance and seamless execution for 400+ guests, combining grand visuals and luxury experiences.</p>
+                </div>
+                <div class="p-section fade-in">
+                    <h3>What's Included:</h3>
+                    <ul>
+                        <li><strong>Venue:</strong> Luxury resort or banquet</li>
+                        <li><strong>Catering:</strong> Gourmet international and Indian spread</li>
+                        <li><strong>Decor:</strong> Grand floral installations, chandeliers</li>
+                        <li><strong>Makeup:</strong> Celebrity artist bridal package</li>
+                        <li><strong>Photography:</strong> 3-day shoot, drone, cinematic films</li>
+                    </ul>
+                </div>
+                <div class="p-section fade-in">
+                    <h3>Gallery:</h3>
+                    <div class="gallery">
+                        <img src="assets/luxury1.jpg" alt="Luxury Wedding 1" />
+                        <img src="assets/luxury2.jpg" alt="Luxury Wedding 2" />
+                        <img src="assets/luxury3.jpg" alt="Luxury Wedding 3" />
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-
-    <section id="about" class="section about">
-        <h2 class="section-title fade-in">Our Philosophy</h2>
-        <p class="fade-in">At VivahKarwalo, we believe a wedding is more than an event—it's the first chapter of your legacy. Our passion is translating your unique story into a seamless and beautiful experience. With a network of India's finest artisans and vendors, we ensure every detail, from the scent of the flowers to the flavor of the feast, is a true reflection of you.</p>
-    </section>
-
-    <section id="contact" class="section contact">
-        <h2 class="section-title fade-in">Begin Your Journey</h2>
-        <form action="#" method="post" class="fade-in">
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea rows="5" placeholder="Tell us a little about your dream wedding..." required></textarea>
-            <button type="submit" class="btn-hero" style="width: 100%;">Send Inquiry</button>
-        </form>
-    </section>
-</main>
+    </div>
+    
+    <div id="premium" class="page-content">
+        <section class="page-title-section">
+            <h1 class="page-title fade-in">Premium Package</h1>
+        </section>
+        <div class="container">
+            <div class="package-details">
+                <div class="p-section fade-in">
+                    <p><strong>Price:</strong> ₹50,00,000</p>
+                    <p>A luxurious offering for a royal celebration with a destination venue and opulent arrangements for 500+ guests.</p>
+                </div>
+                <div class="p-section fade-in">
+                    <h3>What's Included:</h3>
+                    <ul>
+                        <li><strong>Venue:</strong> 5-star resort or heritage palace</li>
+                        <li><strong>Catering:</strong> Celebrity chef curated multi-regional menu</li>
+                        <li><strong>Decor:</strong> Royal themed decor with imported flowers</li>
+                        <li><strong>Makeup:</strong> Luxury bridal makeup with personal stylist</li>
+                        <li><strong>Photography:</strong> Premium team with drone and cinematic reels</li>
+                    </ul>
+                </div>
+                <div class="p-section fade-in">
+                    <h3>Gallery:</h3>
+                    <div class="gallery">
+                        <img src="assets/premium1.jpg" alt="Premium Wedding 1" />
+                        <img src="assets/premium2.jpg" alt="Premium Wedding 2" />
+                        <img src="assets/premium3.jpg" alt="Premium Wedding 3" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
 
 <footer>
-  <p>&copy; 2025 VivahKarwalo | Curators of Timeless Indian Weddings</p>
+  <p>&copy; 2025 ShaadiKarwalo | Curators of Timeless Indian Weddings</p>
 </footer>
 
 <script>
-// Simple fade-in animation on scroll
-const faders = document.querySelectorAll('.fade-in');
-const appearOptions = {
-  threshold: 0.2,
-  rootMargin: "0px 0px -50px 0px"
-};
+//========= MASTER SCRIPT FOR SINGLE PAGE APPLICATION =========//
 
-const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) {
-      return;
-    } else {
-      entry.target.classList.add('visible');
-      appearOnScroll.unobserve(entry.target);
+document.addEventListener('DOMContentLoaded', function() {
+    const pages = document.querySelectorAll('.page-content');
+    const navLinks = document.querySelectorAll('nav a[data-page], .logo, button[data-page]');
+
+    // --- Core Navigation Logic ---
+    function showPage(pageId) {
+        // Hide all pages
+        pages.forEach(page => {
+            page.classList.remove('active');
+        });
+
+        // Show the requested page
+        const activePage = document.getElementById(pageId);
+        if (activePage) {
+            activePage.classList.add('active');
+            window.scrollTo(0, 0); // Scroll to top on page change
+            
+            // Trigger dynamic content loading for specific pages
+            if (pageId === 'venues' && !activePage.dataset.loaded) {
+                loadVenues();
+                activePage.dataset.loaded = 'true';
+            }
+            if (pageId === 'catering' && !activePage.dataset.loaded) {
+                loadCatering();
+                activePage.dataset.loaded = 'true';
+            }
+             if (pageId === 'makeup' && !activePage.dataset.loaded) {
+                loadMakeup();
+                activePage.dataset.loaded = 'true';
+            }
+             if (pageId === 'decor' && !activePage.dataset.loaded) {
+                loadDecor();
+                activePage.dataset.loaded = 'true';
+            }
+             if (pageId === 'addons' && !activePage.dataset.loaded) {
+                loadAddons();
+                activePage.dataset.loaded = 'true';
+            }
+            if (pageId === 'wishlist') {
+                loadWishlist(); // Always reload wishlist
+            }
+        }
     }
-  });
-}, appearOptions);
 
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
+    // Attach click listeners to all navigation elements
+    navLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const pageId = link.getAttribute('data-page');
+            showPage(pageId);
+        });
+    });
+
+    // --- Authentication Check ---
+    const loginBtn = document.getElementById('loginBtn');
+    const accountBtn = document.getElementById('accountBtn');
+    // Check for a dummy user key in localStorage. In a real app, this would be a secure token.
+    if (localStorage.getItem('shaadiUser')) {
+        loginBtn.style.display = 'none';
+        accountBtn.style.display = 'block';
+    } else {
+        loginBtn.style.display = 'block';
+        accountBtn.style.display = 'none';
+    }
+
+
+    // --- DYNAMIC CONTENT LOADING FUNCTIONS ---
+
+    // Venues
+    function loadVenues() {
+      const venues = [
+        { name: "Royal Palace", price: 1000, image: "assets/venue1.jpg" },
+        { name: "Dream Garden", price: 850, image: "assets/venue2.jpg" },
+        { name: "Heritage Hall", price: 1200, image: "assets/venue3.jpg" },
+        { name: "Sunset Lawns", price: 950, image: "assets/venue4.jpg" },
+        { name: "Beach View Banquet", price: 1100, image: "assets/venue5.jpg" },
+        { name: "Classic Courtyard", price: 800, image: "assets/venue6.jpg" },
+      ];
+      const container = document.getElementById("venueContainer");
+      container.innerHTML = '';
+      venues.forEach((venue, index) => {
+        const card = document.createElement("div");
+        card.className = "card fade-in";
+        card.innerHTML = `<img src="${venue.image}" alt="${venue.name}"><div class="card-body"><h3>${venue.name}</h3><p><strong>₹${venue.price.toLocaleString('en-IN')}</strong> per guest</p><div class="interactive-row"><input type="number" placeholder="Guests" id="venue-guests-${index}" min="1" /><button class="btn-card" onclick="addVenueToWishlist(${index})">❤️ Add</button></div></div>`;
+        container.appendChild(card);
+      });
+      runFadeIn();
+    }
+    
+    // Catering
+    function loadCatering() {
+        const caterings = [
+            { name: "South Indian Veg Thali", pricePerGuest: 350 }, { name: "North Indian Premium", pricePerGuest: 450 },
+            { name: "Gujarati Special", pricePerGuest: 400 }, { name: "Rajasthani Royal Thali", pricePerGuest: 500 },
+        ];
+        const container = document.getElementById("cateringList");
+        container.innerHTML = '';
+        caterings.forEach((item, index) => {
+            const card = document.createElement("div");
+            card.className = "card fade-in";
+            card.innerHTML = `<h3>${item.name}</h3><p>Cost per guest: ₹${item.pricePerGuest.toLocaleString('en-IN')}</p><p id="catering-total-${index}" style="font-weight: bold;">Total: ₹0</p><div class="interactive-row"><input type="number" placeholder="Guests" id="catering-guests-${index}" min="1" oninput="updateCateringTotal(${index})" /><button class="btn-card" onclick="addCateringToWishlist(${index})">❤️ Add</button></div>`;
+            container.appendChild(card);
+        });
+        runFadeIn();
+    }
+
+    // Makeup
+    function loadMakeup() {
+        const makeup = [
+            { name: "Bridal HD Makeup", price: 20000 }, { name: "Airbrush Makeup", price: 28000 }, { name: "Full Family Package", price: 50000 },
+        ];
+        const container = document.getElementById("makeupList");
+        container.innerHTML = '';
+        makeup.forEach((item, index) => {
+            const card = document.createElement("div");
+            card.className = "card fade-in";
+            card.innerHTML = `<img src="assets/makeup${index+1}.jpg" alt="${item.name}"><h3>${item.name}</h3><p>A premium makeup experience.</p><p><strong>Cost: ₹${item.price.toLocaleString('en-IN')}</strong></p><button onclick="addGenericToWishlist('${item.name}', ${item.price}, 'Makeup')" class="btn-card">❤️ Add to Wishlist</button>`;
+            container.appendChild(card);
+        });
+        runFadeIn();
+    }
+
+    // Decor
+    function loadDecor() {
+        const decor = [
+            { name: "Floral Theme Decor", price: 75000 }, { name: "Royal Golden Setup", price: 95000 }, { name: "Beach Wedding Decor", price: 120000 },
+        ];
+        const container = document.getElementById("decorList");
+        container.innerHTML = '';
+        decor.forEach((item, index) => {
+            const card = document.createElement("div");
+            card.className = "card fade-in";
+            card.innerHTML = `<img src="assets/decor${index+1}.jpg" alt="${item.name}"><h3>${item.name}</h3><p>Stunning decor for your special day.</p><p><strong>Cost: ₹${item.price.toLocaleString('en-IN')}</strong></p><button onclick="addGenericToWishlist('${item.name}', ${item.price}, 'Decor')" class="btn-card">❤️ Add to Wishlist</button>`;
+            container.appendChild(card);
+        });
+        runFadeIn();
+    }
+
+    // Add-Ons
+    function loadAddons() {
+        const addons = [
+            { name: "DJ + Dance Floor", price: 35000 }, { name: "Photobooth Station", price: 18000 }, { name: "Fireworks Entry", price: 25000 },
+        ];
+        const container = document.getElementById("addonsList");
+        container.innerHTML = '';
+        addons.forEach((item, index) => {
+            const card = document.createElement("div");
+            card.className = "card fade-in";
+            card.innerHTML = `<img src="assets/addon${index+1}.jpg" alt="${item.name}"><h3>${item.name}</h3><p>Extra services to enhance your experience.</p><p><strong>Cost: ₹${item.price.toLocaleString('en-IN')}</strong></p><button onclick="addGenericToWishlist('${item.name}', ${item.price}, 'Add-On')" class="btn-card">❤️ Add to Wishlist</button>`;
+            container.appendChild(card);
+        });
+        runFadeIn();
+    }
+
+    // --- WISHLIST LOGIC ---
+    function loadWishlist() {
+        const wishlist = JSON.parse(localStorage.getItem("shaadiKarwaloWishlist")) || [];
+        const container = document.getElementById("wishlistItems");
+        const totalDisplay = document.getElementById("finalTotal");
+        container.innerHTML = "";
+        let total = 0;
+
+        if (wishlist.length === 0) {
+            container.innerHTML = `<p class="empty-wishlist">Your wishlist is currently empty.</p>`;
+        } else {
+            wishlist.forEach((item, index) => {
+              const price = item.price || 0;
+              total += price;
+              const box = document.createElement("div");
+              box.className = "wishlist-item";
+              box.innerHTML = `<div class="item-details"><h3>${item.name}</h3><p>${item.category}${item.details ? ` (${item.details})` : ''}</p></div><div class="item-actions"><p class="price">₹${price.toLocaleString('en-IN')}</p><button class="remove-btn" onclick="removeItemFromWishlist(${index})">Remove</button></div>`;
+              container.appendChild(box);
+            });
+        }
+        totalDisplay.textContent = `Final Total: ₹${total.toLocaleString('en-IN')}`;
+    }
+
+    window.removeItemFromWishlist = function(index) {
+        let wishlist = JSON.parse(localStorage.getItem("shaadiKarwaloWishlist")) || [];
+        wishlist.splice(index, 1);
+        localStorage.setItem("shaadiKarwaloWishlist", JSON.stringify(wishlist));
+        loadWishlist(); // Reload the list
+    }
+
+    // --- FORM SUBMISSION LOGIC ---
+    // Login Form
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // **Dummy Login:** In a real app, you'd verify credentials here.
+        // For this demo, we'll just simulate a successful login.
+        localStorage.setItem('shaadiUser', 'true');
+        alert("Login Successful!");
+        // Update header and navigate to account page
+        document.getElementById('loginBtn').style.display = 'none';
+        document.getElementById('accountBtn').style.display = 'block';
+        showPage('viewaccount');
+    });
+
+    // Account Details Form
+    const accountForm = document.getElementById('accountForm');
+    // ... (rest of the account form logic from your file)
+
+
+    // --- UNIVERSAL 'ADD TO WISHLIST' FUNCTIONS ---
+    window.addGenericToWishlist = function(name, price, category) {
+        const item = { name, price, category };
+        let wishlist = JSON.parse(localStorage.getItem('shaadiKarwaloWishlist')) || [];
+        if (wishlist.some(i => i.name === name)) {
+          alert(name + " is already in your wishlist.");
+        } else {
+          wishlist.push(item);
+          localStorage.setItem('shaadiKarwaloWishlist', JSON.stringify(wishlist));
+          alert("Added " + name + " to your wishlist!");
+        }
+    }
+    // ... (add specific wishlist functions for catering/venues if needed)
+
+
+    // --- FADE-IN ANIMATION ---
+    function runFadeIn() {
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
+    }
+    
+    // Initial load
+    runFadeIn(); // Run for the homepage
+    
+    // Make the navigation function globally accessible if needed for onclick attributes
+    window.showPage = showPage;
 });
+
 </script>
 
 </body>
