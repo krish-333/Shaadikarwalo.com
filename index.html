@@ -8,17 +8,19 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   
   <style>
-    /* --- AESTHETIC INDIAN WEDDING THEME --- */
+    /* --- VIBRANT PASTEL INDIAN WEDDING THEME --- */
     
     :root {
-      /* Updated Color Palette: Pastel Pink & Light Gold */
-      --primary: #F5D6D4; /* Softer Pastel Pink */
-      --secondary: #F4EBE2; /* Warm Ivory */
-      --accent: #E0C9A6;   /* Light Shimmering Gold */
-      --text-dark: #4A403A;  /* Deep Brown */
+      /* New Vibrant Pastel Palette */
+      --primary: #FFB5A7;    /* Pastel Coral */
+      --secondary: #F4EBE2;  /* Warm Ivory */
+      --accent: #A8E6CF;    /* Soft Mint Green */
+      --pastel-blue: #BDE0FE;  /* Pastel Aqua Blue */
+      --pastel-lilac: #CDB4DB; /* Soft Lilac */
+      --text-dark: #4A403A;   /* Deep Brown */
       --white: #FFFFFF;
       
       /* Typography */
@@ -40,12 +42,12 @@
       font-family: var(--font-body);
       background-color: var(--secondary);
       color: var(--text-dark);
-      overflow-x: hidden; /* Prevents horizontal scroll from animations */
+      overflow-x: hidden;
     }
     
     /* --- HEADER & NAVIGATION --- */
     header {
-      background-color: rgba(244, 235, 226, 0.8); /* Translucent Ivory */
+      background-color: rgba(244, 235, 226, 0.85);
       backdrop-filter: blur(10px);
       padding: 1rem 3rem;
       display: flex;
@@ -54,7 +56,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(224, 201, 166, 0.3);
+      border-bottom: 1px solid rgba(193, 180, 219, 0.3);
     }
 
     .logo { display: flex; align-items: center; gap: 0.75rem; }
@@ -77,25 +79,25 @@
         height: 1.5px;
         bottom: 0;
         left: 0;
-        background-color: var(--accent);
+        background-color: var(--primary);
         transition: width 0.3s ease-in-out;
     }
     nav a:hover::after { width: 100%; }
 
     .btn-nav {
         background: var(--primary);
-        color: var(--text-dark); /* Changed for better contrast */
+        color: var(--text-dark);
         padding: 0.6rem 1.2rem;
         border-radius: 50px;
         text-decoration: none;
         font-weight: 500;
         transition: all 0.3s ease;
     }
-    .btn-nav:hover { background-color: var(--accent); color: var(--white); }
+    .btn-nav:hover { background-color: var(--accent); color: var(--text-dark); }
 
     /* --- HERO SECTION --- */
     .hero {
-      background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1597855032558-42c272891930?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+      background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1627892382365-276326c2b834?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
       background-size: cover;
       background-position: center;
       color: var(--white);
@@ -129,7 +131,7 @@
         border: none;
         padding: 0.9rem 2rem;
         font-size: 1.1rem;
-        font-weight: 500;
+        font-weight: bold;
         cursor: pointer;
         border-radius: 50px;
         transition: all 0.3s ease;
@@ -146,7 +148,7 @@
       font-family: var(--font-heading);
       font-size: 3rem;
       margin-bottom: 3rem;
-      color: var(--text-dark);
+      color: var(--primary);
       font-weight: 600;
     }
     
@@ -163,7 +165,7 @@
       border-radius: 8px;
       box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05);
       padding: 2rem;
-      border: 1px solid rgba(224, 201, 166, 0.3);
+      border: 1px solid rgba(205, 180, 219, 0.3);
       transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
@@ -186,7 +188,7 @@
     .btn-card {
         background-color: transparent;
         color: var(--text-dark);
-        border: 1.5px solid var(--primary);
+        border: 1.5px solid;
         padding: 0.6rem 1.5rem;
         border-radius: 50px;
         cursor: pointer;
@@ -194,7 +196,16 @@
         align-self: flex-start; 
         transition: all 0.3s ease;
     }
-    .btn-card:hover { background-color: var(--primary); color: var(--text-dark); }
+    .card:nth-child(1) .btn-card { border-color: var(--primary); }
+    .card:nth-child(2) .btn-card { border-color: var(--pastel-blue); }
+    .card:nth-child(3) .btn-card { border-color: var(--pastel-lilac); }
+    .card:nth-child(4) .btn-card { border-color: var(--accent); }
+
+    .card:nth-child(1) .btn-card:hover { background-color: var(--primary); }
+    .card:nth-child(2) .btn-card:hover { background-color: var(--pastel-blue); }
+    .card:nth-child(3) .btn-card:hover { background-color: var(--pastel-lilac); }
+    .card:nth-child(4) .btn-card:hover { background-color: var(--accent); }
+
 
     /* --- ABOUT SECTION --- */
     .about {
@@ -217,7 +228,7 @@
     }
     .contact input, .contact textarea {
       padding: 1rem;
-      border: 1px solid rgba(224, 201, 166, 0.4);
+      border: 1px solid rgba(205, 180, 219, 0.4);
       border-radius: 8px;
       font-family: var(--font-body);
       font-size: 1rem;
@@ -230,7 +241,7 @@
 
     /* --- FOOTER --- */
     footer {
-      background: var(--primary);
+      background: var(--pastel-lilac);
       color: var(--text-dark);
       text-align: center;
       padding: 3rem 2rem;
