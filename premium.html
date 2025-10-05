@@ -3,173 +3,322 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Premium Wedding Package - ShaadiKarwalo</title>
+  <title>Premium Package | VivahKarwalo</title>
+  <link rel="icon" type="image/png" href="assets/Gemini_Generated_Image_2yfp6t2yfp6t2yfp.png" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  
   <style>
-    body { font-family: 'Segoe UI', sans-serif; background-color: #fff9f9; margin: 0; color: #333; }
-    header { background-color: #fb6162; color: white; padding: 2rem 1rem; text-align: center; position: relative; }
-    header img { width: 120px; border-radius: 10px; border: 3px solid white; }
-    nav { background: white; padding: 10px 0; text-align: center; }
-    nav a { color: #fb6162; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    h2, h3 { color: #fb6162; }
-    .container { padding: 2rem; max-width: 1000px; margin: auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    /* --- AESTHETIC INDIAN WEDDING THEME --- */
+    
+    :root {
+      /* Color Palette: Pastel Pink & Light Gold */
+      --primary: #F5D6D4; /* Softer Pastel Pink */
+      --secondary: #F4EBE2; /* Warm Ivory */
+      --accent: #E0C9A6;   /* Light Shimmering Gold */
+      --text-dark: #4A403A;  /* Deep Brown */
+      --white: #FFFFFF;
+      
+      /* Typography */
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
 
-    .section { margin-bottom: 2rem; }
-    ul { padding-left: 20px; }
-    ul li { margin-bottom: 8px; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    .gallery {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--secondary);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+    
+    /* --- HEADER & NAVIGATION --- */
+    header {
+      background-color: rgba(244, 235, 226, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 1rem 3rem;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1001;
+      border-bottom: 1px solid rgba(224, 201, 166, 0.3);
     }
 
-    .gallery img {
-      width: 32%;
-      border-radius: 8px;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .cart-icon {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      background: white;
-      padding: 5px 10px;
-      border-radius: 20px;
-      color: #fb6162;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button {
-      background: #fb6162;
-      color: white;
-      padding: 10px 20px;
+    .logo { display: flex; align-items: center; gap: 0.75rem; }
+    .logo img { width: 45px; height: 45px; }
+    .logo h2 { color: var(--text-dark); font-family: var(--font-heading); font-size: 1.8rem; }
+    
+    nav { display: flex; align-items: center; gap: 1.5rem; }
+    nav a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
       font-size: 1rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
     }
+    .cart-icon {
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .btn-nav {
+        background: var(--primary);
+        color: var(--text-dark);
+        padding: 0.6rem 1.2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    .btn-nav:hover { background-color: var(--accent); color: var(--white); }
+
+    /* --- PAGE-SPECIFIC STYLING --- */
+    .page-title-section {
+        padding: 4rem 2rem;
+        text-align: center;
+        background-color: var(--white);
+    }
+    .page-title {
+        font-family: var(--font-heading);
+        font-size: 3rem;
+        color: var(--text-dark);
+        font-weight: 600;
+    }
+
+    .container {
+        padding: 4rem 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .package-details {
+        background-color: var(--white);
+        padding: 3rem;
+        border-radius: 8px;
+        box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05);
+    }
+    .p-section { margin-bottom: 2.5rem; }
+    .p-section:last-child { margin-bottom: 0; }
+
+    .p-section h3 {
+        font-family: var(--font-heading);
+        font-size: 1.8rem;
+        color: var(--text-dark);
+        border-bottom: 1px solid var(--primary);
+        padding-bottom: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+    .p-section p, .p-section li {
+        line-height: 1.8;
+        font-size: 1.05rem;
+    }
+    .p-section ul {
+        list-style: none;
+        padding: 0;
+    }
+    .p-section ul li {
+        padding-left: 1.5rem;
+        position: relative;
+        margin-bottom: 0.8rem;
+    }
+    .p-section ul li::before {
+        content: '✓';
+        color: var(--primary);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
+    
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    .gallery img {
+        width: 100%;
+        border-radius: 8px;
+        height: 220px;
+        object-fit: cover;
+    }
+    
+    .btn-hero {
+        background: var(--primary);
+        color: var(--text-dark);
+        border: none;
+        padding: 0.9rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .btn-hero:hover { background-color: var(--accent); color: var(--white); transform: translateY(-3px); }
 
     #cartItemsList {
-      position: fixed;
-      top: 60px;
-      right: 20px;
-      background: #fff;
-      color: #333;
-      width: 250px;
-      max-height: 400px;
-      overflow-y: auto;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      padding: 1rem;
-      z-index: 1000;
+        display: none;
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: var(--white);
+        color: var(--text-dark);
+        width: 300px;
+        max-height: 400px;
+        overflow-y: auto;
+        border-radius: 8px;
+        box-shadow: 0 5px 25px rgba(74, 64, 58, 0.15);
+        padding: 1.5rem;
+        z-index: 1000;
+        border: 1px solid rgba(224, 201, 166, 0.3);
     }
-
+    #cartItemsList h3 {
+        font-family: var(--font-heading);
+        margin-top: 0;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--primary);
+    }
+    #cartItemsList ul { list-style: none; padding: 0; }
+    
+    /* --- FOOTER --- */
     footer {
-      background: #333;
-      color: white;
+      background: var(--primary);
+      color: var(--text-dark);
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
+      padding: 3rem 2rem;
+      font-size: 1rem;
     }
+    
+    /* Animation class */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
-  <header>
-    <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
-    <h1>ShaadiKarwalo</h1>
-    <div class="cart-icon" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
-  </header>
 
+<header>
+  <div class="logo">
+    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+        <img src="assets/logo.png" alt="VivahKarwalo Logo" />
+        <h2>VivahKarwalo</h2>
+    </a>
+  </div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="venues.html">Venues</a>
-    <a href="catering.html">Catering</a>
-    <a href="decor.html">Decor</a>
-    <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add-Ons</a>
+    <a href="index.html#packages">Packages</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <span class="cart-icon" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</span>
+    <a href="login.html" class="btn-nav">Client Login</a>
   </nav>
+</header>
 
-  <div class="container">
-    <div class="section">
-      <h2>Premium Wedding Package</h2>
-      <p><strong>Price:</strong> ₹50,00,000</p>
-      <p>The Premium Wedding Package is a luxurious offering for a royal celebration. It includes a destination venue, top-tier services, and opulent arrangements tailored to perfection for 500+ guests.</p>
-    </div>
+<main>
+    <section class="page-title-section">
+        <h1 class="page-title fade-in">Premium Wedding Package</h1>
+    </section>
 
-    <div class="section">
-      <h3>What's Included:</h3>
-      <ul>
-        <li><strong>Venue:</strong> Destination wedding setup at 5-star resort or heritage palace</li>
-        <li><strong>Catering:</strong> Celebrity chef curated menu – multi-regional cuisines</li>
-        <li><strong>Decor:</strong> Royal themed decor with imported flowers & grand installations</li>
-        <li><strong>Makeup:</strong> Luxury bridal makeup with personal stylist + groom spa prep</li>
-        <li><strong>Photography:</strong> Premium team with drone, cinematic teaser, and reels</li>
-        <li><strong>Entertainment:</strong> Celebrity artist performance, Sufi night, LED show</li>
-        <li><strong>Logistics:</strong> Guest flights, resort bookings, concierge desk, valet</li>
-      </ul>
-    </div>
+    <div class="container">
+      <div class="package-details">
+        <div class="p-section fade-in">
+          <p><strong>Price:</strong> ₹50,00,000</p>
+          <p>The Premium Wedding Package is a luxurious offering for a royal celebration. It includes a destination venue, top-tier services, and opulent arrangements tailored to perfection for 500+ guests.</p>
+        </div>
 
-    <div class="section">
-      <h3>Gallery:</h3>
-      <div class="gallery">
-        <img src="assets/premium1.jpg" alt="Premium Wedding 1" />
-        <img src="assets/premium2.jpg" alt="Premium Wedding 2" />
-        <img src="assets/premium3.jpg" alt="Premium Wedding 3" />
+        <div class="p-section fade-in">
+          <h3>What's Included:</h3>
+          <ul>
+            <li><strong>Venue:</strong> Destination wedding setup at 5-star resort or heritage palace</li>
+            <li><strong>Catering:</strong> Celebrity chef curated menu – multi-regional cuisines</li>
+            <li><strong>Decor:</strong> Royal themed decor with imported flowers & grand installations</li>
+            <li><strong>Makeup:</strong> Luxury bridal makeup with personal stylist + groom spa prep</li>
+            <li><strong>Photography:</strong> Premium team with drone, cinematic teaser, and reels</li>
+            <li><strong>Entertainment:</strong> Celebrity artist performance, Sufi night, LED show</li>
+            <li><strong>Logistics:</strong> Guest flights, resort bookings, concierge desk, valet</li>
+          </ul>
+        </div>
+
+        <div class="p-section fade-in">
+          <h3>Gallery:</h3>
+          <div class="gallery">
+            <img src="assets/premium1.jpg" alt="Premium Wedding 1" />
+            <img src="assets/premium2.jpg" alt="Premium Wedding 2" />
+            <img src="assets/premium3.jpg" alt="Premium Wedding 3" />
+          </div>
+        </div>
+
+        <div class="p-section fade-in" style="text-align:center;">
+          <button class="btn-hero" onclick="addToCart()">Add This Package to Cart</button>
+        </div>
       </div>
     </div>
 
-    <div class="section" style="text-align:center;">
-      <button onclick="addToCart()">Add This Package to Cart</button>
+    <div id="cartItemsList">
+      <h3>Your Cart</h3>
+      <ul id="cartItems"></ul>
+      <p><strong>Total: ₹<span id="cartTotal">0</span></strong></p>
     </div>
-  </div>
+</main>
 
-  <div id="cartItemsList" style="display: none;">
-    <h3>Your Cart</h3>
-    <ul id="cartItems"></ul>
-    <p><strong>Total: ₹<span id="cartTotal">0</span></strong></p>
-  </div>
+<footer>
+  <p>&copy; 2025 VivahKarwalo | Curators of Timeless Indian Weddings</p>
+</footer>
 
-  <footer>
-    <p>&copy; 2025 ShaadiKarwalo.com - All Rights Reserved</p>
-  </footer>
+<script>
+  let cart = [];
+  const packageDetails = { name: "Premium Wedding Package", price: 5000000 };
 
-  <script>
-    let cart = [];
-
-    function addToCart() {
-      cart.push({ name: "Premium Wedding Package", price: 5000000 });
-      renderCart();
+  function addToCart() {
+    if (cart.find(item => item.name === packageDetails.name)) {
+        alert("This package is already in your cart.");
+        return;
     }
+    cart.push(packageDetails);
+    renderCart();
+    document.getElementById("cartItemsList").style.display = "block";
+  }
 
-    function toggleCart() {
-      const cartBox = document.getElementById("cartItemsList");
-      cartBox.style.display = cartBox.style.display === "none" ? "block" : "none";
-    }
+  function toggleCart() {
+    const cartBox = document.getElementById("cartItemsList");
+    cartBox.style.display = cartBox.style.display === "none" ? "block" : "none";
+  }
 
-    function renderCart() {
-      const cartList = document.getElementById("cartItems");
-      const cartTotal = document.getElementById("cartTotal");
-      const cartCount = document.getElementById("cartCount");
+  function renderCart() {
+    const cartList = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+    const cartCount = document.getElementById("cartCount");
 
-      cartList.innerHTML = "";
-      let total = 0;
+    if (!cartList || !cartTotal || !cartCount) return;
 
-      cart.forEach((item) => {
-        const li = document.createElement("li");
-        li.textContent = `${item.name} - ₹${item.price.toLocaleString()}`;
-        cartList.appendChild(li);
-        total += item.price;
-      });
+    cartList.innerHTML = "";
+    let total = 0;
 
-      cartTotal.textContent = total.toLocaleString();
-      cartCount.textContent = cart.length;
-    }
-  </script>
-  <script src="cart.js"></script>
-<script>renderCart();</script>
+    cart.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = `${item.name} - ₹${item.price.toLocaleString('en-IN')}`;
+      cartList.appendChild(li);
+      total += item.price;
+    });
 
-</body>
-</html>
+    cartTotal.textContent = total.toLocaleString('en-IN');
+    cartCount.textContent = cart.length;
+  }
+  
+  renderCart();
+
+  // Simple fade-in animation on scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions =.
