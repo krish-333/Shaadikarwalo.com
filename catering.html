@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF--8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Catering | VivahKarwalo</title>
   <link rel="icon" type="image/png" href="assets/Gemini_Generated_Image_2yfp6t2yfp6t2yfp.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter&display=swap" rel="stylesheet" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  
   <style>
+    /* --- AESTHETIC INDIAN WEDDING THEME --- */
+    
     :root {
-      --primary: #d32f2f;
-      --accent: #c2185b;
-      --bg-light: #fff5f5;
-      --text-dark: #212121;
-      --white: #fff;
+      /* Color Palette: Pastel Pink & Light Gold */
+      --primary: #F5D6D4; /* Softer Pastel Pink */
+      --secondary: #F4EBE2; /* Warm Ivory */
+      --accent: #E0C9A6;   /* Light Shimmering Gold */
+      --text-dark: #4A403A;  /* Deep Brown */
+      --white: #FFFFFF;
+      
+      /* Typography */
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
     }
 
     * {
@@ -21,174 +32,197 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--white);
-      color: var(--text-dark);
+    html {
+        scroll-behavior: smooth;
     }
 
+    body {
+      font-family: var(--font-body);
+      background-color: var(--secondary);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+    
+    /* --- HEADER & NAVIGATION --- */
     header {
-      background-color: var(--primary);
-      color: var(--white);
-      padding: 1rem 2rem;
+      background-color: rgba(244, 235, 226, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 1rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+      border-bottom: 1px solid rgba(224, 201, 166, 0.3);
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .logo img {
-      width: 40px;
-      height: 40px;
-    }
-
-    nav {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-    }
-
+    .logo { display: flex; align-items: center; gap: 0.75rem; }
+    .logo img { width: 45px; height: 45px; }
+    .logo h2 { color: var(--text-dark); font-family: var(--font-heading); font-size: 1.8rem; }
+    
+    nav { display: flex; align-items: center; gap: 1.5rem; }
     nav a {
-      color: var(--white);
+      color: var(--text-dark);
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+      padding: 5px 0;
     }
-
-    nav a:hover {
-      text-decoration: underline;
+    nav a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1.5px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent);
+        transition: width 0.3s ease-in-out;
     }
+    nav a:hover::after { width: 100%; }
 
-    .cart-icon {
-      background: var(--white);
-      color: var(--primary);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-weight: bold;
-      cursor: pointer;
+    .btn-nav {
+        background: var(--primary);
+        color: var(--text-dark);
+        padding: 0.6rem 1.2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    .btn-nav:hover { background-color: var(--accent); color: var(--white); }
+
+    /* --- GENERAL SECTION STYLING --- */
+    .section {
+      padding: 6rem 3rem;
+    }
+    .section-title {
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      margin-bottom: 3rem;
+      color: var(--text-dark);
+      font-weight: 600;
     }
     
-    section {
-      padding: 4rem 2rem;
-      background: var(--bg-light);
-    }
-
-    section h2 {
-      font-family: 'Playfair Display', serif;
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 2.5rem;
-      color: var(--primary);
-    }
-
-    .card-grid {
+    /* --- CARDS GRID --- */
+    .package-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      max-width: 1400px;
       margin: 0 auto;
     }
-
     .card {
       background: var(--white);
-      border-radius: 16px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05);
+      padding: 2rem;
+      border: 1px solid rgba(224, 201, 166, 0.3);
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
     }
-    
-    .card h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--primary);
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(74, 64, 58, 0.1);
     }
-
+    .card h3 {
+      font-family: var(--font-heading);
+      color: var(--text-dark);
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
     .card p {
       font-size: 1rem;
-      margin: 0.5rem 0;
-      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
     }
     
+    /* --- CATERING CARD SPECIFIC STYLES --- */
     .card .interactive-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 1rem;
-        margin-top: auto; /* Pushes to the bottom */
+        margin-top: auto;
         padding-top: 1rem;
     }
-
     .card input[type="number"] {
-        padding: 8px;
-        border: 1px solid #ccc;
+        padding: 0.6rem;
+        border: 1px solid rgba(224, 201, 166, 0.4);
         border-radius: 8px;
-        width: 100px;
+        font-family: var(--font-body);
         font-size: 1rem;
+        background: var(--white);
+        width: 100px;
     }
-
-    .card .wishlist-button {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 0.6rem 1.2rem;
-        border-radius: 30px;
+    .card input[type="number"]:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--primary);
+    }
+    .btn-card {
+        background-color: transparent;
+        color: var(--text-dark);
+        border: 1.5px solid var(--primary);
+        padding: 0.6rem 1.5rem;
+        border-radius: 50px;
         cursor: pointer;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
+        font-weight: 500;
+        transition: all 0.3s ease;
     }
-    .card .wishlist-button:hover {
-        background-color: var(--accent);
-    }
+    .btn-card:hover { background-color: var(--primary); }
 
-    #accountArea a { color: var(--white); text-decoration: none; font-weight: bold; }
-
+    /* --- FOOTER --- */
     footer {
-      background: var(--text-dark);
-      color: var(--white);
+      background: var(--primary);
+      color: var(--text-dark);
       text-align: center;
-      padding: 1rem;
+      padding: 3rem 2rem;
+      font-size: 1rem;
     }
+    
+    /* Animation class */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
 <header>
   <div class="logo">
-    <img src="assets/logo.png" alt="Logo" />
-    <h2>VivahKarwalo</h2>
+    <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
+      <img src="assets/logo.png" alt="VivahKarwalo Logo" />
+      <h2>VivahKarwalo</h2>
+    </a>
   </div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="venues.html">Venues</a>
-    <a href="catering.html">Catering</a>
-    <a href="decor.html">Decor</a>
-    <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add-ons</a>
-    <span id="accountArea"><a href="login.html">Login</a></span>
-    <span class="cart-icon" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</span>
+    <a href="index.html#packages">Packages</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="login.html" class="btn-nav">Client Login</a>
   </nav>
 </header>
 
-<section>
-  <h2>Catering Services</h2>
-  <div id="cateringList" class="card-grid">
-    </div>
-</section>
+<main>
+    <section id="catering" class="section">
+        <h2 class="section-title fade-in">Catering Services</h2>
+        <div id="cateringList" class="package-grid">
+            </div>
+    </section>
+</main>
 
 <footer>
-  &copy; 2025 VivahKarwalo | 📞 9833405618 | 📧 vivahkarwaalo@gmail.com
+  <p>&copy; 2025 VivahKarwalo | Curators of Timeless Indian Weddings</p>
 </footer>
 
 <script>
+  // --- DYNAMIC CATERING CARD LOGIC ---
   const caterings = [
     { name: "South Indian Veg Thali", pricePerGuest: 350 },
     { name: "North Indian Premium", pricePerGuest: 450 },
@@ -206,7 +240,8 @@
 
   caterings.forEach((item, index) => {
     const card = document.createElement("div");
-    card.className = "card";
+    // Apply card and animation classes
+    card.className = "card fade-in";
     card.innerHTML = `
       <div>
         <h3>${item.name}</h3>
@@ -215,7 +250,7 @@
       </div>
       <div class="interactive-row">
         <input type="number" placeholder="Guests" id="guests-${index}" min="1" oninput="updateTotal(${index})" />
-        <button class="wishlist-button" onclick="addToWishlist(${index})">❤️ Add</button>
+        <button class="btn-card" onclick="addToWishlist(${index})">❤️ Add</button>
       </div>
     `;
     container.appendChild(card);
@@ -252,32 +287,34 @@
       details: `${guests} guests × ₹${item.pricePerGuest}/guest`
     };
 
-    let wishlist = JSON.parse(localStorage.getItem("vivahKarwaloWishlist")) || [];
+    let wishlist = JSON.parse(localStorage.getItem('vivahKarwaloWishlist')) || [];
     wishlist.push(wishlistItem);
-    localStorage.setItem("vivahKarwaloWishlist", JSON.stringify(wishlist));
+    localStorage.setItem('vivahKarwaloWishlist', JSON.stringify(wishlist));
     
     alert(`${item.name} (for ${guests} guests) added to wishlist!`);
   }
 
-  // NOTE: The cart functionality is separate from the wishlist.
-  // The cart icon in the header links to a potential cart system.
-  function toggleCart() {
-    // You would define your cart toggle logic here, perhaps showing a modal.
-    alert("Cart functionality would be displayed here.");
-  }
-  
-  // This page does not use the cart, so we'll just set the count to 0.
-  // A real site would have a shared script to update this dynamically.
-  document.getElementById("cartCount").textContent = '0'; 
+  // --- FADE-IN ANIMATION LOGIC ---
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = {
+    threshold: 0.2,
+    rootMargin: "0px 0px -50px 0px"
+  };
 
-  // Show account or login link (simplified for this page)
-  const currentUser = null; // Placeholder for user login check
-  const accountArea = document.getElementById("accountArea");
-  if (currentUser) {
-    accountArea.innerHTML = `<a href="viewaccount.html">Account</a>`;
-  } else {
-    accountArea.innerHTML = `<a href="login.html">Login</a>`;
-  }
+  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        entry.target.classList.add('visible');
+        appearOnScroll.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
 </script>
 
 </body>
