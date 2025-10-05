@@ -5,14 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login | VivahKarwalo</title>
   <link rel="icon" type="image/png" href="assets/Gemini_Generated_Image_2yfp6t2yfp6t2yfp.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter&display=swap" rel="stylesheet" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  
   <style>
+    /* --- AESTHETIC INDIAN WEDDING THEME --- */
+    
     :root {
-      --primary: #d32f2f;
-      --accent: #c2185b;
-      --bg-light: #fff5f5;
-      --text-dark: #212121;
-      --white: #fff;
+      /* Color Palette: Pastel Pink & Light Gold */
+      --primary: #F5D6D4; /* Softer Pastel Pink */
+      --secondary: #F4EBE2; /* Warm Ivory */
+      --accent: #E0C9A6;   /* Light Shimmering Gold */
+      --text-dark: #4A403A;  /* Deep Brown */
+      --white: #FFFFFF;
+      
+      /* Typography */
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
     }
 
     * {
@@ -21,160 +32,196 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--white);
-      color: var(--text-dark);
+    html, body {
+        height: 100%;
     }
 
+    body {
+      font-family: var(--font-body);
+      background-color: var(--secondary);
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* --- HEADER & NAVIGATION --- */
     header {
-      background-color: var(--primary);
-      color: var(--white);
-      padding: 1rem 2rem;
+      background-color: rgba(244, 235, 226, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 1rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+      border-bottom: 1px solid rgba(224, 201, 166, 0.3);
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .logo img {
-      width: 40px;
-      height: 40px;
-    }
-
+    .logo { display: flex; align-items: center; gap: 0.75rem; }
+    .logo img { width: 45px; height: 45px; }
+    .logo h2 { color: var(--text-dark); font-family: var(--font-heading); font-size: 1.8rem; }
+    
+    nav { display: flex; align-items: center; gap: 1.5rem; }
     nav a {
-      color: var(--white);
+      color: var(--text-dark);
       text-decoration: none;
-      margin: 0 0.8rem;
-      font-weight: bold;
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+      padding: 5px 0;
+    }
+    nav a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1.5px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent);
+        transition: width 0.3s ease-in-out;
+    }
+    nav a:hover::after { width: 100%; }
+
+    .btn-nav {
+        background: var(--primary);
+        color: var(--text-dark);
+        padding: 0.6rem 1.2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    .btn-nav:hover { background-color: var(--accent); color: var(--white); }
+    
+    main {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .wishlist-icon {
-      background: var(--white);
-      color: var(--primary);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-weight: bold;
-    }
-
-    .login-section {
-      background: var(--bg-light);
-      padding: 4rem 2rem;
-      min-height: calc(100vh - 140px); /* Adjusted for header and footer */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
+    /* --- LOGIN FORM STYLES --- */
     .login-box {
       background: var(--white);
-      padding: 2.5rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      box-shadow: 0 5px 25px rgba(74, 64, 58, 0.1);
+      padding: 3rem;
+      border: 1px solid rgba(224, 201, 166, 0.3);
       width: 100%;
-      max-width: 400px;
+      max-width: 450px;
     }
-
+    
     .login-box h2 {
-      font-family: 'Playfair Display', serif;
       text-align: center;
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
       margin-bottom: 2rem;
-      color: var(--primary);
-      font-size: 2rem;
+      color: var(--text-dark);
+      font-weight: 600;
     }
 
     .login-box input {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 1.2rem;
-      border: 1px solid #ccc;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(224, 201, 166, 0.4);
       border-radius: 8px;
+      font-family: var(--font-body);
       font-size: 1rem;
-      font-family: 'Inter', sans-serif;
+      background: var(--white);
     }
-
-    .login-box input[type="submit"] {
-      background: var(--primary);
-      color: var(--white);
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+    .login-box input:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--primary);
     }
-
-    .login-box input[type="submit"]:hover {
-      background: var(--accent);
+    
+    .login-box .btn-submit {
+        width: 100%;
+        background: var(--primary);
+        color: var(--text-dark);
+        border: none;
+        padding: 0.9rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        margin-top: 1rem;
+    }
+    .login-box .btn-submit:hover {
+        background-color: var(--accent);
+        color: var(--white);
+        transform: translateY(-3px);
     }
 
     .login-box p {
       text-align: center;
+      margin-top: 1.5rem;
       font-size: 0.9rem;
     }
-
-    .login-box a {
+    .login-box p a {
       color: var(--primary);
       text-decoration: none;
       font-weight: bold;
     }
-
-    footer {
-      background: var(--text-dark);
-      color: var(--white);
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
+    .login-box p a:hover {
+        text-decoration: underline;
     }
+
+    /* --- FOOTER --- */
+    footer {
+      background: var(--primary);
+      color: var(--text-dark);
+      text-align: center;
+      padding: 3rem 2rem;
+      font-size: 1rem;
+    }
+    
+    /* Animation class */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
 <header>
   <div class="logo">
-    <img src="assets/logo.png" alt="Logo" />
-    <h2>VivahKarwalo</h2>
+    <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
+      <img src="assets/logo.png" alt="VivahKarwalo Logo" />
+      <h2>VivahKarwalo</h2>
+    </a>
   </div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="venues.html">Venues</a>
-    <a href="catering.html">Catering</a>
-    <a href="decor.html">Decor</a>
-    <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add-ons</a>
-    <a href="login.html">Login</a>
-    <a href="viewaccount.html">View Account</a>
-    <span class="wishlist-icon">
-      <a href="wishlist.html" style="color: var(--primary); text-decoration: none;">♥ Wishlist</a>
-    </span>
+    <a href="index.html#packages">Packages</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="login.html" class="btn-nav">Client Login</a>
   </nav>
 </header>
 
-<section class="login-section">
-  <form id="loginForm" class="login-box">
-    <h2>Login</h2>
-    <input type="text" id="phone" name="phone" placeholder="Phone Number (10 digits)" pattern="\d{10}" maxlength="10" required />
-    <input type="password" id="password" name="password" placeholder="Password" required />
-    <input type="submit" value="Login" />
-    <p>Don’t have an account? <a href="#">Register here</a></p>
-  </form>
-</section>
+<main>
+    <form id="loginForm" class="login-box fade-in">
+      <h2>Client Login</h2>
+      <input type="text" id="phone" name="phone" placeholder="Phone Number (10 digits)" pattern="\d{10}" maxlength="10" required />
+      <input type="password" id="password" name="password" placeholder="Password" required />
+      <input type="submit" value="Login" class="btn-submit"/>
+      <p>Don’t have an account? <a href="#">Register here</a></p>
+    </form>
+</main>
 
 <footer>
-  &copy; 2025 VivahKarwalo | 📞 9833405618 | 📧 vivahkarwaalo@gmail.com
+  <p>&copy; 2025 VivahKarwalo | Curators of Timeless Indian Weddings</p>
 </footer>
 
 <script>
+  // Login form submission logic
   document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -186,8 +233,6 @@
       return;
     }
 
-    // This is a placeholder for your actual login logic.
-    // The fetch call remains as you provided it.
     fetch("https://script.google.com/macros/s/AKfycbwwMCxrTFq-N76u3scaXLCZmKLTVQT5jNW_epO0AjtKwqmqLmIUI0kSu-5_f40pMZoW/exec", {
       method: "POST",
       mode: "no-cors",
@@ -202,8 +247,29 @@
     });
 
     alert("Login submitted. If valid, you'll be redirected.");
-    // In a real application, you would wait for a successful response before redirecting.
     window.location.href = "index.html";
+  });
+
+  // Simple fade-in animation on scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = {
+    threshold: 0.2,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        entry.target.classList.add('visible');
+        appearOnScroll.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
   });
 </script>
 
