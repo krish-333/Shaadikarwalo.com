@@ -253,10 +253,19 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const pages = document.querySelectorAll('.page-content');
-    const navLinks = document.querySelectorAll('nav a[data-page], .logo, button[data-page], .dropdown-content button[data-page]');
+    const navContainer = document.querySelector('header');
     const wishlistKey = 'vivahKarwaloWishlist';
 
-    // --- Core Navigation Logic ---
+    // --- Core Navigation Logic (Event Delegation) ---
+    navContainer.addEventListener('click', (event) => {
+        const target = event.target.closest('[data-page]');
+        if (target) {
+            event.preventDefault();
+            const pageId = target.getAttribute('data-page');
+            showPage(pageId);
+        }
+    });
+    
     function showPage(pageId) {
         if (!pageId) return;
         pages.forEach(page => page.classList.remove('active'));
@@ -275,15 +284,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (pageId === 'viewaccount') { loadAccountDetails(); }
         }
     }
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const pageId = link.getAttribute('data-page');
-            showPage(pageId);
-        });
-    });
-    
     window.showPage = showPage;
 
     // --- Authentication Check & Logout ---
@@ -317,105 +317,57 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // --- DYNAMIC CONTENT LOADING FUNCTIONS ---
     function loadVenues() {
-      const container = document.getElementById("venueContainer");
-      container.innerHTML = '';
-      venuesData.forEach((venue, index) => {
-        const card = document.createElement("div"); card.className = "card fade-in";
-        card.innerHTML = `<img src="${venue.image}" alt="${venue.name}"><div class="card-body"><h3>${venue.name}</h3><p><strong>₹${venue.price.toLocaleString('en-IN')}</strong> per guest</p><div class="interactive-row"><input type="number" placeholder="Guests" id="venue-guests-${index}" min="1" /><button class="btn-card" onclick="addInteractiveToWishlist('venue', ${index})">❤️ Add</button></div></div>`;
-        container.appendChild(card);
-      });
+      const c = document.getElementById("venueContainer"); c.innerHTML = '';
+      venuesData.forEach((v, i) => { const d = document.createElement("div"); d.className = "card fade-in"; d.innerHTML = `<img src="${v.image}" alt="${v.name}"><div class="card-body"><h3>${v.name}</h3><p><strong>₹${v.price.toLocaleString('en-IN')}</strong> per guest</p><div class="interactive-row"><input type="number" placeholder="Guests" id="venue-guests-${i}" min="1" /><button class="btn-card" onclick="addInteractiveToWishlist('venue', ${i})">❤️ Add</button></div></div>`; c.appendChild(d); });
     }
-    
     function loadCatering() {
-        const container = document.getElementById("cateringList");
-        container.innerHTML = '';
-        cateringsData.forEach((item, index) => {
-            const card = document.createElement("div"); card.className = "card fade-in";
-            card.innerHTML = `<h3>${item.name}</h3><p>Cost per guest: ₹${item.pricePerGuest.toLocaleString('en-IN')}</p><p id="catering-total-${index}" style="font-weight: bold;">Total: ₹0</p><div class="interactive-row"><input type="number" placeholder="Guests" id="catering-guests-${index}" min="1" oninput="updateCateringTotal(${index})" /><button class="btn-card" onclick="addInteractiveToWishlist('catering', ${index})">❤️ Add</button></div>`;
-            container.appendChild(card);
-        });
+        const c = document.getElementById("cateringList"); c.innerHTML = '';
+        cateringsData.forEach((i, x) => { const d = document.createElement("div"); d.className = "card fade-in"; d.innerHTML = `<h3>${i.name}</h3><p>Cost per guest: ₹${i.pricePerGuest.toLocaleString('en-IN')}</p><p id="catering-total-${x}" style="font-weight: bold;">Total: ₹0</p><div class="interactive-row"><input type="number" placeholder="Guests" id="catering-guests-${x}" min="1" oninput="updateCateringTotal(${x})" /><button class="btn-card" onclick="addInteractiveToWishlist('catering', ${x})">❤️ Add</button></div>`; c.appendChild(d); });
     }
-
     function loadMakeup() {
-        const container = document.getElementById("makeupList");
-        container.innerHTML = '';
-        makeupData.forEach((item, index) => {
-            const card = document.createElement("div"); card.className = "card fade-in";
-            card.innerHTML = `<img src="${item.image}" alt="${item.name}"><h3>${item.name}</h3><p>A premium makeup experience.</p><p><strong>Cost: ₹${item.price.toLocaleString('en-IN')}</strong></p><button onclick="addGenericToWishlist('${item.name}', ${item.price}, 'Makeup')" class="btn-card">❤️ Add to Wishlist</button>`;
-            container.appendChild(card);
-        });
+        const c = document.getElementById("makeupList"); c.innerHTML = '';
+        makeupData.forEach((i, x) => { const d = document.createElement("div"); d.className = "card fade-in"; d.innerHTML = `<img src="${i.image}" alt="${i.name}"><h3>${i.name}</h3><p>A premium makeup experience.</p><p><strong>Cost: ₹${i.price.toLocaleString('en-IN')}</strong></p><button onclick="addGenericToWishlist('${i.name}', ${i.price}, 'Makeup')" class="btn-card">❤️ Add to Wishlist</button>`; c.appendChild(d); });
     }
-
     function loadDecor() {
-        const container = document.getElementById("decorList");
-        container.innerHTML = '';
-        decorData.forEach((item, index) => {
-            const card = document.createElement("div"); card.className = "card fade-in";
-            card.innerHTML = `<img src="${item.image}" alt="${item.name}"><h3>${item.name}</h3><p>Stunning decor for your special day.</p><p><strong>Cost: ₹${item.price.toLocaleString('en-IN')}</strong></p><button onclick="addGenericToWishlist('${item.name}', ${item.price}, 'Decor')" class="btn-card">❤️ Add to Wishlist</button>`;
-            container.appendChild(card);
-        });
+        const c = document.getElementById("decorList"); c.innerHTML = '';
+        decorData.forEach((i, x) => { const d = document.createElement("div"); d.className = "card fade-in"; d.innerHTML = `<img src="${i.image}" alt="${i.name}"><h3>${i.name}</h3><p>Stunning decor for your special day.</p><p><strong>Cost: ₹${i.price.toLocaleString('en-IN')}</strong></p><button onclick="addGenericToWishlist('${i.name}', ${i.price}, 'Decor')" class="btn-card">❤️ Add to Wishlist</button>`; c.appendChild(d); });
     }
-
     function loadAddons() {
-        const container = document.getElementById("addonsList");
-        container.innerHTML = '';
-        addonsData.forEach((item, index) => {
-            const card = document.createElement("div"); card.className = "card fade-in";
-            card.innerHTML = `<img src="${item.image}" alt="${item.name}"><h3>${item.name}</h3><p>Extra services to enhance your experience.</p><p><strong>Cost: ₹${item.price.toLocaleString('en-IN')}</strong></p><button onclick="addGenericToWishlist('${item.name}', ${item.price}, 'Add-On')" class="btn-card">❤️ Add to Wishlist</button>`;
-            container.appendChild(card);
-        });
+        const c = document.getElementById("addonsList"); c.innerHTML = '';
+        addonsData.forEach((i, x) => { const d = document.createElement("div"); d.className = "card fade-in"; d.innerHTML = `<img src="${i.image}" alt="${i.name}"><h3>${i.name}</h3><p>Extra services to enhance your experience.</p><p><strong>Cost: ₹${i.price.toLocaleString('en-IN')}</strong></p><button onclick="addGenericToWishlist('${i.name}', ${i.price}, 'Add-On')" class="btn-card">❤️ Add to Wishlist</button>`; c.appendChild(d); });
     }
     
     // --- WISHLIST & CALCULATOR LOGIC ---
     function loadWishlist() {
-        const wishlist = JSON.parse(localStorage.getItem(wishlistKey)) || [];
-        const container = document.getElementById("wishlistItems");
-        const totalDisplay = document.getElementById("finalTotal");
-        container.innerHTML = ""; let total = 0;
-        if (wishlist.length === 0) {
-            container.innerHTML = `<p class="empty-wishlist">Your wishlist is currently empty.</p>`;
+        const w = JSON.parse(localStorage.getItem(wishlistKey)) || []; const c = document.getElementById("wishlistItems");
+        const t = document.getElementById("finalTotal"); c.innerHTML = ""; let total = 0;
+        if (w.length === 0) { c.innerHTML = `<p class="empty-wishlist">Your wishlist is currently empty.</p>`;
         } else {
-            wishlist.forEach((item, index) => {
-              const price = item.price || 0; total += price;
-              const box = document.createElement("div"); box.className = "wishlist-item";
-              box.innerHTML = `<div class="item-details"><h3>${item.name}</h3><p>${item.category}${item.details ? ` (${item.details})` : ''}</p></div><div class="item-actions"><p class="price">₹${price.toLocaleString('en-IN')}</p><button class="remove-btn" onclick="removeItemFromWishlist(${index})">Remove</button></div>`;
-              container.appendChild(box);
+            w.forEach((i, x) => {
+              const p = i.price || 0; total += p; const b = document.createElement("div"); b.className = "wishlist-item";
+              b.innerHTML = `<div class="item-details"><h3>${i.name}</h3><p>${i.category}${i.details ? ` (${i.details})` : ''}</p></div><div class="item-actions"><p class="price">₹${p.toLocaleString('en-IN')}</p><button class="remove-btn" onclick="removeItemFromWishlist(${x})">Remove</button></div>`;
+              c.appendChild(b);
             });
         }
-        totalDisplay.textContent = `Final Total: ₹${total.toLocaleString('en-IN')}`;
+        t.textContent = `Final Total: ₹${total.toLocaleString('en-IN')}`;
     }
-    
     window.removeItemFromWishlist = function(index) {
-        let wishlist = JSON.parse(localStorage.getItem(wishlistKey)) || [];
-        wishlist.splice(index, 1);
-        localStorage.setItem(wishlistKey, JSON.stringify(wishlist));
-        loadWishlist();
+        let w = JSON.parse(localStorage.getItem(wishlistKey)) || []; w.splice(index, 1);
+        localStorage.setItem(wishlistKey, JSON.stringify(w)); loadWishlist();
     }
-
     window.updateCateringTotal = function(index) {
-        const guestsInput = document.getElementById(`catering-guests-${index}`);
-        const guests = parseInt(guestsInput.value);
-        const item = cateringsData[index];
-        const totalEl = document.getElementById(`catering-total-${index}`);
-        if (!isNaN(guests) && guests > 0) {
-            totalEl.textContent = `Total: ₹${(item.pricePerGuest * guests).toLocaleString('en-IN')}`;
-        } else {
-            totalEl.textContent = 'Total: ₹0';
-        }
+        const g = document.getElementById(`catering-guests-${index}`); const c = parseInt(g.value);
+        const i = cateringsData[index]; const t = document.getElementById(`catering-total-${index}`);
+        if (!isNaN(c) && c > 0) { t.textContent = `Total: ₹${(i.pricePerGuest * c).toLocaleString('en-IN')}`; } 
+        else { t.textContent = 'Total: ₹0'; }
     };
-    
     window.addGenericToWishlist = function(name, price, category, details = "") {
         const item = { name, price, category, details };
-        let wishlist = JSON.parse(localStorage.getItem(wishlistKey)) || [];
-        if (wishlist.some(i => i.name === name)) {
-          alert(name + " is already in your wishlist.");
-        } else {
-          wishlist.push(item);
-          localStorage.setItem(wishlistKey, JSON.stringify(wishlist));
-          alert("Added " + name + " to your wishlist!");
-        }
+        let w = JSON.parse(localStorage.getItem(wishlistKey)) || [];
+        if (w.some(i => i.name === name)) { alert(name + " is already in your wishlist."); } 
+        else { w.push(item); localStorage.setItem(wishlistKey, JSON.stringify(w)); alert("Added " + name + " to your wishlist!"); }
     };
-
+    // --- FIX: Corrected wishlist logic for interactive items ---
     window.addInteractiveToWishlist = function(type, index) {
         const guestsInput = document.getElementById(`${type}-guests-${index}`);
         const guests = parseInt(guestsInput.value);
@@ -426,11 +378,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const pricePerGuest = selected.price || selected.pricePerGuest;
         const totalPrice = guests * pricePerGuest;
 
-        const itemName = selected.name;
-        const itemCategory = type.charAt(0).toUpperCase() + type.slice(1);
-        const itemDetails = `${guests} guests × ₹${pricePerGuest}/guest`;
-        
-        addGenericToWishlist(itemName, totalPrice, itemCategory, itemDetails);
+        const item = {
+            name: selected.name,
+            price: totalPrice,
+            details: `${guests} guests × ₹${pricePerGuest}/guest`,
+            category: type.charAt(0).toUpperCase() + type.slice(1)
+        };
+        // This now directly handles saving, instead of calling the generic function incorrectly
+        let wishlist = JSON.parse(localStorage.getItem(wishlistKey)) || [];
+        if (wishlist.some(i => i.name === item.name)) {
+          alert(item.name + " is already in your wishlist.");
+        } else {
+          wishlist.push(item);
+          localStorage.setItem(wishlistKey, JSON.stringify(wishlist));
+          alert(`Added ${item.name} to wishlist for ${guests} guests.`);
+        }
     };
 
     // --- FORM SUBMISSION LOGIC ---
@@ -447,40 +409,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const successMsg = document.getElementById('successMsg');
     
     function loadAccountDetails() {
-        const savedDetails = JSON.parse(localStorage.getItem("userDetails"));
-        const allFields = accountForm.querySelectorAll("input, select");
-        if (savedDetails) {
-            accountForm.name.value = savedDetails.name;
-            accountForm.email.value = savedDetails.email;
-            accountForm.weddingDate.value = savedDetails.weddingDate;
-            accountForm.location.value = savedDetails.location;
-            allFields.forEach(el => el.disabled = true);
-            submitBtn.style.display = "none";
-            changeDetailsBtn.style.display = "block";
+        const saved = JSON.parse(localStorage.getItem("userDetails"));
+        const fields = accountForm.querySelectorAll("input, select");
+        if (saved) {
+            accountForm.name.value = saved.name; accountForm.email.value = saved.email;
+            accountForm.weddingDate.value = saved.weddingDate; accountForm.location.value = saved.location;
+            fields.forEach(el => el.disabled = true);
+            submitBtn.style.display = "none"; changeDetailsBtn.style.display = "block";
         } else {
-            allFields.forEach(el => el.disabled = false);
-            submitBtn.style.display = "block";
-            changeDetailsBtn.style.display = "none";
+            fields.forEach(el => el.disabled = false);
+            submitBtn.style.display = "block"; changeDetailsBtn.style.display = "none";
+            accountForm.reset();
         }
     }
     
     accountForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const userData = {
-            name: accountForm.name.value, email: accountForm.email.value,
-            weddingDate: accountForm.weddingDate.value, location: accountForm.location.value
-        };
+        const userData = { name: accountForm.name.value, email: accountForm.email.value, weddingDate: accountForm.weddingDate.value, location: accountForm.location.value };
         localStorage.setItem("userDetails", JSON.stringify(userData));
         successMsg.textContent = "Details saved successfully!";
         accountForm.querySelectorAll("input, select").forEach(el => el.disabled = true);
-        submitBtn.style.display = "none";
-        changeDetailsBtn.style.display = "block";
+        submitBtn.style.display = "none"; changeDetailsBtn.style.display = "block";
     });
 
     changeDetailsBtn.addEventListener("click", () => {
         accountForm.querySelectorAll("input, select").forEach(el => el.disabled = false);
-        submitBtn.style.display = "block";
-        changeDetailsBtn.style.display = "none";
+        submitBtn.style.display = "block"; changeDetailsBtn.style.display = "none";
         successMsg.textContent = "";
     });
 
