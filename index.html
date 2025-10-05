@@ -14,14 +14,14 @@
     /* --- AESTHETIC INDIAN WEDDING THEME --- */
     
     :root {
-      /* New Color Palette: Soft, elegant, and luxurious */
-      --primary: #D9A8A4; /* Soft Blush Pink */
+      /* Updated Color Palette: Pastel Pink & Light Gold */
+      --primary: #F5D6D4; /* Softer Pastel Pink */
       --secondary: #F4EBE2; /* Warm Ivory */
-      --accent: #BFA181;   /* Muted Gold */
+      --accent: #E0C9A6;   /* Light Shimmering Gold */
       --text-dark: #4A403A;  /* Deep Brown */
       --white: #FFFFFF;
       
-      /* New Typography */
+      /* Typography */
       --font-heading: 'Cormorant Garamond', serif;
       --font-body: 'Montserrat', sans-serif;
     }
@@ -54,7 +54,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(191, 161, 129, 0.2);
+      border-bottom: 1px solid rgba(224, 201, 166, 0.3);
     }
 
     .logo { display: flex; align-items: center; gap: 0.75rem; }
@@ -70,7 +70,6 @@
       position: relative;
       padding: 5px 0;
     }
-    /* Underline animation on hover */
     nav a::after {
         content: '';
         position: absolute;
@@ -85,7 +84,7 @@
 
     .btn-nav {
         background: var(--primary);
-        color: var(--white);
+        color: var(--text-dark); /* Changed for better contrast */
         padding: 0.6rem 1.2rem;
         border-radius: 50px;
         text-decoration: none;
@@ -126,7 +125,7 @@
 
     .btn-hero {
         background: var(--white);
-        color: var(--primary);
+        color: var(--text-dark);
         border: none;
         padding: 0.9rem 2rem;
         font-size: 1.1rem;
@@ -136,7 +135,7 @@
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-    .btn-hero:hover { background-color: var(--primary); color: var(--white); transform: translateY(-3px); }
+    .btn-hero:hover { background-color: var(--primary); color: var(--text-dark); transform: translateY(-3px); }
 
     /* --- GENERAL SECTION STYLING --- */
     .section {
@@ -164,7 +163,7 @@
       border-radius: 8px;
       box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05);
       padding: 2rem;
-      border: 1px solid rgba(191, 161, 129, 0.2);
+      border: 1px solid rgba(224, 201, 166, 0.3);
       transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
@@ -182,20 +181,20 @@
     .card p {
       font-size: 1rem;
       margin-bottom: 1.5rem;
-      flex-grow: 1; /* Pushes button to bottom */
+      flex-grow: 1; 
     }
     .btn-card {
         background-color: transparent;
-        color: var(--primary);
+        color: var(--text-dark);
         border: 1.5px solid var(--primary);
         padding: 0.6rem 1.5rem;
         border-radius: 50px;
         cursor: pointer;
         font-weight: 500;
-        align-self: flex-start; /* Aligns button to left */
+        align-self: flex-start; 
         transition: all 0.3s ease;
     }
-    .btn-card:hover { background-color: var(--primary); color: var(--white); }
+    .btn-card:hover { background-color: var(--primary); color: var(--text-dark); }
 
     /* --- ABOUT SECTION --- */
     .about {
@@ -218,7 +217,7 @@
     }
     .contact input, .contact textarea {
       padding: 1rem;
-      border: 1px solid rgba(191, 161, 129, 0.3);
+      border: 1px solid rgba(224, 201, 166, 0.4);
       border-radius: 8px;
       font-family: var(--font-body);
       font-size: 1rem;
@@ -232,7 +231,7 @@
     /* --- FOOTER --- */
     footer {
       background: var(--primary);
-      color: var(--white);
+      color: var(--text-dark);
       text-align: center;
       padding: 3rem 2rem;
       font-size: 1rem;
