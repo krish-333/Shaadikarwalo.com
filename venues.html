@@ -3,188 +3,319 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Venues - ShaadiKarwalo</title>
-  <link rel="icon" type="image/png" href="assets/favicon2.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+  <title>Venues | VivahKarwalo</title>
+  <link rel="icon" type="image/png" href="assets/Gemini_Generated_Image_2yfp6t2yfp6t2yfp.png" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  
   <style>
+    /* --- AESTHETIC INDIAN WEDDING THEME --- */
+    
+    :root {
+      /* Color Palette: Pastel Pink & Light Gold */
+      --primary: #F5D6D4; /* Softer Pastel Pink */
+      --secondary: #F4EBE2; /* Warm Ivory */
+      --accent: #E0C9A6;   /* Light Shimmering Gold */
+      --text-dark: #4A403A;  /* Deep Brown */
+      --white: #FFFFFF;
+      
+      /* Typography */
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #fff8f8;
-      color: #333;
+      font-family: var(--font-body);
+      background-color: var(--secondary);
+      color: var(--text-dark);
+      overflow-x: hidden;
     }
+    
+    /* --- HEADER & NAVIGATION --- */
     header {
-      background-color: #d32f2f;
-      color: white;
-      padding: 10px 20px;
+      background-color: rgba(244, 235, 226, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 1rem 3rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(224, 201, 166, 0.3);
     }
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      margin: 0;
-    }
+
+    .logo { display: flex; align-items: center; gap: 0.75rem; }
+    .logo img { width: 45px; height: 45px; }
+    .logo h2 { color: var(--text-dark); font-family: var(--font-heading); font-size: 1.8rem; }
+    
+    nav { display: flex; align-items: center; gap: 1.5rem; }
     nav a {
-      color: white;
-      margin: 0 12px;
+      color: var(--text-dark);
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+      padding: 5px 0;
     }
-    .wishlist-btn {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
+    nav a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1.5px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent);
+        transition: width 0.3s ease-in-out;
     }
-    h2 {
+    nav a:hover::after { width: 100%; }
+
+    .btn-nav {
+        background: var(--primary);
+        color: var(--text-dark);
+        padding: 0.6rem 1.2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    .btn-nav:hover { background-color: var(--accent); color: var(--white); }
+
+    /* --- GENERAL SECTION STYLING --- */
+    .section {
+      padding: 6rem 3rem;
+    }
+    .section-title {
       text-align: center;
-      margin: 20px 0;
-      font-family: 'Playfair Display', serif;
-      color: #c2185b;
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      margin-bottom: 3rem;
+      color: var(--text-dark);
+      font-weight: 600;
     }
-    .container {
+    
+    /* --- CARDS GRID --- */
+    .package-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 0 30px 40px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
     }
     .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.08);
-      overflow: hidden;
-      transition: 0.3s ease;
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05);
+      border: 1px solid rgba(224, 201, 166, 0.3);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden; /* Ensures child elements respect border-radius */
     }
     .card:hover {
-      transform: scale(1.02);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(74, 64, 58, 0.1);
     }
     .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
     }
     .card-body {
-      padding: 15px;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; /* Allows pushing content to bottom */
     }
     .card h3 {
-      margin: 0;
-      color: #d32f2f;
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
+      color: var(--text-dark);
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
     }
-    .price {
-      margin: 10px 0;
-      font-weight: bold;
-      color: #555;
+    .card p {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
     }
-    .card input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+    .card .interactive-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: auto;
+        padding-top: 1rem;
     }
-    .wishlist {
-      background-color: #d32f2f;
-      color: white;
-      border: none;
-      padding: 10px;
-      width: 100%;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
+    .card input[type="number"] {
+        padding: 0.6rem;
+        border: 1px solid rgba(224, 201, 166, 0.4);
+        border-radius: 8px;
+        font-family: var(--font-body);
+        font-size: 1rem;
+        background: var(--white);
+        width: 100px;
     }
+    .card input[type="number"]:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--primary);
+    }
+    .btn-card {
+        background-color: transparent;
+        color: var(--text-dark);
+        border: 1.5px solid var(--primary);
+        padding: 0.6rem 1.5rem;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    .btn-card:hover { background-color: var(--primary); }
+
+    /* --- FOOTER --- */
     footer {
-      background-color: #d32f2f;
-      color: white;
+      background: var(--primary);
+      color: var(--text-dark);
       text-align: center;
-      padding: 20px;
-      font-size: 14px;
+      padding: 3rem 2rem;
+      font-size: 1rem;
     }
+    
+    /* Animation class */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>ShaadiKarwalo</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="venues.html">Venues</a>
-      <a href="catering.html">Catering</a>
-      <a href="decor.html">Decor</a>
-      <a href="makeup.html">Makeup</a>
-      <a href="addons.html">Add-Ons</a>
-      <a href="login.html">Login</a>
-      <a href="viewaccount.html">Account</a>
-      <button class="wishlist-btn" onclick="window.location.href='index.html#wishlist'">❤️</button>
-    </nav>
-  </header>
+<header>
+  <div class="logo">
+     <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
+      <img src="assets/logo.png" alt="VivahKarwalo Logo" />
+      <h2>VivahKarwalo</h2>
+    </a>
+  </div>
+  <nav>
+    <a href="index.html#packages">Packages</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="login.html" class="btn-nav">Client Login</a>
+  </nav>
+</header>
 
-  <h2>Choose Your Dream Venue</h2>
-  <div class="container" id="venueContainer"></div>
+<main>
+    <section id="venues" class="section">
+        <h2 class="section-title fade-in">Choose Your Dream Venue</h2>
+        <div id="venueContainer" class="package-grid">
+            </div>
+    </section>
+</main>
 
-  <footer>
-    &copy; 2025 ShaadiKarwalo | Contact: 9833405618 | Email: shaadikarwaalo@gmail.com
-  </footer>
+<footer>
+  <p>&copy; 2025 VivahKarwalo | Curators of Timeless Indian Weddings</p>
+</footer>
 
-  <script>
-    const venues = [
-      { name: "Royal Palace", price: 1000, image: "assets/venue1.jpg" },
-      { name: "Dream Garden", price: 850, image: "assets/venue2.jpg" },
-      { name: "Heritage Hall", price: 1200, image: "assets/venue3.jpg" },
-      { name: "Sunset Lawns", price: 950, image: "assets/venue4.jpg" },
-      { name: "Beach View Banquet", price: 1100, image: "assets/venue5.jpg" },
-      { name: "Classic Courtyard", price: 800, image: "assets/venue6.jpg" },
-      { name: "Vintage Vows", price: 1250, image: "assets/venue7.jpg" },
-      { name: "Golden Acres", price: 1400, image: "assets/venue8.jpg" },
-      { name: "City Lights Venue", price: 1050, image: "assets/venue9.jpg" },
-      { name: "Heavenly Halls", price: 950, image: "assets/venue10.jpg" },
-    ];
+<script>
+  // --- DYNAMIC VENUE CARD LOGIC ---
+  const venues = [
+    { name: "Royal Palace", price: 1000, image: "assets/venue1.jpg" },
+    { name: "Dream Garden", price: 850, image: "assets/venue2.jpg" },
+    { name: "Heritage Hall", price: 1200, image: "assets/venue3.jpg" },
+    { name: "Sunset Lawns", price: 950, image: "assets/venue4.jpg" },
+    { name: "Beach View Banquet", price: 1100, image: "assets/venue5.jpg" },
+    { name: "Classic Courtyard", price: 800, image: "assets/venue6.jpg" },
+    { name: "Vintage Vows", price: 1250, image: "assets/venue7.jpg" },
+    { name: "Golden Acres", price: 1400, image: "assets/venue8.jpg" },
+    { name: "City Lights Venue", price: 1050, image: "assets/venue9.jpg" },
+    { name: "Heavenly Halls", price: 950, image: "assets/venue10.jpg" },
+  ];
 
-    const container = document.getElementById("venueContainer");
+  const container = document.getElementById("venueContainer");
 
-    venues.forEach((venue, index) => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = `
-        <img src="${venue.image}" alt="${venue.name}">
-        <div class="card-body">
-          <h3>${venue.name}</h3>
-          <div class="price">₹${venue.price} per guest</div>
-          <input type="number" placeholder="Enter guest count" id="guests${index}" min="1" />
-          <button class="wishlist" onclick="addToWishlist(${index})">Add to Wishlist ❤️</button>
+  venues.forEach((venue, index) => {
+    const card = document.createElement("div");
+    card.className = "card fade-in";
+    card.innerHTML = `
+      <img src="${venue.image}" alt="${venue.name}">
+      <div class="card-body">
+        <h3>${venue.name}</h3>
+        <p><strong>₹${venue.price.toLocaleString('en-IN')}</strong> per guest</p>
+        <div class="interactive-row">
+          <input type="number" placeholder="Guests" id="guests${index}" min="1" />
+          <button class="btn-card" onclick="addToWishlist(${index})">❤️ Add</button>
         </div>
-      `;
-      container.appendChild(card);
-    });
-
-    function addToWishlist(index) {
-      const guestInput = document.getElementById(`guests${index}`);
-      const guestCount = parseInt(guestInput.value);
-      if (isNaN(guestCount) || guestCount <= 0) {
-        alert("Please enter a valid number of guests.");
-        return;
-      }
-      const selected = venues[index];
-      const totalPrice = guestCount * selected.price;
-
-      const item = {
-        name: selected.name,
-        total: totalPrice,
-        guests: guestCount,
-        image: selected.image,
-        type: "Venue"
-      };
-
-      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-      wishlist.push(item);
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
-      alert(`${selected.name} added to wishlist with ₹${totalPrice} total cost.`);
+      </div>
+    `;
+    container.appendChild(card);
+  });
+  
+  function addToWishlist(index) {
+    const guestInput = document.getElementById(`guests${index}`);
+    const guestCount = parseInt(guestInput.value);
+    if (isNaN(guestCount) || guestCount <= 0) {
+      alert("Please enter a valid number of guests.");
+      return;
     }
-  </script>
+    const selected = venues[index];
+    const totalPrice = guestCount * selected.price;
+
+    const item = {
+      name: selected.name,
+      price: totalPrice,
+      details: `${guestCount} guests × ₹${selected.price}/guest`,
+      category: "Venue"
+    };
+
+    let wishlist = JSON.parse(localStorage.getItem("vivahKarwaloWishlist")) || [];
+    
+    const isAlreadyAdded = wishlist.some(wishlistItem => wishlistItem.name === item.name);
+    
+    if (isAlreadyAdded) {
+      alert(item.name + " is already in your wishlist.");
+    } else {
+      wishlist.push(item);
+      localStorage.setItem("vivahKarwaloWishlist", JSON.stringify(wishlist));
+      alert(`Added ${selected.name} to wishlist for ${guestCount} guests. Total: ₹${totalPrice.toLocaleString('en-IN')}`);
+    }
+  }
+
+  // --- FADE-IN ANIMATION LOGIC ---
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = {
+    threshold: 0.2,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        entry.target.classList.add('visible');
+        appearOnScroll.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+</script>
 
 </body>
 </html>
