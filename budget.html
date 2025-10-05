@@ -5,14 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Budget Package | VivahKarwalo</title>
   <link rel="icon" type="image/png" href="assets/Gemini_Generated_Image_2yfp6t2yfp6t2yfp.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter&display=swap" rel="stylesheet" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  
   <style>
+    /* --- AESTHETIC INDIAN WEDDING THEME --- */
+    
     :root {
-      --primary: #d32f2f;
-      --accent: #c2185b;
-      --bg-light: #fff5f5;
-      --text-dark: #212121;
-      --white: #fff;
+      /* Color Palette: Pastel Pink & Light Gold */
+      --primary: #F5D6D4; /* Softer Pastel Pink */
+      --secondary: #F4EBE2; /* Warm Ivory */
+      --accent: #E0C9A6;   /* Light Shimmering Gold */
+      --text-dark: #4A403A;  /* Deep Brown */
+      --white: #FFFFFF;
+      
+      /* Typography */
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
     }
 
     * {
@@ -21,89 +32,119 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-dark);
+    html {
+        scroll-behavior: smooth;
     }
 
+    body {
+      font-family: var(--font-body);
+      background-color: var(--secondary);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+    
+    /* --- HEADER & NAVIGATION --- */
     header {
-      background-color: var(--primary);
-      color: var(--white);
-      padding: 1rem 2rem;
+      background-color: rgba(244, 235, 226, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 1rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 1001; /* Ensure header is on top */
+      z-index: 1001;
+      border-bottom: 1px solid rgba(224, 201, 166, 0.3);
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .logo img {
-      width: 40px;
-      height: 40px;
-    }
-
+    .logo { display: flex; align-items: center; gap: 0.75rem; }
+    .logo img { width: 45px; height: 45px; }
+    .logo h2 { color: var(--text-dark); font-family: var(--font-heading); font-size: 1.8rem; }
+    
+    nav { display: flex; align-items: center; gap: 1.5rem; }
     nav a {
-      color: var(--white);
+      color: var(--text-dark);
       text-decoration: none;
-      margin: 0 0.8rem;
-      font-weight: bold;
+      font-weight: 500;
+      font-size: 1rem;
     }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
     .cart-icon {
-      background: var(--white);
-      color: var(--primary);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-weight: bold;
-      cursor: pointer;
+        font-weight: 500;
+        cursor: pointer;
     }
-    
+
+    .btn-nav {
+        background: var(--primary);
+        color: var(--text-dark);
+        padding: 0.6rem 1.2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    .btn-nav:hover { background-color: var(--accent); color: var(--white); }
+
+    /* --- PAGE-SPECIFIC STYLING --- */
+    .page-title-section {
+        padding: 4rem 2rem;
+        text-align: center;
+        background-color: var(--white);
+    }
+    .page-title {
+        font-family: var(--font-heading);
+        font-size: 3rem;
+        color: var(--text-dark);
+        font-weight: 600;
+    }
+
     .container {
-        padding: 2rem;
+        padding: 4rem 2rem;
         max-width: 1000px;
-        margin: 2rem auto;
-        background: var(--white);
-        border-radius: 16px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin: 0 auto;
     }
+    .package-details {
+        background-color: var(--white);
+        padding: 3rem;
+        border-radius: 8px;
+        box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05);
+    }
+    .p-section { margin-bottom: 2.5rem; }
+    .p-section:last-child { margin-bottom: 0; }
 
-    .section {
-        margin-bottom: 2.5rem;
+    .p-section h3 {
+        font-family: var(--font-heading);
+        font-size: 1.8rem;
+        color: var(--text-dark);
+        border-bottom: 1px solid var(--primary);
+        padding-bottom: 0.75rem;
+        margin-bottom: 1.5rem;
     }
-    .section:last-child {
-        margin-bottom: 0;
+    .p-section p, .p-section li {
+        line-height: 1.8;
+        font-size: 1.05rem;
     }
-
-    h1, h2, h3 {
-        font-family: 'Playfair Display', serif;
+    .p-section ul {
+        list-style: none;
+        padding: 0;
+    }
+    .p-section ul li {
+        padding-left: 1.5rem;
+        position: relative;
+        margin-bottom: 0.8rem;
+    }
+    .p-section ul li::before {
+        content: '✓';
         color: var(--primary);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
     }
-
-    h2 { font-size: 2.2rem; margin-bottom: 1rem; }
-    h3 { font-size: 1.6rem; margin-bottom: 1rem; border-bottom: 2px solid var(--bg-light); padding-bottom: 0.5rem;}
     
-    p { line-height: 1.6; }
-    ul { list-style-position: inside; padding-left: 10px;}
-    ul li { margin-bottom: 10px; }
-
     .gallery {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1rem;
     }
-
     .gallery img {
         width: 100%;
         border-radius: 8px;
@@ -111,20 +152,19 @@
         object-fit: cover;
     }
     
-    .cta-button {
+    .btn-hero {
         background: var(--primary);
-        color: var(--white);
-        padding: 12px 24px;
-        font-size: 1rem;
+        color: var(--text-dark);
         border: none;
-        border-radius: 30px;
+        padding: 0.9rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 500;
         cursor: pointer;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-    .cta-button:hover {
-        background-color: var(--accent);
-    }
+    .btn-hero:hover { background-color: var(--accent); color: var(--white); transform: translateY(-3px); }
 
     #cartItemsList {
         display: none;
@@ -136,93 +176,105 @@
         width: 300px;
         max-height: 400px;
         overflow-y: auto;
-        border-radius: 16px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        border-radius: 8px;
+        box-shadow: 0 5px 25px rgba(74, 64, 58, 0.15);
         padding: 1.5rem;
         z-index: 1000;
-        border: 1px solid #eee;
+        border: 1px solid rgba(224, 201, 166, 0.3);
     }
-    
     #cartItemsList h3 {
+        font-family: var(--font-heading);
         margin-top: 0;
         padding-bottom: 1rem;
-        border-bottom: 2px solid var(--bg-light);
+        border-bottom: 1px solid var(--primary);
+    }
+    #cartItemsList ul { list-style: none; padding: 0; }
+    
+    /* --- FOOTER --- */
+    footer {
+      background: var(--primary);
+      color: var(--text-dark);
+      text-align: center;
+      padding: 3rem 2rem;
+      font-size: 1rem;
     }
     
-    #cartItemsList ul {
-        list-style: none;
-        padding: 0;
+    /* Animation class */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
-
-    footer {
-      background: var(--text-dark);
-      color: var(--white);
-      text-align: center;
-      padding: 1rem;
-    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
 <header>
   <div class="logo">
-    <img src="assets/logo.png" alt="Logo" />
-    <h2>VivahKarwalo</h2>
+    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+        <img src="assets/logo.png" alt="VivahKarwalo Logo" />
+        <h2>VivahKarwalo</h2>
+    </a>
   </div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="venues.html">Venues</a>
-    <a href="catering.html">Catering</a>
-    <a href="decor.html">Decor</a>
-    <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add-ons</a>
-    <a href="login.html">Login</a>
+    <a href="index.html#packages">Packages</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
     <span class="cart-icon" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</span>
+    <a href="login.html" class="btn-nav">Client Login</a>
   </nav>
 </header>
 
-<div class="container">
-  <div class="section">
-    <h2>Budget Wedding Package</h2>
-    <p><strong>Price:</strong> ₹7,99,999</p>
-    <p>This affordable package includes all essentials for a beautiful, intimate wedding experience for up to 200 guests.</p>
-  </div>
+<main>
+    <section class="page-title-section">
+        <h1 class="page-title fade-in">Budget Wedding Package</h1>
+    </section>
 
-  <div class="section">
-    <h3>What's Included:</h3>
-    <ul>
-      <li><strong>Venue:</strong> Budget banquet hall in city of choice</li>
-      <li><strong>Catering:</strong> Veg buffet with 3-course meal (North & South Indian)</li>
-      <li><strong>Decor:</strong> Traditional floral setup with mandap</li>
-      <li><strong>Makeup:</strong> Basic bridal makeup + 2 family members</li>
-      <li><strong>Photography:</strong> Candid + Traditional (1 day)</li>
-      <li><strong>Music:</strong> DJ setup for reception night</li>
-      <li><strong>Logistics:</strong> Basic transportation and guest support</li>
-    </ul>
-  </div>
+    <div class="container">
+      <div class="package-details">
+        <div class="p-section fade-in">
+          <p><strong>Price:</strong> ₹7,99,999</p>
+          <p>This affordable package includes all essentials for a beautiful, intimate wedding experience for up to 200 guests.</p>
+        </div>
 
-  <div class="section">
-    <h3>Gallery:</h3>
-    <div class="gallery">
-      <img src="assets/budget1.jpg" alt="Budget Wedding 1" />
-      <img src="assets/budget2.jpg" alt="Budget Wedding 2" />
-      <img src="assets/budget3.jpg" alt="Budget Wedding 3" />
+        <div class="p-section fade-in">
+          <h3>What's Included:</h3>
+          <ul>
+            <li><strong>Venue:</strong> Budget banquet hall in city of choice</li>
+            <li><strong>Catering:</strong> Veg buffet with 3-course meal (North & South Indian)</li>
+            <li><strong>Decor:</strong> Traditional floral setup with mandap</li>
+            <li><strong>Makeup:</strong> Basic bridal makeup + 2 family members</li>
+            <li><strong>Photography:</strong> Candid + Traditional (1 day)</li>
+            <li><strong>Music:</strong> DJ setup for reception night</li>
+            <li><strong>Logistics:</strong> Basic transportation and guest support</li>
+          </ul>
+        </div>
+
+        <div class="p-section fade-in">
+          <h3>Gallery:</h3>
+          <div class="gallery">
+            <img src="assets/budget1.jpg" alt="Budget Wedding 1" />
+            <img src="assets/budget2.jpg" alt="Budget Wedding 2" />
+            <img src="assets/budget3.jpg" alt="Budget Wedding 3" />
+          </div>
+        </div>
+
+        <div class="p-section fade-in" style="text-align:center;">
+          <button class="btn-hero" onclick="addToCart()">Add This Package to Cart</button>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="section" style="text-align:center;">
-    <button class="cta-button" onclick="addToCart()">Add This Package to Cart</button>
-  </div>
-</div>
-
-<div id="cartItemsList">
-  <h3>Your Cart</h3>
-  <ul id="cartItems"></ul>
-  <p><strong>Total: ₹<span id="cartTotal">0</span></strong></p>
-</div>
+    <div id="cartItemsList">
+      <h3>Your Cart</h3>
+      <ul id="cartItems"></ul>
+      <p><strong>Total: ₹<span id="cartTotal">0</span></strong></p>
+    </div>
+</main>
 
 <footer>
-  &copy; 2025 VivahKarwalo | 📞 9833405618 | 📧 vivahkarwaalo@gmail.com
+  <p>&copy; 2025 VivahKarwalo | Curators of Timeless Indian Weddings</p>
 </footer>
 
 <script>
@@ -230,14 +282,12 @@
   const packageDetails = { name: "Budget Wedding Package", price: 799999 };
 
   function addToCart() {
-    // Prevent adding the same package multiple times
     if (cart.find(item => item.name === packageDetails.name)) {
         alert("This package is already in your cart.");
         return;
     }
     cart.push(packageDetails);
     renderCart();
-    // Automatically open the cart to show the added item
     document.getElementById("cartItemsList").style.display = "block";
   }
 
@@ -250,6 +300,8 @@
     const cartList = document.getElementById("cartItems");
     const cartTotal = document.getElementById("cartTotal");
     const cartCount = document.getElementById("cartCount");
+
+    if (!cartList || !cartTotal || !cartCount) return;
 
     cartList.innerHTML = "";
     let total = 0;
@@ -265,8 +317,28 @@
     cartCount.textContent = cart.length;
   }
   
-  // Initial render in case the page is reloaded with items in cart (requires more advanced state management)
   renderCart();
+
+  // Simple fade-in animation on scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = {
+    threshold: 0.2,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) { return; } 
+      else {
+        entry.target.classList.add('visible');
+        appearOnScroll.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
 </script>
 
 </body>
