@@ -3,16 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VivahKarwalo - Wedding Planner</title>
+  <title>VivahKarwalo - Curators of Timeless Weddings</title>
   <link rel="icon" type="image/png" href="assets/Gemini_Generated_Image_2yfp6t2yfp6t2yfp.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter&display=swap" rel="stylesheet" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  
   <style>
+    /* --- AESTHETIC INDIAN WEDDING THEME --- */
+    
     :root {
-      --primary: #d32f2f;
-      --accent: #c2185b;
-      --bg-light: #fff5f5;
-      --text-dark: #212121;
-      --white: #fff;
+      /* New Color Palette: Soft, elegant, and luxurious */
+      --primary: #D9A8A4; /* Soft Blush Pink */
+      --secondary: #F4EBE2; /* Warm Ivory */
+      --accent: #BFA181;   /* Muted Gold */
+      --text-dark: #4A403A;  /* Deep Brown */
+      --white: #FFFFFF;
+      
+      /* New Typography */
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
     }
 
     * {
@@ -21,263 +32,316 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--white);
-      color: var(--text-dark);
+    html {
+        scroll-behavior: smooth;
     }
 
+    body {
+      font-family: var(--font-body);
+      background-color: var(--secondary);
+      color: var(--text-dark);
+      overflow-x: hidden; /* Prevents horizontal scroll from animations */
+    }
+    
+    /* --- HEADER & NAVIGATION --- */
     header {
-      background-color: var(--primary);
-      color: var(--white);
-      padding: 1rem 2rem;
+      background-color: rgba(244, 235, 226, 0.8); /* Translucent Ivory */
+      backdrop-filter: blur(10px);
+      padding: 1rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+      border-bottom: 1px solid rgba(191, 161, 129, 0.2);
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .logo img {
-      width: 40px;
-      height: 40px;
-    }
-
+    .logo { display: flex; align-items: center; gap: 0.75rem; }
+    .logo img { width: 45px; height: 45px; }
+    .logo h2 { color: var(--text-dark); font-family: var(--font-heading); font-size: 1.8rem; }
+    
+    nav { display: flex; align-items: center; gap: 1.5rem; }
     nav a {
-      color: var(--white);
+      color: var(--text-dark);
       text-decoration: none;
-      margin: 0 0.8rem;
-      font-weight: bold;
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+      padding: 5px 0;
     }
-
-    nav a:hover {
-      text-decoration: underline;
+    /* Underline animation on hover */
+    nav a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1.5px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent);
+        transition: width 0.3s ease-in-out;
     }
+    nav a:hover::after { width: 100%; }
 
-    .wishlist-icon {
-      background: var(--white);
-      color: var(--primary);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-weight: bold;
+    .btn-nav {
+        background: var(--primary);
+        color: var(--white);
+        padding: 0.6rem 1.2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
     }
+    .btn-nav:hover { background-color: var(--accent); color: var(--white); }
 
+    /* --- HERO SECTION --- */
     .hero {
-      background: linear-gradient(to right, var(--primary), var(--accent));
+      background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1597855032558-42c272891930?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+      background-size: cover;
+      background-position: center;
       color: var(--white);
-      padding: 4rem 2rem;
+      padding: 8rem 2rem;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
     }
 
     .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-family: var(--font-heading);
+      font-size: 4.5rem;
+      font-weight: 600;
       margin-bottom: 1rem;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
     }
 
     .hero p {
       font-size: 1.25rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
     }
 
-    .hero button {
-      background: var(--white);
-      color: var(--primary);
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 30px;
+    .btn-hero {
+        background: var(--white);
+        color: var(--primary);
+        border: none;
+        padding: 0.9rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
+    .btn-hero:hover { background-color: var(--primary); color: var(--white); transform: translateY(-3px); }
 
-    section {
-      padding: 4rem 2rem;
+    /* --- GENERAL SECTION STYLING --- */
+    .section {
+      padding: 6rem 3rem;
     }
-
-    .packages, .about, .contact {
-      background: var(--bg-light);
-    }
-
-    section h2 {
+    .section-title {
       text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: var(--primary);
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      margin-bottom: 3rem;
+      color: var(--text-dark);
+      font-weight: 600;
     }
-
+    
+    /* --- PACKAGES & CARDS --- */
     .package-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      max-width: 1400px;
       margin: 0 auto;
     }
-
     .card {
       background: var(--white);
-      border-radius: 16px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      color: var(--primary);
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .card button {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 30px;
-      cursor: pointer;
-    }
-
-    .card button:hover {
-      background-color: var(--accent);
-    }
-
-    .about p {
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 1.05rem;
-      line-height: 1.7;
-      text-align: center;
-    }
-
-    .contact form {
-      max-width: 500px;
-      margin: 0 auto;
+      border-radius: 8px;
+      box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05);
+      padding: 2rem;
+      border: 1px solid rgba(191, 161, 129, 0.2);
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
     }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(74, 64, 58, 0.1);
+    }
+    .card h3 {
+      font-family: var(--font-heading);
+      color: var(--text-dark);
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
+    .card p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1; /* Pushes button to bottom */
+    }
+    .btn-card {
+        background-color: transparent;
+        color: var(--primary);
+        border: 1.5px solid var(--primary);
+        padding: 0.6rem 1.5rem;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 500;
+        align-self: flex-start; /* Aligns button to left */
+        transition: all 0.3s ease;
+    }
+    .btn-card:hover { background-color: var(--primary); color: var(--white); }
 
-    .contact input,
-    .contact textarea {
-      padding: 12px;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+    /* --- ABOUT SECTION --- */
+    .about {
+        background: var(--white);
+    }
+    .about p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: center;
     }
 
-    .contact button {
+    /* --- CONTACT FORM --- */
+    .contact form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
+    }
+    .contact input, .contact textarea {
+      padding: 1rem;
+      border: 1px solid rgba(191, 161, 129, 0.3);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      background: var(--white);
+    }
+    .contact input:focus, .contact textarea:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--primary);
+    }
+
+    /* --- FOOTER --- */
+    footer {
       background: var(--primary);
       color: var(--white);
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    footer {
-      background: var(--text-dark);
-      color: var(--white);
       text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
+      padding: 3rem 2rem;
+      font-size: 1rem;
+    }
+    
+    /* Animation class for fade-in effect */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-    }
   </style>
 </head>
 <body>
 
 <header>
   <div class="logo">
-    <img src="assets/logo.png" alt="Logo" />
+    <img src="assets/logo.png" alt="VivahKarwalo Logo" />
     <h2>VivahKarwalo</h2>
   </div>
   <nav>
-  <a href="index.html">Home</a>
-  <a href="venues.html">Venues</a>
-  <a href="catering.html">Catering</a>
-  <a href="decor.html">Decor</a>
-  <a href="makeup.html">Makeup</a>
-  <a href="addons.html">Add-ons</a>
-  <a href="login.html">Login</a>
-  <a href="viewaccount.html">View Account</a>
-  <span class="wishlist-icon">
-    <a href="wishlist.html" style="color: var(--primary); text-decoration: none;">♥ Wishlist</a>
-  </span>
-</nav>
-
+    <a href="#packages">Packages</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="login.html" class="btn-nav">Client Login</a>
+  </nav>
 </header>
 
-<section class="hero">
-  <h1>Plan Your Perfect Wedding</h1>
-  <p>All-inclusive wedding packages tailored to your dreams and budget</p>
-  <button onclick="window.location.href='packages.html'">Explore Packages</button>
-</section>
+<main>
+    <section class="hero">
+        <h1 class="fade-in">Crafting Timeless Celebrations</h1>
+        <p class="fade-in">From intimate gatherings to grand affairs, we weave your love story into an unforgettable wedding experience. Based in the heart of India, serving dreams worldwide.</p>
+        <button onclick="window.location.href='#packages'" class="btn-hero fade-in">Discover Our Packages</button>
+    </section>
 
-<section class="packages">
-  <h2>Our Packages</h2>
-  <div class="package-grid">
-    <div class="card">
-      <h3>Budget Bliss</h3>
-      <p>For small weddings under ₹8L — simple, elegant, and stress-free.</p>
-      <button onclick="location.href='package-budget.html'">Know More</button>
-    </div>
-    <div class="card">
-      <h3>Classic Charm</h3>
-      <p>Mid-range packages with everything you need for a perfect celebration.</p>
-      <button onclick="location.href='package-classic.html'">Know More</button>
-    </div>
-    <div class="card">
-      <h3>Royal Grandeur</h3>
-      <p>Lavish ceremonies with royal themes and top-tier arrangements.</p>
-      <button onclick="location.href='package-royal.html'">Know More</button>
-    </div>
-    <div class="card">
-      <h3>Luxury Legacy</h3>
-      <p>The ultimate premium package for those who want nothing but the best.</p>
-      <button onclick="location.href='package-luxury.html'">Know More</button>
-    </div>
-  </div>
-</section>
+    <section id="packages" class="section packages">
+        <h2 class="section-title fade-in">Our Signature Collections</h2>
+        <div class="package-grid">
+            <div class="card fade-in">
+                <h3>The Intimate Elopement</h3>
+                <p>For the wildly in love. A beautifully curated, stress-free celebration for up to 25 cherished guests.</p>
+                <button onclick="location.href='package-budget.html'" class="btn-card">Explore Details</button>
+            </div>
+            <div class="card fade-in">
+                <h3>The Classic Romance</h3>
+                <p>Timeless elegance and refined details. Our most popular collection for a perfectly balanced celebration.</p>
+                <button onclick="location.href='package-classic.html'" class="btn-card">Explore Details</button>
+            </div>
+            <div class="card fade-in">
+                <h3>The Royal Affair</h3>
+                <p>A lavish, multi-day spectacle of heritage and grandeur. For those who desire nothing less than a royal legacy.</p>
+                <button onclick="location.href='package-royal.html'" class="btn-card">Explore Details</button>
+            </div>
+            <div class="card fade-in">
+                <h3>The Destination Dream</h3>
+                <p>From palace courtyards to pristine beaches. We handle every detail of your breathtaking destination wedding.</p>
+                <button onclick="location.href='package-luxury.html'" class="btn-card">Explore Details</button>
+            </div>
+        </div>
+    </section>
 
-<section class="about">
-  <h2>About Us</h2>
-  <p>VivahKarwalo is India’s most intuitive wedding planner platform. From venues to decor, catering, and even mehndi artists, we bring all vendors under one roof. Plan stress-free, affordable, and unforgettable weddings — all from one place.</p>
-</section>
+    <section id="about" class="section about">
+        <h2 class="section-title fade-in">Our Philosophy</h2>
+        <p class="fade-in">At VivahKarwalo, we believe a wedding is more than an event—it's the first chapter of your legacy. Our passion is translating your unique story into a seamless and beautiful experience. With a network of India's finest artisans and vendors, we ensure every detail, from the scent of the flowers to the flavor of the feast, is a true reflection of you.</p>
+    </section>
 
-<section class="contact">
-  <h2>Contact Us</h2>
-  <form action="#" method="post">
-    <input type="text" placeholder="Your Name" required />
-    <input type="email" placeholder="Your Email" required />
-    <textarea rows="4" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section>
+    <section id="contact" class="section contact">
+        <h2 class="section-title fade-in">Begin Your Journey</h2>
+        <form action="#" method="post" class="fade-in">
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <textarea rows="5" placeholder="Tell us a little about your dream wedding..." required></textarea>
+            <button type="submit" class="btn-hero" style="width: 100%;">Send Inquiry</button>
+        </form>
+    </section>
+</main>
 
 <footer>
-  &copy; 2025 VivahKarwalo | 📞 9833405618 | 📧 vivahkarwaalo@gmail.com
+  <p>&copy; 2025 VivahKarwalo | Curators of Timeless Indian Weddings</p>
 </footer>
+
+<script>
+// Simple fade-in animation on scroll
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = {
+  threshold: 0.2,
+  rootMargin: "0px 0px -50px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      return;
+    } else {
+      entry.target.classList.add('visible');
+      appearOnScroll.unobserve(entry.target);
+    }
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+</script>
 
 </body>
 </html>
