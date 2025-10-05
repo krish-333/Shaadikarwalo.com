@@ -2,146 +2,226 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Add-Ons – ShaadiKarwalo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add-Ons | VivahKarwalo</title>
+  <link rel="icon" type="image/png" href="assets/Gemini_Generated_Image_2yfp6t2yfp6t2yfp.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
+    :root {
+      --primary: #d32f2f;
+      --accent: #c2185b;
+      --bg-light: #fff5f5;
+      --text-dark: #212121;
+      --white: #fff;
+    }
+
+    * {
       margin: 0;
-      background: #fffdf6;
-      color: #333;
+      padding: 0;
+      box-sizing: border-box;
     }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-dark);
+    }
+
     header {
-      background: #fb6162;
-      color: white;
-      text-align: center;
-      padding: 1.5rem;
-      position: relative;
-    }
-    header img {
-      width: 100px;
-      border-radius: 10px;
-      border: 3px solid white;
-    }
-    nav {
-      background: white;
-      padding: 0.8rem;
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 1rem 2rem;
       display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+    }
+
     nav a {
-      color: #fb6162;
-      font-weight: bold;
+      color: var(--white);
       text-decoration: none;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
+      margin: 0 0.8rem;
+      font-weight: bold;
     }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
     .wishlist-icon {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 24px;
-      background: white;
-      color: #fb6162;
-      border-radius: 50%;
-      padding: 10px;
-      cursor: pointer;
+      background: var(--white);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: bold;
     }
-    h2 {
+    
+    section {
+      padding: 4rem 2rem;
+    }
+
+    .content-section {
+      background: var(--bg-light);
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
       text-align: center;
-      margin-top: 2rem;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--primary);
     }
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 1.5rem;
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
+
     .card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 1rem;
-      width: 300px;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 1.5rem;
       text-align: center;
+      transition: transform 0.3s ease;
     }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
       border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+      font-size: 1.4rem;
       margin-bottom: 0.5rem;
     }
-    .card h3 {
-      color: #fb6162;
-    }
+
     .card p {
-      margin: 0.5rem 0;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
     }
+
     .card button {
-      margin-top: 6px;
-      background: #fb6162;
+      background: var(--primary);
       color: white;
       border: none;
-      padding: 8px 14px;
-      border-radius: 5px;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
       cursor: pointer;
+      font-weight: bold;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .card button:hover {
+      background-color: var(--accent);
+    }
+
+    footer {
+      background: var(--text-dark);
+      color: var(--white);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="assets/logo.png" alt="ShaadiKarwalo Logo">
-  <div class="wishlist-icon" onclick="window.location.href='index.html#wishlist'">❤️</div>
-  <h1>Wedding Add‑Ons</h1>
-  <p>Enhance your experience with extra services</p>
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo" />
+    <h2>VivahKarwalo</h2>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="venues.html">Venues</a>
+    <a href="catering.html">Catering</a>
+    <a href="decor.html">Decor</a>
+    <a href="makeup.html">Makeup</a>
+    <a href="addons.html">Add-ons</a>
+    <a href="login.html">Login</a>
+    <a href="viewaccount.html">View Account</a>
+    <span class="wishlist-icon">
+      <a href="wishlist.html" style="color: var(--primary); text-decoration: none;">♥ Wishlist</a>
+    </span>
+  </nav>
 </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="venues.html">Venues</a>
-  <a href="catering.html">Catering</a>
-  <a href="decor.html">Decor</a>
-  <a href="makeup.html">Makeup</a>
-</nav>
+<section class="content-section">
+  <h2>Optional Add‑Ons</h2>
+  <div class="card-grid">
 
-<h2>Optional Add‑Ons</h2>
-<div class="cards">
+    <div class="card">
+      <img src="assets/addon1.jpg" alt="DJ Setup">
+      <h3>DJ + Dance Floor</h3>
+      <p>Cost: ₹35,000</p>
+      <button onclick="addAddOnToWishlist('DJ + Dance Floor', 35000)">❤️ Add to Wishlist</button>
+    </div>
 
-  <div class="card">
-    <img src="assets/addon1.jpg" alt="DJ Setup">
-    <h3>DJ + Dance Floor</h3>
-    <p>Cost: ₹35,000</p>
-    <button onclick="addAddOnToWishlist('DJ + Dance Floor', 35000)">❤️ Add to Wishlist</button>
+    <div class="card">
+      <img src="assets/addon2.jpg" alt="Photobooth">
+      <h3>Photobooth Station</h3>
+      <p>Cost: ₹18,000</p>
+      <button onclick="addAddOnToWishlist('Photobooth Station', 18000)">❤️ Add to Wishlist</button>
+    </div>
+
+    <div class="card">
+      <img src="assets/addon3.jpg" alt="Fireworks">
+      <h3>Fireworks Entry</h3>
+      <p>Cost: ₹25,000</p>
+      <button onclick="addAddOnToWishlist('Fireworks Entry', 25000)">❤️ Add to Wishlist</button>
+    </div>
+
   </div>
+</section>
 
-  <div class="card">
-    <img src="assets/addon2.jpg" alt="Photobooth">
-    <h3>Photobooth Station</h3>
-    <p>Cost: ₹18,000</p>
-    <button onclick="addAddOnToWishlist('Photobooth Station', 18000)">❤️ Add to Wishlist</button>
-  </div>
-
-  <div class="card">
-    <img src="assets/addon3.jpg" alt="Fireworks">
-    <h3>Fireworks Entry</h3>
-    <p>Cost: ₹25,000</p>
-    <button onclick="addAddOnToWishlist('Fireworks Entry', 25000)">❤️ Add to Wishlist</button>
-  </div>
-
-</div>
+<footer>
+  &copy; 2025 VivahKarwalo | 📞 9833405618 | 📧 vivahkarwaalo@gmail.com
+</footer>
 
 <script>
   function addAddOnToWishlist(name, price) {
-    const item = `${name} – ₹${price}`;
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    wishlist.push(item);
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    alert("Added to wishlist!");
+    // In a real app, you might want to store an object with more details
+    const item = { name: name, price: price };
+    let wishlist = JSON.parse(localStorage.getItem('vivahKarwaloWishlist')) || [];
+    
+    // Check if item already exists to avoid duplicates
+    const isAlreadyAdded = wishlist.some(wishlistItem => wishlistItem.name === item.name);
+    
+    if (isAlreadyAdded) {
+      alert(name + " is already in your wishlist.");
+    } else {
+      wishlist.push(item);
+      localStorage.setItem('vivahKarwaloWishlist', JSON.stringify(wishlist));
+      alert("Added " + name + " to your wishlist!");
+    }
   }
 </script>
 
