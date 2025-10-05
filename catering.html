@@ -1,216 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Catering – ShaadiKarwalo</title>
+  <meta charset="UTF--8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catering | VivahKarwalo</title>
+  <link rel="icon" type="image/png" href="assets/Gemini_Generated_Image_2yfp6t2yfp6t2yfp.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: #fb6162;
-      color: white;
-    }
-    header {
-      background: #ff5f5f;
-      padding: 1rem;
-    }
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo-container {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: white;
-    }
-    .logo-container img {
-      width: 60px;
-      border: 2px solid white;
-      border-radius: 10px;
-      margin-right: 10px;
-    }
-    .logo-container h1 {
-      margin: 0;
-      font-size: 1.5rem;
-      color: white;
-    }
-    .logo-container p {
-      margin: 0;
-      font-size: 0.85rem;
-      font-style: italic;
-      color: white;
-    }
-    nav {
-      background: white;
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 1rem;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: #fb6162;
-      font-weight: bold;
-      text-decoration: none;
+    :root {
+      --primary: #d32f2f;
+      --accent: #c2185b;
+      --bg-light: #fff5f5;
+      --text-dark: #212121;
+      --white: #fff;
     }
 
-    .catering-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 2rem;
-    }
-    .card {
-      background: white;
-      color: #333;
-      border-radius: 10px;
-      padding: 1rem;
-      width: 250px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .card img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-    .card h3 {
+    * {
       margin: 0;
-      color: #fb6162;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .card p {
-      margin: 0.5rem 0;
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-dark);
     }
-    .row {
+
+    header {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 10px;
+      gap: 0.5rem;
     }
-    .row input {
-      padding: 5px;
-      width: 80px;
+
+    .logo img {
+      width: 40px;
+      height: 40px;
     }
-    .like-button {
-      background: #fb6162;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      padding: 8px;
-      font-size: 16px;
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .cart-icon {
+      background: var(--white);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: bold;
       cursor: pointer;
+    }
+    
+    section {
+      padding: 4rem 2rem;
+      background: var(--bg-light);
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 2.5rem;
+      color: var(--primary);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      margin: 0.5rem 0;
+      color: var(--text-dark);
+    }
+    
+    .card .interactive-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: auto; /* Pushes to the bottom */
+        padding-top: 1rem;
+    }
+
+    .card input[type="number"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        width: 100px;
+        font-size: 1rem;
+    }
+
+    .card .wishlist-button {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+    .card .wishlist-button:hover {
+        background-color: var(--accent);
+    }
+
+    #accountArea a { color: var(--white); text-decoration: none; font-weight: bold; }
+
+    footer {
+      background: var(--text-dark);
+      color: var(--white);
+      text-align: center;
+      padding: 1rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <a href="index.html" class="logo-container">
-        <img src="assets/logo.png" alt="ShaadiKarwalo Logo" />
-        <div>
-          <h1>ShaadiKarwalo</h1>
-          <p>Aap bas jodi banao, shaadi hum karwa denge</p>
-        </div>
-      </a>
-    </div>
-  </header>
 
+<header>
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo" />
+    <h2>VivahKarwalo</h2>
+  </div>
   <nav>
     <a href="index.html">Home</a>
     <a href="venues.html">Venues</a>
     <a href="catering.html">Catering</a>
     <a href="decor.html">Decor</a>
     <a href="makeup.html">Makeup</a>
-    <a href="addons.html">Add‑Ons</a>
-    <a href="wishlist.html">Wishlist ❤️</a>
-    <span id="accountArea"></span>
+    <a href="addons.html">Add-ons</a>
+    <span id="accountArea"><a href="login.html">Login</a></span>
+    <span class="cart-icon" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</span>
   </nav>
+</header>
 
-  <section class="catering-section" id="cateringList">
-    <!-- Cards will be injected here by JS -->
-  </section>
+<section>
+  <h2>Catering Services</h2>
+  <div id="cateringList" class="card-grid">
+    </div>
+</section>
 
-  <script>
-    const caterings = [
-      { name: "South Indian Veg Thali", pricePerGuest: 350 },
-      { name: "North Indian Premium", pricePerGuest: 450 },
-      { name: "Gujarati Special", pricePerGuest: 400 },
-      { name: "Rajasthani Royal Thali", pricePerGuest: 500 },
-      { name: "Punjabi Tandoori Combo", pricePerGuest: 600 },
-      { name: "Continental Fusion Menu", pricePerGuest: 650 },
-      { name: "Marwari Sweets & Snacks", pricePerGuest: 300 },
-      { name: "Maharashtrian Delight", pricePerGuest: 420 },
-      { name: "Bengali Bhog Menu", pricePerGuest: 480 },
-      { name: "Vegan Exclusive Feast", pricePerGuest: 550 }
-    ];
+<footer>
+  &copy; 2025 VivahKarwalo | 📞 9833405618 | 📧 vivahkarwaalo@gmail.com
+</footer>
 
-    const container = document.getElementById("cateringList");
+<script>
+  const caterings = [
+    { name: "South Indian Veg Thali", pricePerGuest: 350 },
+    { name: "North Indian Premium", pricePerGuest: 450 },
+    { name: "Gujarati Special", pricePerGuest: 400 },
+    { name: "Rajasthani Royal Thali", pricePerGuest: 500 },
+    { name: "Punjabi Tandoori Combo", pricePerGuest: 600 },
+    { name: "Continental Fusion Menu", pricePerGuest: 650 },
+    { name: "Marwari Sweets & Snacks", pricePerGuest: 300 },
+    { name: "Maharashtrian Delight", pricePerGuest: 420 },
+    { name: "Bengali Bhog Menu", pricePerGuest: 480 },
+    { name: "Vegan Exclusive Feast", pricePerGuest: 550 }
+  ];
 
-    caterings.forEach((item, index) => {
-      const card = document.createElement("div");
-      card.className = "card";
+  const container = document.getElementById("cateringList");
 
-      card.innerHTML = `
+  caterings.forEach((item, index) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <div>
         <h3>${item.name}</h3>
-        <p>Cost per guest: ₹${item.pricePerGuest}</p>
-        <div class="row">
-          <input type="number" placeholder="Guests" id="guests-${index}" min="1" />
-          <button class="like-button" onclick="addToWishlist(${index})">💗</button>
-        </div>
-        <p id="total-${index}">Total: ₹0</p>
-      `;
+        <p>Cost per guest: ₹${item.pricePerGuest.toLocaleString('en-IN')}</p>
+        <p id="total-${index}" style="font-weight: bold;">Total: ₹0</p>
+      </div>
+      <div class="interactive-row">
+        <input type="number" placeholder="Guests" id="guests-${index}" min="1" oninput="updateTotal(${index})" />
+        <button class="wishlist-button" onclick="addToWishlist(${index})">❤️ Add</button>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+  
+  function updateTotal(index) {
+    const guestsInput = document.getElementById(`guests-${index}`);
+    const guests = parseInt(guestsInput.value);
+    const item = caterings[index];
+    const totalEl = document.getElementById(`total-${index}`);
 
-      container.appendChild(card);
-    });
-
-    function addToWishlist(index) {
-      const guests = parseInt(document.getElementById(`guests-${index}`).value);
-      if (isNaN(guests) || guests <= 0) {
-        alert("Please enter a valid number of guests.");
-        return;
-      }
-
-      const item = caterings[index];
-      const totalCost = item.pricePerGuest * guests;
-
-      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
-      wishlist.push({
-        category: "Catering",
-        name: item.name,
-        pricePerGuest: item.pricePerGuest,
-        guests: guests,
-        total: totalCost
-      });
-
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
-      alert(`${item.name} added to wishlist with total ₹${totalCost}`);
-      document.getElementById(`total-${index}`).textContent = `Total: ₹${totalCost}`;
-    }
-
-    // Show account or login
-    const currentUser = localStorage.getItem("shaadiUser");
-    const accountArea = document.getElementById("accountArea");
-    if (currentUser) {
-      accountArea.innerHTML = `
-        <div class="account-dropdown">
-          <span style="cursor:pointer;">👤 Account</span>
-          <div class="dropdown-content">
-            <button onclick="location.href='viewaccount.html'">View Account</button>
-            <button onclick="localStorage.removeItem('shaadiUser'); location.reload();">Logout</button>
-          </div>
-        </div>`;
+    if (!isNaN(guests) && guests > 0) {
+        const totalCost = item.pricePerGuest * guests;
+        totalEl.textContent = `Total: ₹${totalCost.toLocaleString('en-IN')}`;
     } else {
-      accountArea.innerHTML = `<a href="login.html" class="login">Login</a>`;
+        totalEl.textContent = 'Total: ₹0';
     }
-  </script>
+  }
+
+  function addToWishlist(index) {
+    const guestsInput = document.getElementById(`guests-${index}`);
+    const guests = parseInt(guestsInput.value);
+    if (isNaN(guests) || guests <= 0) {
+      alert("Please enter a valid number of guests.");
+      return;
+    }
+
+    const item = caterings[index];
+    const totalCost = item.pricePerGuest * guests;
+    const wishlistItem = {
+      category: "Catering",
+      name: item.name,
+      price: totalCost,
+      details: `${guests} guests × ₹${item.pricePerGuest}/guest`
+    };
+
+    let wishlist = JSON.parse(localStorage.getItem("vivahKarwaloWishlist")) || [];
+    wishlist.push(wishlistItem);
+    localStorage.setItem("vivahKarwaloWishlist", JSON.stringify(wishlist));
+    
+    alert(`${item.name} (for ${guests} guests) added to wishlist!`);
+  }
+
+  // NOTE: The cart functionality is separate from the wishlist.
+  // The cart icon in the header links to a potential cart system.
+  function toggleCart() {
+    // You would define your cart toggle logic here, perhaps showing a modal.
+    alert("Cart functionality would be displayed here.");
+  }
+  
+  // This page does not use the cart, so we'll just set the count to 0.
+  // A real site would have a shared script to update this dynamically.
+  document.getElementById("cartCount").textContent = '0'; 
+
+  // Show account or login link (simplified for this page)
+  const currentUser = null; // Placeholder for user login check
+  const accountArea = document.getElementById("accountArea");
+  if (currentUser) {
+    accountArea.innerHTML = `<a href="viewaccount.html">Account</a>`;
+  } else {
+    accountArea.innerHTML = `<a href="login.html">Login</a>`;
+  }
+</script>
+
 </body>
 </html>
