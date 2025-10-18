@@ -14,7 +14,6 @@
     /* --- AESTHETIC INDIAN WEDDING THEME - MASTER STYLESHEET --- */
     
     :root {
-      /* --- NEW PINK PALETTE --- */
       --primary: #ECBDC4;   /* Main Soft Pink */
       --secondary: #F5DCE0; /* Lightest Pink Background */
       --accent: #E18AAA;    /* Darker Pink for Accents/Hovers */
@@ -36,7 +35,7 @@
     
     /* --- HEADER & NAVIGATION --- */
     header {
-      background-color: rgba(245, 220, 224, 0.8); /* Updated to match new bg */
+      background-color: rgba(245, 220, 224, 0.8);
       backdrop-filter: blur(10px);
       padding: 1rem 3rem;
       display: flex;
@@ -88,11 +87,40 @@
 
     /* --- HERO & HOMEPAGE STYLES --- */
     .hero {
-      background-image: linear-gradient(rgba(40, 30, 30, 0.3), rgba(40, 30, 30, 0.3)), url('https://images.unsplash.com/photo-1627892382365-276326c2b834?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
-      background-size: cover; background-position: center; color: var(--white);
-      padding: 8rem 2rem; text-align: center;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; /* Crucial for positioning video and overlay */
+      color: var(--white);
+      padding: 8rem 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       min-height: 85vh;
+      overflow: hidden; /* Hide video overflow */
+    }
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+    .hero::before { /* This is the 40% transparent overlay */
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 2;
+    }
+    .hero-content {
+      position: relative; /* Ensures text is on top of the overlay */
+      z-index: 3;
     }
     .hero h1 { font-family: var(--font-heading); font-size: 4.5rem; font-weight: 700; margin-bottom: 1rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
     .hero p { font-size: 1.25rem; margin-bottom: 2.5rem; max-width: 600px; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
@@ -151,9 +179,15 @@
 
 <main>
     <section class="hero">
-        <h1 class="fade-in">Crafting Timeless Celebrations</h1>
-        <p class="fade-in">From intimate gatherings to grand affairs, we weave your love story into an unforgettable wedding experience.</p>
-        <a class="btn-hero fade-in" href="#packages-section">Discover Our Packages</a>
+        <video playsinline autoplay muted loop class="hero-video">
+            <source src="assets/bg_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <h1 class="fade-in">Crafting Timeless Celebrations</h1>
+            <p class="fade-in">From intimate gatherings to grand affairs, we weave your love story into an unforgettable wedding experience.</p>
+            <a class="btn-hero fade-in" href="#packages-section">Discover Our Packages</a>
+        </div>
     </section>
 
     <section id="packages-section" class="section packages">
