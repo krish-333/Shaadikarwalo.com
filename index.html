@@ -14,10 +14,11 @@
     /* --- AESTHETIC INDIAN WEDDING THEME - MASTER STYLESHEET --- */
     
     :root {
-      --primary: #F5D6D4; /* Softer Pastel Pink */
-      --secondary: #F4EBE2; /* Warm Ivory */
-      --accent: #E0C9A6;   /* Light Shimmering Gold */
-      --text-dark: #4A403A;  /* Deep Brown */
+      /* --- NEW PINK PALETTE --- */
+      --primary: #ECBDC4;   /* Main Soft Pink */
+      --secondary: #F5DCE0; /* Lightest Pink Background */
+      --accent: #E18AAA;    /* Darker Pink for Accents/Hovers */
+      --text-dark: #4A403A;  /* Kept for Readability */
       --white: #FFFFFF;
       
       --font-heading: 'Cormorant Garamond', serif;
@@ -35,7 +36,7 @@
     
     /* --- HEADER & NAVIGATION --- */
     header {
-      background-color: rgba(244, 235, 226, 0.8);
+      background-color: rgba(245, 220, 224, 0.8); /* Updated to match new bg */
       backdrop-filter: blur(10px);
       padding: 1rem 3rem;
       display: flex;
@@ -44,7 +45,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(224, 201, 166, 0.3);
+      border-bottom: 1px solid rgba(225, 138, 170, 0.3);
     }
     .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
     .logo img { width: 45px; height: 45px; }
@@ -75,7 +76,7 @@
       display: none; position: absolute; background-color: var(--white);
       min-width: 160px; box-shadow: 0 5px 25px rgba(74, 64, 58, 0.15);
       z-index: 1; right: 0; border-radius: 8px;
-      padding: 0.5rem 0; border: 1px solid rgba(224, 201, 166, 0.3);
+      padding: 0.5rem 0; border: 1px solid rgba(225, 138, 170, 0.3);
     }
     .dropdown-content button, .dropdown-content a {
       color: var(--text-dark); padding: 12px 16px; text-decoration: none;
@@ -102,7 +103,7 @@
     .section { padding: 6rem 3rem; }
     .section-title { text-align: center; font-family: var(--font-heading); font-size: 3rem; margin-bottom: 3rem; color: var(--text-dark); font-weight: 600; }
     .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; max-width: 1400px; margin: 0 auto; }
-    .card { background: var(--white); border-radius: 8px; box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05); padding: 2rem; border: 1px solid rgba(224, 201, 166, 0.3); transition: all 0.3s ease; display: flex; flex-direction: column; text-align: center; }
+    .card { background: var(--white); border-radius: 8px; box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05); padding: 2rem; border: 1px solid rgba(236, 189, 196, 0.5); transition: all 0.3s ease; display: flex; flex-direction: column; text-align: center; }
     .card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(74, 64, 58, 0.1); }
     .card h3 { font-family: var(--font-heading); color: var(--text-dark); font-size: 1.8rem; margin-bottom: 0.75rem; }
     .card p { font-size: 1rem; margin-bottom: 1.5rem; flex-grow: 1; }
@@ -111,7 +112,7 @@
     .about { background: var(--white); }
     .about p { max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8; text-align: center; }
     .contact form { max-width: 600px; margin: 0 auto; display: grid; gap: 1.5rem; }
-    .contact input, .contact textarea { padding: 1rem; border: 1px solid rgba(224, 201, 166, 0.4); border-radius: 8px; font-family: var(--font-body); font-size: 1rem; background: var(--white); }
+    .contact input, .contact textarea { padding: 1rem; border: 1px solid rgba(236, 189, 196, 0.6); border-radius: 8px; font-family: var(--font-body); font-size: 1rem; background: var(--white); }
     .contact input:focus, .contact textarea:focus { outline: none; box-shadow: 0 0 0 2px var(--primary); }
 
     /* --- FOOTER --- */
