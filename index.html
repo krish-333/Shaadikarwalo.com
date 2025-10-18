@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VivahKarwalo - Curators of Timeless Weddings</title>
-  <link rel="icon" type="image/png" href="assets/Gemini_Generated_Image_2yfp6t2yfp6t2yfp.png" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +46,7 @@
       z-index: 1000;
       border-bottom: 1px solid rgba(224, 201, 166, 0.3);
     }
-    .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; cursor: pointer; }
+    .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
     .logo img { width: 45px; height: 45px; }
     .logo h2 { color: var(--text-dark); font-family: var(--font-heading); font-size: 1.8rem; }
     
@@ -56,7 +56,6 @@
       text-decoration: none;
       font-weight: 500;
       font-size: 1rem;
-      cursor: pointer;
     }
     .btn-nav {
         background: var(--primary);
@@ -78,18 +77,13 @@
       z-index: 1; right: 0; border-radius: 8px;
       padding: 0.5rem 0; border: 1px solid rgba(224, 201, 166, 0.3);
     }
-    .dropdown-content button {
+    .dropdown-content button, .dropdown-content a {
       color: var(--text-dark); padding: 12px 16px; text-decoration: none;
       display: block; background: none; border: none; width: 100%; text-align: left;
       font-family: var(--font-body); font-size: 1rem; cursor: pointer;
     }
-    .dropdown-content button:hover { background-color: var(--secondary); }
+    .dropdown-content button:hover, .dropdown-content a:hover { background-color: var(--secondary); }
     .account-dropdown:hover .dropdown-content { display: block; }
-
-
-    /* --- PAGE CONTENT WRAPPER --- */
-    .page-content { display: none; }
-    .page-content.active { display: block; }
 
     /* --- HERO & HOMEPAGE STYLES --- */
     .hero {
@@ -101,7 +95,7 @@
     }
     .hero h1 { font-family: var(--font-heading); font-size: 4.5rem; font-weight: 700; margin-bottom: 1rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
     .hero p { font-size: 1.25rem; margin-bottom: 2.5rem; max-width: 600px; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
-    .btn-hero { background: var(--white); color: var(--text-dark); border: none; padding: 0.9rem 2rem; font-size: 1.1rem; font-weight: 500; cursor: pointer; border-radius: 50px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .btn-hero { background: var(--white); color: var(--text-dark); text-decoration: none; border: none; padding: 0.9rem 2rem; font-size: 1.1rem; font-weight: 500; cursor: pointer; border-radius: 50px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
     .btn-hero:hover { background-color: var(--primary); color: var(--text-dark); transform: translateY(-3px); }
 
     /* --- GENERAL SECTION & CARD STYLES --- */
@@ -110,62 +104,15 @@
     .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; max-width: 1400px; margin: 0 auto; }
     .card { background: var(--white); border-radius: 8px; box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05); padding: 2rem; border: 1px solid rgba(224, 201, 166, 0.3); transition: all 0.3s ease; display: flex; flex-direction: column; text-align: center; }
     .card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(74, 64, 58, 0.1); }
-    .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1.5rem; }
     .card h3 { font-family: var(--font-heading); color: var(--text-dark); font-size: 1.8rem; margin-bottom: 0.75rem; }
     .card p { font-size: 1rem; margin-bottom: 1.5rem; flex-grow: 1; }
-    .btn-card { background-color: transparent; color: var(--text-dark); border: 1.5px solid var(--primary); padding: 0.6rem 1.5rem; border-radius: 50px; cursor: pointer; font-weight: 500; align-self: center; transition: all 0.3s ease; }
+    .btn-card { background-color: transparent; color: var(--text-dark); border: 1.5px solid var(--primary); padding: 0.6rem 1.5rem; border-radius: 50px; cursor: pointer; font-weight: 500; align-self: center; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
     .btn-card:hover { background-color: var(--primary); color: var(--text-dark); }
     .about { background: var(--white); }
     .about p { max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8; text-align: center; }
     .contact form { max-width: 600px; margin: 0 auto; display: grid; gap: 1.5rem; }
     .contact input, .contact textarea { padding: 1rem; border: 1px solid rgba(224, 201, 166, 0.4); border-radius: 8px; font-family: var(--font-body); font-size: 1rem; background: var(--white); }
     .contact input:focus, .contact textarea:focus { outline: none; box-shadow: 0 0 0 2px var(--primary); }
-
-    /* --- PAGE DETAIL STYLES (for packages) --- */
-    .page-title-section { padding: 4rem 2rem; text-align: center; background-color: var(--white); }
-    .page-title { font-family: var(--font-heading); font-size: 3rem; color: var(--text-dark); font-weight: 600; }
-    .container { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
-    .package-details { background-color: var(--white); padding: 3rem; border-radius: 8px; box-shadow: 0 5px 25px rgba(74, 64, 58, 0.05); }
-    .p-section { margin-bottom: 2.5rem; } .p-section:last-child { margin-bottom: 0; }
-    .p-section h3 { font-family: var(--font-heading); font-size: 1.8rem; color: var(--text-dark); border-bottom: 1px solid var(--primary); padding-bottom: 0.75rem; margin-bottom: 1.5rem; }
-    .p-section p, .p-section li { line-height: 1.8; font-size: 1.05rem; }
-    .p-section ul { list-style: none; padding: 0; }
-    .p-section ul li { padding-left: 1.5rem; position: relative; margin-bottom: 0.8rem; }
-    .p-section ul li::before { content: '✓'; color: var(--primary); position: absolute; left: 0; font-weight: bold; }
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-    .gallery img { width: 100%; border-radius: 8px; height: 220px; object-fit: cover; }
-
-    /* --- INTERACTIVE CARD STYLES (for Catering/Venues) --- */
-    .card .interactive-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: auto; padding-top: 1rem; }
-    .card input[type="number"] { padding: 0.6rem; border: 1px solid rgba(224, 201, 166, 0.4); border-radius: 8px; font-family: var(--font-body); font-size: 1rem; background: var(--white); width: 100px; }
-    .card input[type="number"]:focus { outline: none; box-shadow: 0 0 0 2px var(--primary); }
-
-    /* --- LOGIN/ACCOUNT FORM STYLES --- */
-    .form-section { display: flex; align-items: center; justify-content: center; padding: 2rem; min-height: 80vh; }
-    .form-container { background: var(--white); border-radius: 8px; box-shadow: 0 5px 25px rgba(74, 64, 58, 0.1); padding: 3rem; border: 1px solid rgba(224, 201, 166, 0.3); width: 100%; max-width: 450px; }
-    .form-container h2 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 2rem; color: var(--text-dark); font-weight: 600; text-align: center; }
-    .form-container input, .form-container select { width: 100%; padding: 1rem; margin-bottom: 1.5rem; border: 1px solid rgba(224, 201, 166, 0.4); border-radius: 8px; font-family: var(--font-body); font-size: 1rem; background: var(--white); }
-    .form-container input:focus, .form-container select:focus { outline: none; box-shadow: 0 0 0 2px var(--primary); }
-    .btn-submit { width: 100%; background: var(--primary); color: var(--text-dark); border: none; padding: 0.9rem 2rem; font-size: 1.1rem; font-weight: 500; cursor: pointer; border-radius: 50px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 1rem; }
-    .btn-submit:hover { background-color: var(--accent); color: var(--white); transform: translateY(-3px); }
-    .form-container p { text-align: center; margin-top: 1.5rem; font-size: 0.9rem; }
-    .form-container p a { color: var(--primary); text-decoration: none; font-weight: bold; } .form-container p a:hover { text-decoration: underline; }
-    .success-msg { text-align: center; color: #28a745; margin-top: 1rem; font-weight: bold; }
-
-
-    /* --- WISHLIST STYLES --- */
-    .wishlist-container { max-width: 800px; margin: 0 auto; background: var(--white); padding: 2rem; border-radius: 8px; box-shadow: 0 5px 25px rgba(74, 64, 58, 0.1); }
-    #wishlistItems { border-bottom: 2px solid var(--primary); margin-bottom: 2rem; }
-    .wishlist-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 1.5rem 0; border-top: 1px solid rgba(224, 201, 166, 0.3); }
-    .wishlist-item:first-child { border-top: none; }
-    .item-details h3 { font-family: var(--font-heading); font-size: 1.6rem; color: var(--text-dark); margin: 0 0 0.5rem 0; }
-    .item-details p { margin: 0; color: #777; }
-    .item-actions { text-align: right; }
-    .item-actions .price { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; }
-    .remove-btn { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 0.4rem 0.8rem; border-radius: 50px; cursor: pointer; font-weight: 500; transition: all 0.3s ease; }
-    .remove-btn:hover { background-color: var(--primary); color: var(--text-dark); }
-    .total-section { text-align: right; font-size: 1.5rem; font-weight: bold; font-family: var(--font-heading); }
-    .empty-wishlist { text-align: center; padding: 4rem 0; color: #999; }
 
     /* --- FOOTER --- */
     footer { background: var(--primary); color: var(--text-dark); text-align: center; padding: 3rem 2rem; font-size: 1rem; }
@@ -178,23 +125,23 @@
 <body>
 
 <header>
-  <div class="logo" data-page="home">
+  <a href="index.html" class="logo">
     <img src="assets/logo.png" alt="VivahKarwalo Logo" />
     <h2>VivahKarwalo</h2>
-  </div>
+  </a>
   <nav>
-    <a data-page="home">Home</a>
-    <a data-page="venues">Venues</a>
-    <a data-page="catering">Catering</a>
-    <a data-page="makeup">Makeup</a>
-    <a data-page="decor">Decor</a>
-    <a data-page="addons">Add-Ons</a>
-    <a data-page="wishlist">Wishlist</a>
-    <a data-page="login" class="btn-nav" id="loginBtn">Client Login</a>
+    <a href="index.html">Home</a>
+    <a href="venues.html">Venues</a>
+    <a href="catering.html">Catering</a>
+    <a href="makeup.html">Makeup</a>
+    <a href="decor.html">Decor</a>
+    <a href="addons.html">Add-Ons</a>
+    <a href="wishlist.html">Wishlist</a>
+    <a href="login.html" class="btn-nav" id="loginBtn">Client Login</a>
     <div class="account-dropdown" id="accountDropdown" style="display: none;">
         <span class="account-dropdown-button">👤 Account</span>
         <div class="dropdown-content">
-          <button data-page="viewaccount">View Account</button>
+          <a href="viewaccount.html">View Account</a>
           <button id="logoutBtn">Logout</button>
         </div>
     </div>
@@ -202,46 +149,52 @@
 </header>
 
 <main>
-    <div id="home" class="page-content active">
-        <section class="hero">
-            <h1 class="fade-in">Crafting Timeless Celebrations</h1>
-            <p class="fade-in">From intimate gatherings to grand affairs, we weave your love story into an unforgettable wedding experience.</p>
-            <a class="btn-hero fade-in" href="#packages-section">Discover Our Packages</a>
-        </section>
-        <section id="packages-section" class="section packages">
-            <h2 class="section-title fade-in">Our Signature Collections</h2>
-            <div class="package-grid">
-                <div class="card fade-in"><h3>Budget Package</h3><p>An affordable package with all essentials for a beautiful, intimate wedding experience.</p><button data-page="budget" class="btn-card">Explore Details</button></div>
-                <div class="card fade-in"><h3>Classic Package</h3><p>Timeless elegance and refined details. Our most popular collection for a perfectly balanced celebration.</p><button data-page="classic" class="btn-card">Explore Details</button></div>
-                <div class="card fade-in"><h3>Luxury Package</h3><p>Sheer elegance and seamless execution, combining grand visuals and luxury experiences.</p><button data-page="luxury" class="btn-card">Explore Details</button></div>
-                <div class="card fade-in"><h3>Premium Package</h3><p>A luxurious offering for a royal celebration with top-tier services and opulent arrangements.</p><button data-page="premium" class="btn-card">Explore Details</button></div>
+    <section class="hero">
+        <h1 class="fade-in">Crafting Timeless Celebrations</h1>
+        <p class="fade-in">From intimate gatherings to grand affairs, we weave your love story into an unforgettable wedding experience.</p>
+        <a class="btn-hero fade-in" href="#packages-section">Discover Our Packages</a>
+    </section>
+
+    <section id="packages-section" class="section packages">
+        <h2 class="section-title fade-in">Our Signature Collections</h2>
+        <div class="package-grid">
+            <div class="card fade-in">
+                <h3>Budget Package</h3>
+                <p>An affordable package with all essentials for a beautiful, intimate wedding experience.</p>
+                <a href="budget.html" class="btn-card">Explore Details</a>
             </div>
-        </section>
-        <section id="about" class="section about"><h2 class="section-title fade-in">Our Philosophy</h2><p class="fade-in">At VivahKarwalo, we believe a wedding is more than an event—it's the first chapter of your legacy. Our passion is translating your unique story into a seamless and beautiful experience.</p></section>
-        <section id="contact" class="section contact"><h2 class="section-title fade-in">Begin Your Journey</h2><form action="#" method="post" class="fade-in"><input type="text" placeholder="Your Name" required /><input type="email" placeholder="Your Email" required /><textarea rows="5" placeholder="Tell us a little about your dream wedding..." required></textarea><button type="submit" class="btn-hero" style="width: 100%;">Send Inquiry</button></form></section>
-    </div>
+            <div class="card fade-in">
+                <h3>Classic Package</h3>
+                <p>Timeless elegance and refined details. Our most popular collection for a perfectly balanced celebration.</p>
+                <a href="classic.html" class="btn-card">Explore Details</a>
+            </div>
+            <div class="card fade-in">
+                <h3>Luxury Package</h3>
+                <p>Sheer elegance and seamless execution, combining grand visuals and luxury experiences.</p>
+                <a href="luxury.html" class="btn-card">Explore Details</a>
+            </div>
+            <div class="card fade-in">
+                <h3>Premium Package</h3>
+                <p>A luxurious offering for a royal celebration with top-tier services and opulent arrangements.</p>
+                <a href="premium.html" class="btn-card">Explore Details</a>
+            </div>
+        </div>
+    </section>
 
-    <div id="venues" class="page-content"><section class="section"><h2 class="section-title fade-in">Choose Your Dream Venue</h2><div id="venueContainer" class="package-grid"></div></section></div>
-    
-    <div id="catering" class="page-content"><section class="section"><h2 class="section-title fade-in">Catering Services</h2><div id="cateringList" class="package-grid"></div></section></div>
+    <section id="about" class="section about">
+        <h2 class="section-title fade-in">Our Philosophy</h2>
+        <p class="fade-in">At VivahKarwalo, we believe a wedding is more than an event—it's the first chapter of your legacy. Our passion is translating your unique story into a seamless and beautiful experience.</p>
+    </section>
 
-    <div id="makeup" class="page-content"><section class="section"><h2 class="section-title fade-in">Makeup Artists</h2><div id="makeupList" class="package-grid"></div></section></div>
-
-    <div id="decor" class="page-content"><section class="section"><h2 class="section-title fade-in">Wedding Decor</h2><div id="decorList" class="package-grid"></div></section></div>
-
-    <div id="addons" class="page-content"><section class="section"><h2 class="section-title fade-in">Optional Add-Ons</h2><div id="addonsList" class="package-grid"></div></section></div>
-
-    <div id="wishlist" class="page-content"><section class="section"><h2 class="section-title fade-in">💖 Your Wishlist</h2><div class="wishlist-container fade-in"><div id="wishlistItems"></div><div id="finalTotal" class="total-section">Final Total: ₹0</div></div></section></div>
-
-    <div id="login" class="page-content"><section class="form-section"><form id="loginForm" class="form-container fade-in"><h2>Client Login</h2><input type="text" id="phone" placeholder="Phone Number (10 digits)" pattern="\d{10}" maxlength="10" required /><input type="password" id="password" placeholder="Password" required /><input type="submit" value="Login" class="btn-submit"/><p>Don’t have an account? <a href="#">Register here</a></p></form></section></div>
-
-    <div id="viewaccount" class="page-content"><section class="form-section"><div class="form-container fade-in"><h2>Account Details</h2><form id="accountForm"><input type="text" id="name" placeholder="Your Name" required /><input type="email" id="email" placeholder="Email Address" required /><input type="date" id="weddingDate" required /><select id="location" required><option value="">Select Wedding City</option><option>Mumbai</option><option>Delhi</option><option>Bangalore</option><option>Chennai</option><option>Kolkata</option></select><button type="submit" id="submitBtn" class="btn-submit">Save Details</button></form><button id="changeDetailsBtn" class="btn-submit" style="display:none;">Change Details</button><p class="success-msg" id="successMsg"></p></div></section></div>
-
-    <div id="budget" class="page-content"><section class="page-title-section"><h1 class="page-title fade-in">Budget Package</h1></section><div class="container"><div class="package-details"><div class="p-section fade-in"><p><strong>Price:</strong> ₹7,99,999</p><p>This affordable package includes all essentials for a beautiful, intimate wedding experience for up to 200 guests.</p></div><div class="p-section fade-in"><h3>What's Included:</h3><ul><li><strong>Venue:</strong> Budget banquet hall</li><li><strong>Catering:</strong> Veg buffet with 3-course meal</li><li><strong>Decor:</strong> Traditional floral setup</li><li><strong>Makeup:</strong> Basic bridal makeup</li><li><strong>Photography:</strong> Candid + Traditional (1 day)</li></ul></div><div class="p-section fade-in"><h3>Gallery:</h3><div class="gallery"><img src="assets/budget1.jpg" alt="Budget Wedding 1" /><img src="assets/budget2.jpg" alt="Budget Wedding 2" /><img src="assets/budget3.jpg" alt="Budget Wedding 3" /></div></div></div></div></div>
-    <div id="classic" class="page-content"><section class="page-title-section"><h1 class="page-title fade-in">Classic Package</h1></section><div class="container"><div class="package-details"><div class="p-section fade-in"><p><strong>Price:</strong> ₹16,00,000</p><p>Perfect for couples who want a well-rounded wedding with beautiful aesthetics, ideal for 300–350 guests.</p></div><div class="p-section fade-in"><h3>What's Included:</h3><ul><li><strong>Venue:</strong> Premium banquet or lawn</li><li><strong>Catering:</strong> Multi-cuisine 4-course menu</li><li><strong>Decor:</strong> Designer floral and theme decor</li><li><strong>Makeup:</strong> Bridal HD makeup + 3 family members</li><li><strong>Photography:</strong> 2-day candid + cinematic video</li></ul></div><div class="p-section fade-in"><h3>Gallery:</h3><div class="gallery"><img src="assets/classic1.jpg" alt="Classic Wedding 1" /><img src="assets/classic2.jpg" alt="Classic Wedding 2" /><img src="assets/classic3.jpg" alt="Classic Wedding 3" /></div></div></div></div></div>
-    <div id="luxury" class="page-content"><section class="page-title-section"><h1 class="page-title fade-in">Luxury Package</h1></section><div class="container"><div class="package-details"><div class="p-section fade-in"><p><strong>Price:</strong> ₹30,00,000</p><p>Sheer elegance and seamless execution for 400+ guests, combining grand visuals and luxury experiences.</p></div><div class="p-section fade-in"><h3>What's Included:</h3><ul><li><strong>Venue:</strong> Luxury resort or banquet</li><li><strong>Catering:</strong> Gourmet international and Indian spread</li><li><strong>Decor:</strong> Grand floral installations, chandeliers</li><li><strong>Makeup:</strong> Celebrity artist bridal package</li><li><strong>Photography:</strong> 3-day shoot, drone, cinematic films</li></ul></div><div class="p-section fade-in"><h3>Gallery:</h3><div class="gallery"><img src="assets/luxury1.jpg" alt="Luxury Wedding 1" /><img src="assets/luxury2.jpg" alt="Luxury Wedding 2" /><img src="assets/luxury3.jpg" alt="Luxury Wedding 3" /></div></div></div></div></div>
-    <div id="premium" class="page-content"><section class="page-title-section"><h1 class="page-title fade-in">Premium Package</h1></section><div class="container"><div class="package-details"><div class="p-section fade-in"><p><strong>Price:</strong> ₹50,00,000</p><p>A luxurious offering for a royal celebration with a destination venue and opulent arrangements for 500+ guests.</p></div><div class="p-section fade-in"><h3>What's Included:</h3><ul><li><strong>Venue:</strong> 5-star resort or heritage palace</li><li><strong>Catering:</strong> Celebrity chef curated multi-regional menu</li><li><strong>Decor:</strong> Royal themed decor with imported flowers</li><li><strong>Makeup:</strong> Luxury bridal makeup with personal stylist</li><li><strong>Photography:</strong> Premium team with drone and cinematic reels</li></ul></div><div class="p-section fade-in"><h3>Gallery:</h3><div class="gallery"><img src="assets/premium1.jpg" alt="Premium Wedding 1" /><img src="assets/premium2.jpg" alt="Premium Wedding 2" /><img src="assets/premium3.jpg" alt="Premium Wedding 3" /></div></div></div></div></div>
-
+    <section id="contact" class="section contact">
+        <h2 class="section-title fade-in">Begin Your Journey</h2>
+        <form action="#" method="post" class="fade-in">
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <textarea rows="5" placeholder="Tell us a little about your dream wedding..." required></textarea>
+            <button type="submit" class="btn-hero" style="width: 100%;">Send Inquiry</button>
+        </form>
+    </section>
 </main>
 
 <footer>
@@ -249,48 +202,12 @@
 </footer>
 
 <script>
-//========= MASTER SCRIPT FOR SINGLE PAGE APPLICATION =========//
-
 document.addEventListener('DOMContentLoaded', function() {
-    const pages = document.querySelectorAll('.page-content');
-    const navContainer = document.querySelector('header');
-    const wishlistKey = 'vivahKarwaloWishlist';
-
-    // --- Core Navigation Logic (Event Delegation) ---
-    navContainer.addEventListener('click', (event) => {
-        const target = event.target.closest('[data-page]');
-        if (target) {
-            event.preventDefault();
-            const pageId = target.getAttribute('data-page');
-            showPage(pageId);
-        }
-    });
-    
-    function showPage(pageId) {
-        if (!pageId) return;
-        pages.forEach(page => page.classList.remove('active'));
-        const activePage = document.getElementById(pageId);
-        if (activePage) {
-            activePage.classList.add('active');
-            window.scrollTo(0, 0);
-            runFadeIn(activePage);
-
-            if (pageId === 'venues' && !activePage.dataset.loaded) { loadVenues(); activePage.dataset.loaded = 'true'; }
-            if (pageId === 'catering' && !activePage.dataset.loaded) { loadCatering(); activePage.dataset.loaded = 'true'; }
-            if (pageId === 'makeup' && !activePage.dataset.loaded) { loadMakeup(); activePage.dataset.loaded = 'true'; }
-            if (pageId === 'decor' && !activePage.dataset.loaded) { loadDecor(); activePage.dataset.loaded = 'true'; }
-            if (pageId === 'addons' && !activePage.dataset.loaded) { loadAddons(); activePage.dataset.loaded = 'true'; }
-            if (pageId === 'wishlist') { loadWishlist(); }
-            if (pageId === 'viewaccount') { loadAccountDetails(); }
-        }
-    }
-    window.showPage = showPage;
-
-    // --- Authentication Check & Logout ---
     const loginBtn = document.getElementById('loginBtn');
     const accountDropdown = document.getElementById('accountDropdown');
     const logoutBtn = document.getElementById('logoutBtn');
 
+    // --- Authentication Check & Logout ---
     function checkAuth() {
         if (localStorage.getItem('shaadiUser')) {
             loginBtn.style.display = 'none';
@@ -305,137 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.removeItem('shaadiUser');
         alert('You have been logged out.');
         checkAuth();
-        showPage('home');
-    });
-
-    // --- DYNAMIC CONTENT DATA ---
-    const venuesData = [ { name: "Royal Palace", price: 1000, image: "assets/venue1.jpg" }, { name: "Dream Garden", price: 850, image: "assets/venue2.jpg" }, { name: "Heritage Hall", price: 1200, image: "assets/venue3.jpg" }, { name: "Sunset Lawns", price: 950, image: "assets/venue4.jpg" }];
-    const cateringsData = [ { name: "South Indian Veg Thali", pricePerGuest: 350 }, { name: "North Indian Premium", pricePerGuest: 450 }, { name: "Gujarati Special", pricePerGuest: 400 }, { name: "Rajasthani Royal Thali", pricePerGuest: 500 }];
-    const makeupData = [ { name: "Bridal HD Makeup", price: 20000, image: "assets/makeup1.jpg" }, { name: "Airbrush Makeup", price: 28000, image: "assets/makeup2.jpg" }, { name: "Full Family Package", price: 50000, image: "assets/makeup3.jpg" }];
-    const decorData = [ { name: "Floral Theme Decor", price: 75000, image: "assets/decor1.jpg" }, { name: "Royal Golden Setup", price: 95000, image: "assets/decor2.jpg" }, { name: "Beach Wedding Decor", price: 120000, image: "assets/decor3.jpg" }];
-    const addonsData = [ { name: "DJ + Dance Floor", price: 35000, image: "assets/addon1.jpg" }, { name: "Photobooth Station", price: 18000, image: "assets/addon2.jpg" }, { name: "Fireworks Entry", price: 25000, image: "assets/addon3.jpg" }];
-    
-    // --- DYNAMIC CONTENT LOADING FUNCTIONS ---
-    function loadVenues() {
-      const c = document.getElementById("venueContainer"); c.innerHTML = '';
-      venuesData.forEach((v, i) => { const d = document.createElement("div"); d.className = "card fade-in"; d.innerHTML = `<img src="${v.image}" alt="${v.name}"><div class="card-body"><h3>${v.name}</h3><p><strong>₹${v.price.toLocaleString('en-IN')}</strong> per guest</p><div class="interactive-row"><input type="number" placeholder="Guests" id="venue-guests-${i}" min="1" /><button class="btn-card" onclick="addInteractiveToWishlist('venue', ${i})">❤️ Add</button></div></div>`; c.appendChild(d); });
-    }
-    function loadCatering() {
-        const c = document.getElementById("cateringList"); c.innerHTML = '';
-        cateringsData.forEach((i, x) => { const d = document.createElement("div"); d.className = "card fade-in"; d.innerHTML = `<h3>${i.name}</h3><p>Cost per guest: ₹${i.pricePerGuest.toLocaleString('en-IN')}</p><p id="catering-total-${x}" style="font-weight: bold;">Total: ₹0</p><div class="interactive-row"><input type="number" placeholder="Guests" id="catering-guests-${x}" min="1" oninput="updateCateringTotal(${x})" /><button class="btn-card" onclick="addInteractiveToWishlist('catering', ${x})">❤️ Add</button></div>`; c.appendChild(d); });
-    }
-    function loadMakeup() {
-        const c = document.getElementById("makeupList"); c.innerHTML = '';
-        makeupData.forEach((i, x) => { const d = document.createElement("div"); d.className = "card fade-in"; d.innerHTML = `<img src="${i.image}" alt="${i.name}"><h3>${i.name}</h3><p>A premium makeup experience.</p><p><strong>Cost: ₹${i.price.toLocaleString('en-IN')}</strong></p><button onclick="addGenericToWishlist('${i.name}', ${i.price}, 'Makeup')" class="btn-card">❤️ Add to Wishlist</button>`; c.appendChild(d); });
-    }
-    function loadDecor() {
-        const c = document.getElementById("decorList"); c.innerHTML = '';
-        decorData.forEach((i, x) => { const d = document.createElement("div"); d.className = "card fade-in"; d.innerHTML = `<img src="${i.image}" alt="${i.name}"><h3>${i.name}</h3><p>Stunning decor for your special day.</p><p><strong>Cost: ₹${i.price.toLocaleString('en-IN')}</strong></p><button onclick="addGenericToWishlist('${i.name}', ${i.price}, 'Decor')" class="btn-card">❤️ Add to Wishlist</button>`; c.appendChild(d); });
-    }
-    function loadAddons() {
-        const c = document.getElementById("addonsList"); c.innerHTML = '';
-        addonsData.forEach((i, x) => { const d = document.createElement("div"); d.className = "card fade-in"; d.innerHTML = `<img src="${i.image}" alt="${i.name}"><h3>${i.name}</h3><p>Extra services to enhance your experience.</p><p><strong>Cost: ₹${i.price.toLocaleString('en-IN')}</strong></p><button onclick="addGenericToWishlist('${i.name}', ${i.price}, 'Add-On')" class="btn-card">❤️ Add to Wishlist</button>`; c.appendChild(d); });
-    }
-    
-    // --- WISHLIST & CALCULATOR LOGIC ---
-    function loadWishlist() {
-        const w = JSON.parse(localStorage.getItem(wishlistKey)) || []; const c = document.getElementById("wishlistItems");
-        const t = document.getElementById("finalTotal"); c.innerHTML = ""; let total = 0;
-        if (w.length === 0) { c.innerHTML = `<p class="empty-wishlist">Your wishlist is currently empty.</p>`;
-        } else {
-            w.forEach((i, x) => {
-              const p = i.price || 0; total += p; const b = document.createElement("div"); b.className = "wishlist-item";
-              b.innerHTML = `<div class="item-details"><h3>${i.name}</h3><p>${i.category}${i.details ? ` (${i.details})` : ''}</p></div><div class="item-actions"><p class="price">₹${p.toLocaleString('en-IN')}</p><button class="remove-btn" onclick="removeItemFromWishlist(${x})">Remove</button></div>`;
-              c.appendChild(b);
-            });
-        }
-        t.textContent = `Final Total: ₹${total.toLocaleString('en-IN')}`;
-    }
-    window.removeItemFromWishlist = function(index) {
-        let w = JSON.parse(localStorage.getItem(wishlistKey)) || []; w.splice(index, 1);
-        localStorage.setItem(wishlistKey, JSON.stringify(w)); loadWishlist();
-    }
-    window.updateCateringTotal = function(index) {
-        const g = document.getElementById(`catering-guests-${index}`); const c = parseInt(g.value);
-        const i = cateringsData[index]; const t = document.getElementById(`catering-total-${index}`);
-        if (!isNaN(c) && c > 0) { t.textContent = `Total: ₹${(i.pricePerGuest * c).toLocaleString('en-IN')}`; } 
-        else { t.textContent = 'Total: ₹0'; }
-    };
-    window.addGenericToWishlist = function(name, price, category, details = "") {
-        const item = { name, price, category, details };
-        let w = JSON.parse(localStorage.getItem(wishlistKey)) || [];
-        if (w.some(i => i.name === name)) { alert(name + " is already in your wishlist."); } 
-        else { w.push(item); localStorage.setItem(wishlistKey, JSON.stringify(w)); alert("Added " + name + " to your wishlist!"); }
-    };
-    // --- FIX: Corrected wishlist logic for interactive items ---
-    window.addInteractiveToWishlist = function(type, index) {
-        const guestsInput = document.getElementById(`${type}-guests-${index}`);
-        const guests = parseInt(guestsInput.value);
-        if (isNaN(guests) || guests <= 0) { alert("Please enter a valid number of guests."); return; }
-        
-        const dataArray = type === 'venue' ? venuesData : cateringsData;
-        const selected = dataArray[index];
-        const pricePerGuest = selected.price || selected.pricePerGuest;
-        const totalPrice = guests * pricePerGuest;
-
-        const item = {
-            name: selected.name,
-            price: totalPrice,
-            details: `${guests} guests × ₹${pricePerGuest}/guest`,
-            category: type.charAt(0).toUpperCase() + type.slice(1)
-        };
-        // This now directly handles saving, instead of calling the generic function incorrectly
-        let wishlist = JSON.parse(localStorage.getItem(wishlistKey)) || [];
-        if (wishlist.some(i => i.name === item.name)) {
-          alert(item.name + " is already in your wishlist.");
-        } else {
-          wishlist.push(item);
-          localStorage.setItem(wishlistKey, JSON.stringify(wishlist));
-          alert(`Added ${item.name} to wishlist for ${guests} guests.`);
-        }
-    };
-
-    // --- FORM SUBMISSION LOGIC ---
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        localStorage.setItem('shaadiUser', 'true');
-        alert("Login Successful!");
-        checkAuth(); showPage('viewaccount');
-    });
-
-    const accountForm = document.getElementById('accountForm');
-    const changeDetailsBtn = document.getElementById('changeDetailsBtn');
-    const submitBtn = document.getElementById('submitBtn');
-    const successMsg = document.getElementById('successMsg');
-    
-    function loadAccountDetails() {
-        const saved = JSON.parse(localStorage.getItem("userDetails"));
-        const fields = accountForm.querySelectorAll("input, select");
-        if (saved) {
-            accountForm.name.value = saved.name; accountForm.email.value = saved.email;
-            accountForm.weddingDate.value = saved.weddingDate; accountForm.location.value = saved.location;
-            fields.forEach(el => el.disabled = true);
-            submitBtn.style.display = "none"; changeDetailsBtn.style.display = "block";
-        } else {
-            fields.forEach(el => el.disabled = false);
-            submitBtn.style.display = "block"; changeDetailsBtn.style.display = "none";
-            accountForm.reset();
-        }
-    }
-    
-    accountForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const userData = { name: accountForm.name.value, email: accountForm.email.value, weddingDate: accountForm.weddingDate.value, location: accountForm.location.value };
-        localStorage.setItem("userDetails", JSON.stringify(userData));
-        successMsg.textContent = "Details saved successfully!";
-        accountForm.querySelectorAll("input, select").forEach(el => el.disabled = true);
-        submitBtn.style.display = "none"; changeDetailsBtn.style.display = "block";
-    });
-
-    changeDetailsBtn.addEventListener("click", () => {
-        accountForm.querySelectorAll("input, select").forEach(el => el.disabled = false);
-        submitBtn.style.display = "block"; changeDetailsBtn.style.display = "none";
-        successMsg.textContent = "";
+        window.location.href = 'index.html'; // Redirect to home
     });
 
     // --- FADE-IN ANIMATION ---
@@ -454,9 +241,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // --- INITIAL PAGE LOAD ---
     checkAuth();
-    runFadeIn(document.getElementById('home'));
+    runFadeIn();
 });
-
 </script>
 
 </body>
